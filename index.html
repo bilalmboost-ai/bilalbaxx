@@ -9,7 +9,14 @@
 <meta property="og:title" content="Nur AI Studio — AI Content Strategy & Free Video Audits">
 <meta property="og:description" content="Send us one video. We'll show you how to improve it — hook, first 3 seconds, pacing, caption and publishing. Free audit in 24–48 hours.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="logo.png">
+<meta property="og:image" content="https://nuraibaxx.com/logo.png">
+<meta property="og:url" content="https://nuraibaxx.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nur AI Studio — AI Content Strategy & Free Video Audits">
+<meta name="twitter:description" content="Three specialist agents. One connected content workflow for stronger short-form content.">
+<meta name="twitter:image" content="https://nuraibaxx.com/logo.png">
+<meta name="theme-color" content="#0c281f">
+<link rel="canonical" href="https://nuraibaxx.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +74,6 @@
   .hero { position: relative; text-align: center; overflow: hidden; padding: clamp(52px, 7vw, 88px) 0 clamp(40px, 6vw, 64px); background: radial-gradient(ellipse at 18% 12%, rgba(201, 169, 97, 0.16), transparent 52%), radial-gradient(ellipse at 85% 95%, rgba(26, 68, 51, 0.7), transparent 55%), linear-gradient(180deg, #0e3125 0%, var(--bg) 78%); }
   .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 130%, rgba(201, 169, 97, 0.10), transparent 60%); }
   .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
-  .hero-logo { width: clamp(140px, 20vw, 190px); margin: 0 auto 6px; mix-blend-mode: screen; }
   .hero .tag { display: inline-flex; align-items: center; gap: 12px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 22px; max-width: 620px; }
   .hero .tag .rule { width: 24px; height: 1px; background: var(--gold); flex-shrink: 0; }
   .hero h1 { font-size: clamp(36px, 6vw, 66px); margin-bottom: 22px; }
@@ -76,6 +82,17 @@
   .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px; }
   .hero .trust { font-size: 14px; color: var(--muted-2); display: inline-flex; align-items: center; gap: 9px; flex-wrap: wrap; justify-content: center; }
   .hero .trust svg { color: var(--gold); flex-shrink: 0; }
+  .beta-entry { margin: 18px auto 0; width: fit-content; display: flex; align-items: center; gap: 9px; color: var(--cream); font-size: 13px; font-weight: 700; padding: 9px 14px; border: 1px solid var(--hair); border-radius: 999px; background: rgba(10,32,24,0.5); }
+  .beta-entry:hover { border-color: rgba(201,169,97,0.5); color: var(--gold-light); }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(134,224,176,0.1); }
+  @media (max-width: 620px) {
+    .hero { padding-top: 42px; }
+    .hero .tag { letter-spacing: 0.12em; line-height: 1.55; margin-bottom: 18px; }
+    .hero .tag .rule { display: none; }
+    .hero h1 { font-size: 34px; line-height: 1.08; margin-bottom: 20px; }
+    .hero p.sub { line-height: 1.55; margin-bottom: 28px; }
+    .hero .trust { font-size: 12.5px; line-height: 1.45; }
+  }
 
   /* SYSTEM DIAGRAM */
   .system { border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); background: var(--panel-2); }
@@ -183,6 +200,11 @@
   .future .nm { font-size: 16px; font-weight: 800; color: var(--gold-light); }
   .future .rl { font-size: 12px; color: var(--muted-2); text-transform: uppercase; letter-spacing: 0.06em; margin: 3px 0 8px; }
   .future p { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .future-details { margin-top: 34px; border: 1px solid var(--hair); border-radius: 14px; background: rgba(16,46,36,0.55); overflow: hidden; }
+  .future-details summary { cursor: pointer; list-style: none; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--cream); font-weight: 800; }
+  .future-details summary::-webkit-details-marker { display: none; }
+  .future-details summary span { color: var(--gold-light); font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .future-details .future-grid { padding: 0 18px 18px; }
   .roadmap-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(201,169,97,0.1); border: 1px solid var(--hair); padding: 7px 16px; border-radius: 999px; }
 
   /* FOUNDER */
@@ -286,7 +308,6 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-content wrap">
-      <img class="hero-logo" src="logo.png" alt="Nur AI Studio">
       <div class="tag"><span class="rule"></span> The AI content studio for Muslim creators and Islamic brands <span class="rule"></span></div>
       <h1>Better Ideas. Stronger Hooks.<br><span class="accent">Smarter Content Decisions.</span></h1>
       <p class="sub">Nur AI combines content strategy, trend research, and video analysis to help Muslim creators and Islamic brands produce stronger short-form content — without compromising their values.</p>
@@ -298,6 +319,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 7.1-.9z" fill="currentColor"/></svg>
         No credit card. One video. Clear feedback within 24–48 hours.
       </div>
+      <a href="beta.html" class="beta-entry"><span class="live-dot" aria-hidden="true"></span> Founder Beta access <span aria-hidden="true">→</span></a>
     </div>
   </header>
 
@@ -539,15 +561,17 @@
         <div class="pillar"><h4>Sample Deliverables</h4><p>Content calendars, trend reports, video scorecards and improvement plans in one place.</p></div>
       </div>
 
-      <div class="road-sub">Future agents joining the team</div>
-      <div class="future-grid">
-        <div class="future"><div class="nm">Noor</div><div class="rl">Brand Partnerships</div><p>Finds sponsorships, writes outreach, tracks negotiations.</p></div>
-        <div class="future"><div class="nm">Adam</div><div class="rl">Sales</div><p>Converts enquiries and handles leads with a simple CRM.</p></div>
-        <div class="future"><div class="nm">Zayd</div><div class="rl">SEO</div><p>Blogs, keywords, website and Google rankings.</p></div>
-        <div class="future"><div class="nm">Fatima</div><div class="rl">Email Marketing</div><p>Campaigns, flows, newsletters and launches.</p></div>
-        <div class="future"><div class="nm">Khalid</div><div class="rl">Analytics</div><p>Explains why videos succeed and predicts what to make next.</p></div>
-        <div class="future"><div class="nm">Omar</div><div class="rl">Automation</div><p>Connects Meta, Google, Notion, Claude, OpenAI, Zapier and n8n.</p></div>
-      </div>
+      <details class="future-details">
+        <summary>Future specialists on the roadmap <span>6 planned agents</span></summary>
+        <div class="future-grid">
+          <div class="future"><div class="nm">Noor</div><div class="rl">Brand Partnerships</div><p>Finds sponsorships, writes outreach, tracks negotiations.</p></div>
+          <div class="future"><div class="nm">Adam</div><div class="rl">Sales</div><p>Converts enquiries and handles leads with a simple CRM.</p></div>
+          <div class="future"><div class="nm">Zayd</div><div class="rl">SEO</div><p>Blogs, keywords, website and Google rankings.</p></div>
+          <div class="future"><div class="nm">Fatima</div><div class="rl">Email Marketing</div><p>Campaigns, flows, newsletters and launches.</p></div>
+          <div class="future"><div class="nm">Khalid</div><div class="rl">Analytics</div><p>Explains why videos succeed and predicts what to make next.</p></div>
+          <div class="future"><div class="nm">Omar</div><div class="rl">Automation</div><p>Connects Meta, Google, Notion, Claude, OpenAI, Zapier and n8n.</p></div>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -561,7 +585,7 @@
       <div class="founder">
         <p>Nur AI wasn't designed in a boardroom. It was reverse-engineered from what actually worked.</p>
         <p><b>Bilal Mohammed — Bilal .Bax —</b> built Baxx Thobes the hard way first: filming his own footage, learning the grade, testing hooks, teaching himself which nasheed landed on which cut, and reaching out to brands with no idea what to charge.</p>
-        <p>What came out of that was a repeatable chain: research the angle, review the video, then build the plan — same order, every time. Run properly, that approach grew Baxx Thobes to <b>35,000 followers</b>, produced multiple viral videos, and opened real brand conversations — all without a single haram frame or a trending pop song.</p>
+        <p>What came out of that was a repeatable chain: research the angle, review the video, then build the plan — same order, every time. Bilal refined those workflows while growing Baxx Thobes to <b>35,000 followers</b> and learning what consistently improves short-form content — without relying on haram visuals or trending pop songs.</p>
         <p>Nur AI is that studio, offered to other creators — with Maryam, Aisha and Ahmad reviewing your content the way he learned to review his own.</p>
         <div class="pull-quote">
           <div class="q">"I'm not selling you content. I'm giving you the exact team I had to be."</div>
