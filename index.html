@@ -1,184 +1,602 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Nur AI — Cinematic Content Studio for Islamic Brands</title>
+<meta name="description" content="Nur AI crafts cinematic, halal-first travel content for Islamic brands and Muslim creators — produced with a studio's precision.">
+<meta property="og:title" content="Nur AI — Cinematic Content Studio for Islamic Brands">
+<meta property="og:description" content="Halal-first cinematic travel content for Islamic brands and Muslim creators.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+  :root {
+    --bg: #0c281f;
+    --panel: #102e24;
+    --panel-2: #0a2018;
+    --gold: #c9a961;
+    --gold-light: #e3cd8a;
+    --cream: #f6f1e6;
+    --muted: rgba(246, 241, 230, 0.72);
+    --muted-2: rgba(246, 241, 230, 0.5);
+    --hair: rgba(201, 169, 97, 0.18);
+    --hair-soft: rgba(201, 169, 97, 0.12);
+    --maxw: 1200px;
+    --radius: 14px;
+    --grad-gold: linear-gradient(135deg, #e3cd8a, #c9a961);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--gold-light); text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
+  a:hover { color: var(--cream); }
+  ::selection { background: var(--gold); color: var(--bg); }
+  img { max-width: 100%; display: block; }
+
+  h1, h2, h3 { font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+  p { margin: 0; }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: clamp(20px, 5vw, 40px); padding-right: clamp(20px, 5vw, 40px); }
+
+  .eyebrow {
+    font-size: 12.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 16px;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.01em;
+    padding: 15px 30px; border-radius: 999px; border: 1px solid transparent;
+    cursor: pointer; transition: transform 0.15s ease, opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    text-align: center; line-height: 1;
+  }
+  .btn-gold { background: var(--grad-gold); color: var(--bg); }
+  .btn-gold:hover { opacity: 0.9; transform: translateY(-1px); color: var(--bg); }
+  .btn-ghost { background: transparent; color: var(--cream); border-color: rgba(246, 241, 230, 0.35); }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(12, 40, 31, 0.72); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hair);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px clamp(20px, 5vw, 40px); max-width: var(--maxw); margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; color: var(--cream); }
+  .brand .mark {
+    width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center; font-size: 15px; color: var(--gold-light);
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); }
+  .nav-links a.link { font-size: 15px; font-weight: 500; color: rgba(246, 241, 230, 0.78); }
+  .nav-links a.link:hover { color: var(--gold-light); }
+  .nav-toggle {
+    display: none; background: none; border: 1px solid var(--hair); border-radius: 10px;
+    width: 42px; height: 42px; cursor: pointer; padding: 0; color: var(--cream);
+  }
+  .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--cream); margin: 3px auto; border-radius: 2px; transition: 0.25s; }
+
+  @media (max-width: 780px) {
+    .nav-toggle { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; }
+    .nav-links {
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: rgba(10, 32, 24, 0.98); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--hair);
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+    }
+    .nav-links.open { max-height: 420px; }
+    .nav-links a.link { padding: 16px clamp(20px, 5vw, 40px); border-top: 1px solid var(--hair-soft); }
+    .nav-links .btn { margin: 16px clamp(20px, 5vw, 40px); }
+    .nav.open .nav-toggle span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+    .nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+    .nav.open .nav-toggle span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative; min-height: 90vh; display: flex; align-items: center;
+    padding: clamp(80px, 12vw, 140px) 0;
+    background:
+      radial-gradient(ellipse at 18% 15%, rgba(201, 169, 97, 0.16), transparent 52%),
+      radial-gradient(ellipse at 85% 90%, rgba(26, 68, 51, 0.7), transparent 55%),
+      linear-gradient(180deg, #0e3125 0%, var(--bg) 70%);
+    text-align: center; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 50% 120%, rgba(201, 169, 97, 0.10), transparent 60%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
+  .hero .tag {
+    display: inline-flex; align-items: center; gap: 12px; font-size: 12.5px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 28px;
+  }
+  .hero .tag .rule { width: 30px; height: 1px; background: var(--gold); }
+  .hero h1 { font-size: clamp(42px, 8vw, 88px); margin-bottom: 24px; }
+  .hero h1 .accent { color: var(--gold-light); }
+  .hero p.sub { font-size: clamp(16px, 1.7vw, 20px); color: var(--muted); max-width: 560px; margin: 0 auto 40px; line-height: 1.7; }
+  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ---------- SECTIONS ---------- */
+  section { position: relative; }
+  .section-pad { padding: clamp(72px, 10vw, 130px) 0; }
+  .section-head { text-align: center; max-width: 640px; margin: 0 auto clamp(48px, 6vw, 72px); }
+  .section-head h2 { font-size: clamp(32px, 4.6vw, 52px); margin-bottom: 18px; }
+  .section-head p { font-size: 17px; color: var(--muted); line-height: 1.7; }
+
+  /* ---------- AGENTS ---------- */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius);
+    padding: clamp(28px, 3.2vw, 40px); display: flex; flex-direction: column; gap: 18px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover { transform: translateY(-4px); border-color: rgba(201, 169, 97, 0.4); }
+  .card .agent-head { display: flex; align-items: center; gap: 15px; }
+  .card .monogram {
+    width: 52px; height: 52px; flex-shrink: 0; border: 1px solid var(--gold); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--gold-light);
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  .card .agent-name { font-size: 21px; font-weight: 700; }
+  .card .agent-role { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 3px; }
+  .card .agent-desc { font-size: 15px; color: var(--muted); line-height: 1.7; flex-grow: 1; }
+  .card .agent-quote { font-size: 15px; color: var(--muted-2); border-top: 1px solid var(--hair-soft); padding-top: 16px; font-style: italic; }
+
+  /* ---------- PROCESS ---------- */
+  .process { background: var(--panel-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(24px, 3.5vw, 40px); }
+  .step { padding-top: 24px; border-top: 1px solid var(--gold); }
+  .step .num { font-size: 14px; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .step h3 { font-size: 19px; margin-bottom: 10px; }
+  .step p { font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+
+  /* ---------- PRICING ---------- */
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; max-width: 860px; margin: 0 auto; }
+  .price-card {
+    position: relative; background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius);
+    padding: clamp(30px, 3.5vw, 42px); display: flex; flex-direction: column; gap: 22px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured { border-color: var(--gold); background: linear-gradient(180deg, #143a2c, var(--panel)); }
+  .price-badge {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: var(--grad-gold); color: var(--bg); font-size: 11px; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; white-space: nowrap;
+  }
+  .price-card .plan-name { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+  .price-card .price { display: flex; align-items: baseline; gap: 6px; }
+  .price-card .price .amt { font-size: clamp(44px, 6vw, 56px); font-weight: 800; letter-spacing: -0.03em; }
+  .price-card .price .per { font-size: 15px; color: var(--muted-2); font-weight: 500; }
+  .price-card .plan-tagline { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: -8px; }
+  .price-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
+  .price-card li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--cream); line-height: 1.5; }
+  .price-card li svg { flex-shrink: 0; margin-top: 2px; }
+  .price-card .btn { width: 100%; }
+  .pricing-note { text-align: center; font-size: 14px; color: var(--muted-2); margin-top: 32px; }
+
+  /* ---------- FEATURED WORK ---------- */
+  .work-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .work-head h2 { font-size: clamp(30px, 4vw, 46px); }
+  .work-head p { font-size: 15px; color: var(--muted); max-width: 380px; line-height: 1.7; }
+  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .work-tile {
+    position: relative; height: clamp(300px, 34vw, 400px); border-radius: var(--radius); overflow: hidden;
+    display: flex; align-items: flex-end; padding: 22px; text-decoration: none;
+    border: 1px solid var(--hair); transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .work-tile:hover { transform: translateY(-4px); border-color: var(--gold); }
+  .work-tile.t1 { background: linear-gradient(160deg, #1c5540, #0a2018 85%), radial-gradient(circle at 70% 20%, rgba(201,169,97,0.28), transparent 55%); }
+  .work-tile.t2 { background: linear-gradient(160deg, #14463a, #0a2018 85%), radial-gradient(circle at 30% 30%, rgba(227,205,138,0.22), transparent 55%); }
+  .work-tile.t3 { background: linear-gradient(160deg, #22503b, #0a2018 85%), radial-gradient(circle at 60% 70%, rgba(201,169,97,0.24), transparent 55%); }
+  .work-tile .play {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 62px; height: 62px; border-radius: 50%; border: 1.5px solid rgba(246,241,230,0.6);
+    display: flex; align-items: center; justify-content: center; transition: 0.25s;
+    background: rgba(12,40,31,0.35); backdrop-filter: blur(2px);
+  }
+  .work-tile:hover .play { border-color: var(--gold); background: rgba(201,169,97,0.2); }
+  .work-tile .label { position: relative; z-index: 1; color: var(--cream); }
+  .work-tile .label .h { font-size: 17px; font-weight: 700; }
+  .work-tile .label .s { font-size: 13px; color: rgba(246,241,230,0.7); margin-top: 2px; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials { background: var(--panel-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
+  .quote-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+  .quote {
+    background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius);
+    padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 18px;
+  }
+  .quote .stars { color: var(--gold); font-size: 15px; letter-spacing: 2px; }
+  .quote p { font-size: 15.5px; color: var(--cream); line-height: 1.7; flex-grow: 1; }
+  .quote .who { display: flex; align-items: center; gap: 13px; border-top: 1px solid var(--hair-soft); padding-top: 16px; }
+  .quote .avatar {
+    width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0; background: var(--grad-gold);
+    color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px;
+  }
+  .quote .who .name { font-size: 15px; font-weight: 700; }
+  .quote .who .role { font-size: 13px; color: var(--muted-2); }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta { padding: clamp(24px, 5vw, 40px) 0 0; }
+  .cta-panel {
+    max-width: var(--maxw); margin: 0 auto; padding: clamp(56px, 8vw, 100px) clamp(24px, 5vw, 60px);
+    text-align: center; border: 1px solid rgba(201, 169, 97, 0.28); border-radius: 22px; position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 0%, #1a4433, #0a2018 72%);
+  }
+  .cta-panel::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 120%, rgba(201, 169, 97, 0.18), transparent 60%); }
+  .cta-panel .inner { position: relative; max-width: 620px; margin: 0 auto; }
+  .cta-panel h2 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 18px; }
+  .cta-panel p { font-size: 16px; color: var(--muted); margin-bottom: 34px; line-height: 1.7; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: clamp(44px, 6vw, 64px) 0 clamp(28px, 4vw, 36px); margin-top: clamp(56px, 8vw, 88px);
+    border-top: 1px solid var(--hair-soft);
+  }
+  .footer-inner { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; justify-content: space-between; }
+  .footer-inner .copy { font-size: 13px; color: var(--muted-2); max-width: 420px; }
+  .footer-links { display: flex; gap: 22px; align-items: center; }
+  .footer-links a { color: rgba(246, 241, 230, 0.6); font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 7px; }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200; display: none;
+    align-items: center; justify-content: center; padding: 20px;
+    background: rgba(6, 20, 15, 0.72); backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; animation: fade 0.2s ease; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    background: var(--panel); border: 1px solid var(--hair); border-radius: 20px;
+    max-width: 440px; width: 100%; padding: clamp(28px, 5vw, 40px); position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); animation: pop 0.25s ease;
+  }
+  @keyframes pop { from { transform: translateY(12px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(246, 241, 230, 0.06); border: 1px solid var(--hair-soft); color: var(--cream);
+    cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: 0.2s;
+  }
+  .modal-close:hover { background: rgba(246, 241, 230, 0.12); color: var(--gold-light); }
+  .modal .eyebrow { text-align: left; }
+  .modal h3 { font-size: 26px; margin-bottom: 10px; }
+  .modal .lead { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 26px; }
+  .contact-row {
+    display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 12px;
+    border: 1px solid var(--hair); background: var(--panel-2); margin-bottom: 12px; transition: 0.2s;
+  }
+  .contact-row:hover { border-color: var(--gold); }
+  .contact-row .ci {
+    width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(201, 169, 97, 0.14);
+    display: flex; align-items: center; justify-content: center; color: var(--gold-light);
+  }
+  .contact-row .ct { flex-grow: 1; }
+  .contact-row .ct .k { font-size: 12px; color: var(--muted-2); letter-spacing: 0.06em; text-transform: uppercase; }
+  .contact-row .ct .v { font-size: 15.5px; font-weight: 600; color: var(--cream); word-break: break-word; }
+  .contact-row .arrow { color: var(--muted-2); transition: 0.2s; }
+  .contact-row:hover .arrow { color: var(--gold-light); transform: translateX(3px); }
+  .modal-foot { font-size: 13px; color: var(--muted-2); text-align: center; margin-top: 18px; }
+
+  a.contact-row { text-decoration: none; }
+  a.contact-row .v { color: var(--cream); }
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
-  <style>
-    body { margin: 0; background: #0c281f; }
-    * { box-sizing: border-box; }
-    a { color: #e3cd8a; text-decoration: none; }
-    a:hover { color: #f6f1e6; }
-    ::selection { background: #c9a961; color: #0c281f; }
-  </style>
-</helmet>
 
-<div style="font-family: 'Manrope', sans-serif; background: #0c281f; color: #f6f1e6; overflow-x: hidden; min-height: 100vh;">
-
-  <!-- NAV -->
-  <nav ref="{{ navRef }}" style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: clamp(16px,2.5vw,26px) clamp(20px,5vw,64px); background: rgba(12,40,31,0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,169,97,0.18);">
-    <div style="display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: clamp(22px,2.6vw,28px); letter-spacing: 0.04em; font-weight: 600; color: #f6f1e6;">
-      <span style="width: 30px; height: 30px; border: 1.5px solid #c9a961; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; color: #c9a961;">ن</span>
-      Nur AI
-    </div>
-    <div style="display: flex; align-items: center; gap: clamp(18px,3vw,40px); flex-wrap: wrap;">
-      <a href="#agents" style="font-size: 15px; color: rgba(246,241,230,0.75); font-weight: 500;">Agents</a>
-      <a href="#process" style="font-size: 15px; color: rgba(246,241,230,0.75); font-weight: 500;">Process</a>
-      <a href="#work" style="font-size: 15px; color: rgba(246,241,230,0.75); font-weight: 500;">Work</a>
-      <a href="mailto:hello@nurai.studio?subject=Book%20a%20Call" style="font-size: 14px; font-weight: 600; color: #0c281f; background: linear-gradient(135deg,#e3cd8a,#c9a961); padding: 11px 24px; border-radius: 2px; letter-spacing: 0.03em;" style-hover="opacity:0.88;">Book a Call</a>
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand" style="color:var(--cream);">
+        <span class="mark">ن</span> Nur AI
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#agents" class="link">Agents</a>
+        <a href="#process" class="link">Process</a>
+        <a href="#pricing" class="link">Pricing</a>
+        <a href="#work" class="link">Work</a>
+        <a href="#testimonials" class="link">Reviews</a>
+        <a href="#" class="btn btn-gold" data-open-modal>Book a Call</a>
+      </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section style="position: relative; min-height: 92vh; display: flex; align-items: center; padding: clamp(40px,8vw,0px) clamp(20px,6vw,64px);">
-    <div style="position: absolute; inset: 0; z-index: 0;">
-      <image-slot id="hero-bg" shape="rect" fit="cover" placeholder="Drop cinematic travel footage still" style="width:100%; height:100%;"></image-slot>
-      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,32,25,0.55) 0%, rgba(10,32,25,0.82) 62%, #0c281f 100%); pointer-events: none;"></div>
-      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(201,169,97,0.14), transparent 55%); pointer-events: none;"></div>
-    </div>
-    <div style="position: relative; z-index: 1; max-width: 980px; margin: 0 auto; text-align: center; padding: clamp(100px,16vw,160px) 0 clamp(60px,8vw,90px);">
-      <div style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 28px;">
-        <span style="width: 30px; height: 1px; background: #c9a961;"></span>
-        AI Studio for Islamic Brands
-        <span style="width: 30px; height: 1px; background: #c9a961;"></span>
-      </div>
-      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(46px,8vw,96px); line-height: 1.04; margin: 0 0 26px; color: #f6f1e6;">
-        Turn Cinematic<br><em style="font-style: italic; color: #e3cd8a;">Travel.</em>
-      </h1>
-      <p style="font-size: clamp(16px,1.6vw,20px); line-height: 1.7; color: rgba(246,241,230,0.78); max-width: 560px; margin: 0 auto 44px; font-weight: 400;">
-        Nur AI crafts cinematic travel content for Islamic brands and Muslim creators — halal-first storytelling, produced with a studio's precision.
-      </p>
-      <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
-        <a href="mailto:hello@nurai.studio?subject=Book%20a%20Call" style="font-size: 15px; font-weight: 600; color: #0c281f; background: linear-gradient(135deg,#e3cd8a,#c9a961); padding: 16px 34px; border-radius: 2px; letter-spacing: 0.02em;" style-hover="opacity:0.88;">Book a Call</a>
-        <a href="#work" style="font-size: 15px; font-weight: 600; color: #f6f1e6; border: 1px solid rgba(246,241,230,0.35); padding: 16px 34px; border-radius: 2px; letter-spacing: 0.02em;" style-hover="border-color:#c9a961;color:#e3cd8a;">See the Work</a>
-      </div>
-    </div>
-  </section>
+  <span id="top"></span>
 
-  <!-- THREE AGENTS -->
-  <section id="agents" style="padding: clamp(80px,10vw,140px) clamp(20px,6vw,64px); max-width: 1240px; margin: 0 auto;">
-    <div style="text-align: center; max-width: 640px; margin: 0 auto 72px;">
-      <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 18px;">The Studio</div>
-      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px,4.4vw,54px); margin: 0 0 20px; color: #f6f1e6;">Three Agents. One Studio.</h2>
-      <p style="font-size: 17px; line-height: 1.7; color: rgba(246,241,230,0.7); margin: 0;">Every campaign moves through a chain of specialists — strategy, story, and final polish — so nothing ships until it's right.</p>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero-content wrap">
+      <div class="tag"><span class="rule"></span> AI Studio for Islamic Brands <span class="rule"></span></div>
+      <h1>Turn moments into<br><span class="accent">cinematic travel.</span></h1>
+      <p class="sub">Nur AI crafts cinematic travel content for Islamic brands and Muslim creators — halal-first storytelling, produced with a studio's precision.</p>
+      <div class="cta-row">
+        <a href="#" class="btn btn-gold" data-open-modal>Book a Call</a>
+        <a href="#work" class="btn btn-ghost">See the Work</a>
+      </div>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(201,169,97,0.18); border: 1px solid rgba(201,169,97,0.18);">
-      <sc-for list="{{ agents }}" as="agent" hint-placeholder-count="3">
-        <div style="background: #102e24; padding: clamp(36px,4vw,48px) clamp(28px,3vw,40px); display: flex; flex-direction: column; gap: 20px;">
-          <div style="display: flex; align-items: center; gap: 16px;">
-            <span style="width: 52px; height: 52px; flex-shrink: 0; border: 1px solid #c9a961; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #e3cd8a;">{{ agent.initial }}</span>
-            <div>
-              <div style="font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #f6f1e6; font-weight: 600;">{{ agent.name }}</div>
-              <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #c9a961;">{{ agent.role }}</div>
-            </div>
+  </header>
+
+  <!-- ===================== AGENTS ===================== -->
+  <section id="agents" class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">The Studio</div>
+        <h2>Three agents. One studio.</h2>
+        <p>Every campaign moves through a chain of specialists — strategy, story, and final polish — so nothing ships until it's right.</p>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="agent-head">
+            <span class="monogram">م</span>
+            <div><div class="agent-name">Maryam</div><div class="agent-role">Strategist & Orchestrator</div></div>
           </div>
-          <p style="font-size: 15px; line-height: 1.7; color: rgba(246,241,230,0.72); margin: 0; flex-grow: 1;">{{ agent.description }}</p>
-          <div style="font-size: 13px; color: rgba(246,241,230,0.5); border-top: 1px solid rgba(201,169,97,0.16); padding-top: 16px; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 16px;">"{{ agent.quote }}"</div>
+          <p class="agent-desc">Owns strategy — content direction, offers, campaign planning — and delegates the chain that turns a brief into a finished cut.</p>
+          <div class="agent-quote">"Every piece starts with why."</div>
         </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="process" style="padding: clamp(70px,9vw,120px) clamp(20px,6vw,64px); background: #0a2018; border-top: 1px solid rgba(201,169,97,0.14); border-bottom: 1px solid rgba(201,169,97,0.14);">
-    <div style="max-width: 1240px; margin: 0 auto;">
-      <div style="text-align: center; max-width: 600px; margin: 0 auto 64px;">
-        <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 18px;">How It Works</div>
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px,4vw,48px); margin: 0; color: #f6f1e6;">From Brief to Broadcast</h2>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(24px,4vw,40px);">
-        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="4">
-          <div style="padding-top: 26px; border-top: 1px solid #c9a961; position: relative;">
-            <div style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #c9a961; letter-spacing: 0.08em; margin-bottom: 14px;">{{ step.n }}</div>
-            <div style="font-size: 19px; font-weight: 600; color: #f6f1e6; margin-bottom: 10px;">{{ step.title }}</div>
-            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(246,241,230,0.65); margin: 0;">{{ step.desc }}</p>
+        <div class="card">
+          <div class="agent-head">
+            <span class="monogram">ع</span>
+            <div><div class="agent-name">Aisha</div><div class="agent-role">Guide & Outreach</div></div>
           </div>
-        </sc-for>
+          <p class="agent-desc">Scouts halal-friendly destinations, secures filming logistics and permits, and finds the best light before a lens ever opens.</p>
+          <div class="agent-quote">"The location is half the story."</div>
+        </div>
+        <div class="card">
+          <div class="agent-head">
+            <span class="monogram">أ</span>
+            <div><div class="agent-name">Ahmad</div><div class="agent-role">Audio & Final Polish</div></div>
+          </div>
+          <p class="agent-desc">Matches vocal-only nasheeds to the cut, times captions to the swell, and runs the final quality gate — nothing ships without his pass.</p>
+          <div class="agent-quote">"Precision, not impressions."</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED WORK -->
-  <section id="work" style="padding: clamp(80px,10vw,140px) clamp(20px,6vw,64px); max-width: 1240px; margin: 0 auto;">
-    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 56px;">
-      <div>
-        <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 18px;">Featured Work</div>
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px,4vw,48px); margin: 0; color: #f6f1e6;">@baxxthobes</h2>
+  <!-- ===================== PROCESS ===================== -->
+  <section id="process" class="process section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">How It Works</div>
+        <h2>From brief to broadcast</h2>
       </div>
-      <p style="font-size: 15px; line-height: 1.7; color: rgba(246,241,230,0.65); max-width: 380px; margin: 0;">Cinematic travel content produced end-to-end by the Nur AI chain — from location scouting to the final vocal-only cut.</p>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-      <image-slot id="work-1" shape="rect" fit="cover" placeholder="Drop a still from @baxxthobes" style="width:100%; height: clamp(280px,32vw,380px); border-radius: 2px;"></image-slot>
-      <image-slot id="work-2" shape="rect" fit="cover" placeholder="Drop a still from @baxxthobes" style="width:100%; height: clamp(280px,32vw,380px); border-radius: 2px;"></image-slot>
-      <image-slot id="work-3" shape="rect" fit="cover" placeholder="Drop a still from @baxxthobes" style="width:100%; height: clamp(280px,32vw,380px); border-radius: 2px;"></image-slot>
-    </div>
-  </section>
-
-  <!-- LOGOS -->
-  <section style="padding: clamp(50px,6vw,80px) clamp(20px,6vw,64px); border-top: 1px solid rgba(201,169,97,0.14);">
-    <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
-      <div style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,241,230,0.5); margin-bottom: 36px;">Trusted by Islamic Brands &amp; Creators</div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 28px; align-items: center; opacity: 0.85;">
-        <image-slot id="logo-1" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
-        <image-slot id="logo-2" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
-        <image-slot id="logo-3" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
-        <image-slot id="logo-4" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
-        <image-slot id="logo-5" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
+      <div class="steps">
+        <div class="step"><div class="num">01</div><h3>Strategy</h3><p>Maryam sets the direction — offer, audience, and the story worth telling.</p></div>
+        <div class="step"><div class="num">02</div><h3>Research & Logistics</h3><p>Aisha scouts locations, secures permits, and maps the light.</p></div>
+        <div class="step"><div class="num">03</div><h3>Production</h3><p>Cinematic capture, shot to the brand's aesthetic and pace.</p></div>
+        <div class="step"><div class="num">04</div><h3>Audio & Polish</h3><p>Ahmad scores, times, and clears the final cut for release.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section style="margin: clamp(40px,6vw,80px) clamp(20px,6vw,64px) 0; padding: clamp(70px,10vw,120px) clamp(24px,6vw,60px); text-align: center; background: radial-gradient(ellipse at 50% 0%, #1a4433, #0a2018 70%); border: 1px solid rgba(201,169,97,0.24); border-radius: 4px; position: relative; overflow: hidden;">
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 120%, rgba(201,169,97,0.16), transparent 60%); pointer-events: none;"></div>
-    <div style="position: relative; max-width: 640px; margin: 0 auto;">
-      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px,5vw,58px); line-height: 1.15; margin: 0 0 22px; color: #f6f1e6;">Let's tell your story.</h2>
-      <p style="font-size: 16px; line-height: 1.7; color: rgba(246,241,230,0.7); margin: 0 0 40px;">A short call is all it takes to see if Nur AI is the right studio for your brand.</p>
-      <a href="mailto:hello@nurai.studio?subject=Book%20a%20Call" style="display: inline-block; font-size: 15px; font-weight: 600; color: #0c281f; background: linear-gradient(135deg,#e3cd8a,#c9a961); padding: 18px 44px; border-radius: 2px; letter-spacing: 0.03em;" style-hover="opacity:0.88;">Book a Call</a>
+  <!-- ===================== PRICING ===================== -->
+  <section id="pricing" class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Plans</div>
+        <h2>Simple monthly pricing</h2>
+        <p>Consistent, halal-first content on a monthly retainer — no long contracts, cancel anytime.</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="price-card">
+          <div class="plan-name">Essential</div>
+          <div class="price"><span class="amt">$30</span><span class="per">/ month</span></div>
+          <p class="plan-tagline">Steady, professional short-form content to keep your feed alive.</p>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 4 short-form edits / month</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Edited from your footage</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Halal-first, music-free (nasheed audio)</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Captions + hook text</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 1 revision per video</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 48-hour delivery</li>
+          </ul>
+          <a href="#" class="btn btn-ghost" data-open-modal>Get Started</a>
+        </div>
+
+        <div class="price-card featured">
+          <span class="price-badge">Most Popular</span>
+          <div class="plan-name">Studio</div>
+          <div class="price"><span class="amt">$60</span><span class="per">/ month</span></div>
+          <p class="plan-tagline">Everything you need to grow — more videos, strategy, and priority turnaround.</p>
+          <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 8 short-form edits / month</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Essential</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Content strategy & hooks (Maryam)</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Custom thumbnails</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority 24-hour delivery</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 2 revisions + monthly check-in</li>
+          </ul>
+          <a href="#" class="btn btn-gold" data-open-modal>Get Started</a>
+        </div>
+
+      </div>
+      <p class="pricing-note">Need a custom package or brand campaign? <a href="#" data-open-modal>Let's talk →</a></p>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer style="padding: clamp(50px,6vw,70px) clamp(20px,6vw,64px) clamp(30px,4vw,40px); margin-top: clamp(60px,8vw,90px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,169,97,0.14);">
-    <div style="display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #f6f1e6;">
-      <span style="width: 26px; height: 26px; border: 1.5px solid #c9a961; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; color: #c9a961;">ن</span>
-      Nur AI
+  <!-- ===================== FEATURED WORK ===================== -->
+  <section id="work" class="section-pad">
+    <div class="wrap">
+      <div class="work-head">
+        <div>
+          <div class="eyebrow">Featured Work</div>
+          <h2>@baxxthobes</h2>
+        </div>
+        <p>Cinematic travel content produced end-to-end by the Nur AI chain — from location scouting to the final vocal-only cut.</p>
+      </div>
+      <div class="work-grid">
+        <a class="work-tile t1" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
+          <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#f6f1e6"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="label"><span class="h">Istanbul, Golden Hour</span><span class="s">Travel Reel · Nasheed cut</span></span>
+        </a>
+        <a class="work-tile t2" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
+          <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#f6f1e6"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="label"><span class="h">Desert Expedition</span><span class="s">Brand Campaign · Cinematic</span></span>
+        </a>
+        <a class="work-tile t3" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
+          <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#f6f1e6"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="label"><span class="h">Old City Walks</span><span class="s">Short-form Series</span></span>
+        </a>
+      </div>
     </div>
-    <p style="font-size: 13px; color: rgba(246,241,230,0.45); margin: 0;">© 2026 Nur AI Studio. Cinematic content for Islamic brands and Muslim creators.</p>
-    <div style="display: flex; gap: 22px; font-size: 13px;">
-      <a href="#" style="color: rgba(246,241,230,0.55);">Instagram</a>
-      <a href="mailto:hello@nurai.studio" style="color: rgba(246,241,230,0.55);">Email</a>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section id="testimonials" class="testimonials section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">What Clients Say</div>
+        <h2>Trusted by creators & brands</h2>
+      </div>
+      <div class="quote-grid">
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>"Nur AI turned three days of raw travel footage into a Reel that hit 400k views. The nasheed sync alone made it feel like cinema."</p>
+          <div class="who"><span class="avatar">Y</span><div><div class="name">Yusuf A.</div><div class="role">Founder, Baraka Travels</div></div></div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>"Finally a studio that gets halal-first content. No music worries, no back-and-forth — just clean, beautiful edits delivered every week."</p>
+          <div class="who"><span class="avatar">A</span><div><div class="name">Aisha K.</div><div class="role">Creator, @modestjourneys</div></div></div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>"The monthly plan is a no-brainer. Consistent, professional Reels that actually grow the account — and the turnaround is unreal."</p>
+          <div class="who"><span class="avatar">B</span><div><div class="name">Bilal R.</div><div class="role">@baxxthobes</div></div></div>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p>"Working with Maryam and the team felt like having a full production studio on retainer — for the price of a nice dinner."</p>
+          <div class="who"><span class="avatar">S</span><div><div class="name">Sara M.</div><div class="role">Brand Manager, Noor Apparel</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="final-cta">
+    <div class="cta-panel">
+      <div class="inner">
+        <h2>Let's tell your story.</h2>
+        <p>A short call is all it takes to see if Nur AI is the right studio for your brand.</p>
+        <a href="#" class="btn btn-gold" data-open-modal>Book a Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap footer-inner">
+      <a href="#top" class="brand" style="color:var(--cream);"><span class="mark">ن</span> Nur AI</a>
+      <p class="copy">© 2026 Nur AI Studio. Cinematic content for Islamic brands and Muslim creators.</p>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg>
+          Instagram
+        </a>
+        <a href="mailto:bilalm.boost@gmail.com">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 6l9 6 9-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          Email
+        </a>
+      </div>
     </div>
   </footer>
 
-</div>
+  <!-- ===================== CONTACT MODAL ===================== -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="eyebrow">Get in touch</div>
+      <h3 id="modalTitle">Book a Call</h3>
+      <p class="lead">Tell us about your brand and we'll map out the right content plan. We reply within 24 hours.</p>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  renderVals() {
-    return {
-      agents: [
-        { initial: 'م', name: 'Maryam', role: 'Strategist & Orchestrator', description: 'Owns strategy — content direction, offers, campaign planning — and delegates the chain that turns a brief into a finished cut.', quote: 'Every piece starts with why.' },
-        { initial: 'ع', name: 'Aisha', role: 'Guide & Outreach', description: 'Scouts halal-friendly destinations, secures filming logistics and permits, and finds the best light before a lens ever opens.', quote: 'The location is half the story.' },
-        { initial: 'أ', name: 'Ahmad', role: 'Audio & Final Polish', description: 'Matches vocal-only nasheeds to the cut, times captions to the swell, and runs the final quality gate — nothing ships without his pass.', quote: 'Precision, not impressions.' }
-      ],
-      steps: [
-        { n: '01', title: 'Strategy', desc: 'Maryam sets the direction — offer, audience, and the story worth telling.' },
-        { n: '02', title: 'Research & Logistics', desc: 'Aisha scouts locations, secures permits, and maps the light.' },
-        { n: '03', title: 'Production', desc: 'Cinematic capture, shot to the brand\'s aesthetic and pace.' },
-        { n: '04', title: 'Audio & Polish', desc: 'Ahmad scores, times, and clears the final cut for release.' }
-      ]
-    };
-  }
-}
+      <a class="contact-row" href="mailto:bilalm.boost@gmail.com?subject=Book%20a%20Call%20with%20Nur%20AI&body=Hi%20Nur%20AI%2C%0A%0AI'd%20like%20to%20book%20a%20call.%20Here's%20a%20bit%20about%20my%20brand%3A%0A%0A">
+        <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 6l9 6 9-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+        <span class="ct"><span class="k">Email us</span><span class="v">bilalm.boost@gmail.com</span></span>
+        <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
 
-</script>
+      <a class="contact-row" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
+        <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg></span>
+        <span class="ct"><span class="k">DM us</span><span class="v">@baxxthobes</span></span>
+        <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+
+      <p class="modal-foot">Prefer WhatsApp or a scheduled slot? Mention it in your message.</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Mobile nav
+      var nav = document.getElementById('nav');
+      var toggle = document.getElementById('navToggle');
+      var links = document.getElementById('navLinks');
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('open');
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close mobile menu when a link is tapped
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('open');
+          links.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Modal
+      var modal = document.getElementById('modal');
+      var closeBtn = document.getElementById('modalClose');
+      var lastFocus = null;
+      function openModal(e) {
+        if (e) e.preventDefault();
+        lastFocus = document.activeElement;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+      document.querySelectorAll('[data-open-modal]').forEach(function (el) {
+        el.addEventListener('click', openModal);
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    })();
+  </script>
+
 </body>
 </html>
