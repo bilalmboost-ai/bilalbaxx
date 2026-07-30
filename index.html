@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nur AI — Cinematic Content Studio for Islamic Brands</title>
-<meta name="description" content="Nur AI crafts cinematic, halal-first travel content for Islamic brands and Muslim creators — produced with a studio's precision.">
-<meta property="og:title" content="Nur AI — Cinematic Content Studio for Islamic Brands">
-<meta property="og:description" content="Halal-first cinematic travel content for Islamic brands and Muslim creators.">
+<title>Nur AI — The AI Content Studio for Muslim Creators & Islamic Brands</title>
+<meta name="description" content="Three AI agents plan, research and polish your cinematic content — 100% halal. Shot lists, camera settings, nasheed matching, captions and brand outreach. From $30/month.">
+<meta name="keywords" content="halal content creation, Muslim creator tools, Islamic brand marketing, nasheed video editing, modest fashion content, AI content studio, Muslim travel content">
+<meta property="og:title" content="Nur AI — The AI Content Studio for Muslim Creators & Islamic Brands">
+<meta property="og:description" content="The system that grew Baxx Thobes to 35,000 followers, now available as software. Maryam, Aisha and Ahmad — your full content team.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="logo.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,46 +26,32 @@
     --muted-2: rgba(246, 241, 230, 0.5);
     --hair: rgba(201, 169, 97, 0.18);
     --hair-soft: rgba(201, 169, 97, 0.12);
-    --maxw: 1200px;
+    --maxw: 1180px;
     --radius: 14px;
     --grad-gold: linear-gradient(135deg, #e3cd8a, #c9a961);
   }
-
   * { box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--cream);
+    margin: 0; background: var(--bg); color: var(--cream);
     font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
-
   a { color: var(--gold-light); text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
   a:hover { color: var(--cream); }
   ::selection { background: var(--gold); color: var(--bg); }
   img { max-width: 100%; display: block; }
-
-  h1, h2, h3 { font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+  h1, h2, h3, h4 { font-weight: 800; line-height: 1.12; letter-spacing: -0.02em; margin: 0; }
   p { margin: 0; }
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: clamp(20px, 5vw, 40px); padding-right: clamp(20px, 5vw, 40px); }
-
-  .eyebrow {
-    font-size: 12.5px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold); font-weight: 600; margin-bottom: 16px;
-  }
+  .eyebrow { font-size: 12.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 16px; }
 
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.01em;
-    padding: 15px 30px; border-radius: 999px; border: 1px solid transparent;
-    cursor: pointer; transition: transform 0.15s ease, opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+    padding: 15px 30px; border-radius: 999px; border: 1px solid transparent; cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
     text-align: center; line-height: 1;
   }
   .btn-gold { background: var(--grad-gold); color: var(--bg); }
@@ -71,451 +59,587 @@
   .btn-ghost { background: transparent; color: var(--cream); border-color: rgba(246, 241, 230, 0.35); }
   .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
 
-  /* ---------- NAV ---------- */
-  .nav {
-    position: sticky; top: 0; z-index: 60;
-    background: rgba(12, 40, 31, 0.72); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--hair);
-  }
-  .nav-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px clamp(20px, 5vw, 40px); max-width: var(--maxw); margin: 0 auto;
-  }
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 60; background: rgba(12, 40, 31, 0.72); backdrop-filter: blur(12px); border-bottom: 1px solid var(--hair); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 5vw, 40px); max-width: var(--maxw); margin: 0 auto; }
   .brand { display: flex; align-items: center; gap: 11px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; color: var(--cream); }
-  .brand .mark {
-    width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center; font-size: 15px; color: var(--gold-light);
-    font-family: Georgia, 'Times New Roman', serif;
-  }
-  .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 34px); }
+  .brand .mark { width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; color: var(--gold-light); font-family: Georgia, 'Times New Roman', serif; }
+  .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.6vw, 30px); }
   .nav-links a.link { font-size: 15px; font-weight: 500; color: rgba(246, 241, 230, 0.78); }
   .nav-links a.link:hover { color: var(--gold-light); }
-  .nav-toggle {
-    display: none; background: none; border: 1px solid var(--hair); border-radius: 10px;
-    width: 42px; height: 42px; cursor: pointer; padding: 0; color: var(--cream);
-  }
+  .nav-toggle { display: none; background: none; border: 1px solid var(--hair); border-radius: 10px; width: 42px; height: 42px; cursor: pointer; padding: 0; color: var(--cream); }
   .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--cream); margin: 3px auto; border-radius: 2px; transition: 0.25s; }
-
-  @media (max-width: 780px) {
+  @media (max-width: 900px) {
     .nav-toggle { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; }
-    .nav-links {
-      position: absolute; top: 100%; left: 0; right: 0;
-      flex-direction: column; align-items: stretch; gap: 0;
-      background: rgba(10, 32, 24, 0.98); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--hair);
-      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
-    }
-    .nav-links.open { max-height: 420px; }
-    .nav-links a.link { padding: 16px clamp(20px, 5vw, 40px); border-top: 1px solid var(--hair-soft); }
-    .nav-links .btn { margin: 16px clamp(20px, 5vw, 40px); }
+    .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: rgba(10, 32, 24, 0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hair); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .nav-links.open { max-height: 520px; }
+    .nav-links a.link { padding: 15px clamp(20px, 5vw, 40px); border-top: 1px solid var(--hair-soft); }
+    .nav-links .btn { margin: 14px clamp(20px, 5vw, 40px); }
     .nav.open .nav-toggle span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
     .nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
     .nav.open .nav-toggle span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
   }
 
-  /* ---------- HERO ---------- */
+  /* HERO */
   .hero {
-    position: relative; min-height: 90vh; display: flex; align-items: center;
-    padding: clamp(80px, 12vw, 140px) 0;
-    background:
-      radial-gradient(ellipse at 18% 15%, rgba(201, 169, 97, 0.16), transparent 52%),
-      radial-gradient(ellipse at 85% 90%, rgba(26, 68, 51, 0.7), transparent 55%),
-      linear-gradient(180deg, #0e3125 0%, var(--bg) 70%);
-    text-align: center; overflow: hidden;
+    position: relative; display: flex; align-items: center; text-align: center; overflow: hidden;
+    padding: clamp(56px, 8vw, 96px) 0 clamp(64px, 9vw, 110px);
+    background: radial-gradient(ellipse at 18% 12%, rgba(201, 169, 97, 0.16), transparent 52%), radial-gradient(ellipse at 85% 95%, rgba(26, 68, 51, 0.7), transparent 55%), linear-gradient(180deg, #0e3125 0%, var(--bg) 72%);
   }
-  .hero::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(ellipse at 50% 120%, rgba(201, 169, 97, 0.10), transparent 60%);
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; }
-  .hero .tag {
-    display: inline-flex; align-items: center; gap: 12px; font-size: 12.5px;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 28px;
-  }
-  .hero .tag .rule { width: 30px; height: 1px; background: var(--gold); }
-  .hero h1 { font-size: clamp(42px, 8vw, 88px); margin-bottom: 24px; }
+  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 120%, rgba(201, 169, 97, 0.10), transparent 60%); }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero-logo { width: clamp(150px, 22vw, 210px); margin: 0 auto 6px; mix-blend-mode: screen; }
+  .hero .tag { display: inline-flex; align-items: center; gap: 12px; font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 22px; }
+  .hero .tag .rule { width: 26px; height: 1px; background: var(--gold); }
+  .hero h1 { font-size: clamp(38px, 6.4vw, 72px); margin-bottom: 22px; }
   .hero h1 .accent { color: var(--gold-light); }
-  .hero p.sub { font-size: clamp(16px, 1.7vw, 20px); color: var(--muted); max-width: 560px; margin: 0 auto 40px; line-height: 1.7; }
-  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero p.sub { font-size: clamp(16px, 1.6vw, 20px); color: var(--muted); max-width: 640px; margin: 0 auto 34px; line-height: 1.7; }
+  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
+  .hero .trust { font-size: 14px; color: var(--muted-2); display: inline-flex; align-items: center; gap: 9px; }
+  .hero .trust svg { color: var(--gold); flex-shrink: 0; }
 
-  /* ---------- SECTIONS ---------- */
-  section { position: relative; }
-  .section-pad { padding: clamp(72px, 10vw, 130px) 0; }
-  .section-head { text-align: center; max-width: 640px; margin: 0 auto clamp(48px, 6vw, 72px); }
-  .section-head h2 { font-size: clamp(32px, 4.6vw, 52px); margin-bottom: 18px; }
+  /* SOCIAL PROOF BAR */
+  .proof { border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); background: var(--panel-2); }
+  .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--hair-soft); }
+  .proof-item { background: var(--panel-2); padding: clamp(26px, 3vw, 34px) 24px; text-align: center; }
+  .proof-item .n { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; color: var(--gold-light); letter-spacing: -0.02em; }
+  .proof-item .l { font-size: 13.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+  .proof-cap { text-align: center; font-size: 13.5px; color: var(--muted-2); padding: 20px 24px 0; max-width: 720px; margin: 0 auto; }
+
+  /* SECTIONS */
+  .section-pad { padding: clamp(64px, 9vw, 120px) 0; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(44px, 6vw, 68px); }
+  .section-head h2 { font-size: clamp(30px, 4.4vw, 50px); margin-bottom: 18px; }
   .section-head p { font-size: 17px; color: var(--muted); line-height: 1.7; }
+  .alt-bg { background: var(--panel-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
+  .lead-line { text-align: center; font-size: clamp(17px, 1.8vw, 20px); color: var(--cream); max-width: 760px; margin: clamp(36px,5vw,52px) auto 0; line-height: 1.6; font-weight: 600; }
+  .lead-line .g { color: var(--gold-light); }
 
-  /* ---------- AGENTS ---------- */
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
-  .card {
-    background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius);
-    padding: clamp(28px, 3.2vw, 40px); display: flex; flex-direction: column; gap: 18px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-  .card:hover { transform: translateY(-4px); border-color: rgba(201, 169, 97, 0.4); }
-  .card .agent-head { display: flex; align-items: center; gap: 15px; }
-  .card .monogram {
-    width: 52px; height: 52px; flex-shrink: 0; border: 1px solid var(--gold); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-size: 22px; color: var(--gold-light);
-    font-family: Georgia, 'Times New Roman', serif;
-  }
-  .card .agent-name { font-size: 21px; font-weight: 700; }
-  .card .agent-role { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 3px; }
-  .card .agent-desc { font-size: 15px; color: var(--muted); line-height: 1.7; flex-grow: 1; }
-  .card .agent-quote { font-size: 15px; color: var(--muted-2); border-top: 1px solid var(--hair-soft); padding-top: 16px; font-style: italic; }
+  /* PROBLEM */
+  .prob-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 980px; margin: 0 auto; }
+  .prob { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: 24px 26px; display: flex; gap: 15px; align-items: flex-start; }
+  .prob .x { flex-shrink: 0; width: 34px; height: 34px; border-radius: 9px; background: rgba(201,169,97,0.12); color: var(--gold); display: flex; align-items: center; justify-content: center; }
+  .prob p { font-size: 15px; color: var(--muted); line-height: 1.6; }
 
-  /* ---------- PROCESS ---------- */
-  .process { background: var(--panel-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(24px, 3.5vw, 40px); }
-  .step { padding-top: 24px; border-top: 1px solid var(--gold); }
-  .step .num { font-size: 14px; color: var(--gold); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 12px; }
-  .step h3 { font-size: 19px; margin-bottom: 10px; }
-  .step p { font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+  /* CHAIN */
+  .trigger { max-width: 620px; margin: 0 auto clamp(44px,6vw,60px); text-align: center; }
+  .trigger .box { border: 1px dashed var(--gold); border-radius: 12px; padding: 22px 26px; background: rgba(201,169,97,0.06); font-size: clamp(18px,2.4vw,24px); font-weight: 700; color: var(--gold-light); font-style: italic; }
+  .flow { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+  .flow-step { display: flex; gap: 20px; align-items: flex-start; position: relative; padding-bottom: 30px; }
+  .flow-step:last-child { padding-bottom: 0; }
+  .flow-step::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: -2px; width: 2px; background: linear-gradient(var(--gold), var(--hair-soft)); }
+  .flow-step:last-child::before { display: none; }
+  .flow-node { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--panel); border: 1.5px solid var(--gold); color: var(--gold-light); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; z-index: 1; }
+  .flow-body { padding-top: 8px; }
+  .flow-body .who { font-size: 17px; font-weight: 700; color: var(--cream); }
+  .flow-body p { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: 4px; }
 
-  /* ---------- PRICING ---------- */
+  /* AGENTS (detailed) */
+  .agent-block { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: clamp(28px, 4vw, 46px); margin-bottom: 20px; }
+  .agent-block:last-child { margin-bottom: 0; }
+  .agent-top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 8px; }
+  .agent-top .monogram { width: 60px; height: 60px; flex-shrink: 0; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--gold-light); font-family: Georgia, 'Times New Roman', serif; }
+  .agent-top .name { font-size: clamp(24px, 3vw, 32px); font-weight: 800; }
+  .agent-top .role { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 4px; }
+  .agent-block > .intro { font-size: 16px; color: var(--muted); line-height: 1.7; margin: 14px 0 22px; max-width: 760px; }
+  .agent-sub { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); font-weight: 700; margin: 22px 0 14px; }
+  .feat-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px 26px; }
+  .feat-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--muted); line-height: 1.55; }
+  .feat-list li b { color: var(--cream); font-weight: 700; }
+  .feat-list li svg { flex-shrink: 0; margin-top: 3px; }
+  .voice { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--hair-soft); font-size: 15px; color: var(--muted-2); font-style: italic; }
+  .voice b { color: var(--gold-light); font-style: normal; font-weight: 700; }
+  .lane-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--gold); background: rgba(201,169,97,0.1); border: 1px solid var(--hair); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+
+  /* QA */
+  .qa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; max-width: 980px; margin: 0 auto; }
+  .qa-item { display: flex; gap: 14px; align-items: flex-start; background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 18px 20px; }
+  .qa-item .qn { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--grad-gold); color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; }
+  .qa-item p { font-size: 15px; color: var(--muted); line-height: 1.55; }
+
+  /* THE LOOK */
+  .look-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .look-card { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: 26px 28px; }
+  .look-card .lk { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
+  .look-card p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; max-width: 820px; margin: 0 auto; }
+  .swatch { border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
+  .swatch .chip { height: 70px; }
+  .swatch .meta { padding: 12px 14px; }
+  .swatch .meta .hx { font-size: 14px; font-weight: 700; color: var(--cream); }
+  .swatch .meta .nm { font-size: 12px; color: var(--muted-2); margin-top: 2px; }
+
+  /* CAMERA */
+  .cam-list { list-style: none; margin: 0 auto clamp(32px,4vw,44px); padding: 0; max-width: 820px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 12px 26px; }
+  .cam-list li { display: flex; gap: 11px; align-items: flex-start; font-size: 15px; color: var(--muted); line-height: 1.55; }
+  .cam-list li svg { flex-shrink: 0; margin-top: 3px; }
+  .table-scroll { overflow-x: auto; max-width: 820px; margin: 0 auto; border: 1px solid var(--hair); border-radius: var(--radius); }
+  table.cam { width: 100%; border-collapse: collapse; min-width: 520px; }
+  table.cam th, table.cam td { text-align: left; padding: 15px 20px; font-size: 14.5px; border-bottom: 1px solid var(--hair-soft); }
+  table.cam th { background: var(--panel); color: var(--gold-light); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 12px; }
+  table.cam td:first-child { color: var(--cream); font-weight: 600; white-space: nowrap; }
+  table.cam td { color: var(--muted); }
+  table.cam tr:last-child td { border-bottom: none; }
+  table.cam tbody tr:nth-child(odd) td { background: rgba(16,46,36,0.4); }
+
+  /* PRICING */
   .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; max-width: 860px; margin: 0 auto; }
-  .price-card {
-    position: relative; background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius);
-    padding: clamp(30px, 3.5vw, 42px); display: flex; flex-direction: column; gap: 22px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
+  .price-card { position: relative; background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: clamp(30px, 3.5vw, 42px); display: flex; flex-direction: column; gap: 20px; transition: transform 0.2s ease, border-color 0.2s ease; }
   .price-card:hover { transform: translateY(-4px); }
   .price-card.featured { border-color: var(--gold); background: linear-gradient(180deg, #143a2c, var(--panel)); }
-  .price-badge {
-    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-    background: var(--grad-gold); color: var(--bg); font-size: 11px; font-weight: 800;
-    letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; white-space: nowrap;
-  }
+  .price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--grad-gold); color: var(--bg); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; white-space: nowrap; }
   .price-card .plan-name { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
   .price-card .price { display: flex; align-items: baseline; gap: 6px; }
-  .price-card .price .amt { font-size: clamp(44px, 6vw, 56px); font-weight: 800; letter-spacing: -0.03em; }
+  .price-card .price .amt { font-size: clamp(42px, 6vw, 54px); font-weight: 800; letter-spacing: -0.03em; }
   .price-card .price .per { font-size: 15px; color: var(--muted-2); font-weight: 500; }
-  .price-card .plan-tagline { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: -8px; }
-  .price-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 13px; flex-grow: 1; }
-  .price-card li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--cream); line-height: 1.5; }
+  .price-card .plan-tagline { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: -6px; }
+  .price-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+  .price-card li { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; color: var(--cream); line-height: 1.5; }
   .price-card li svg { flex-shrink: 0; margin-top: 2px; }
+  .price-card li.plus { color: var(--gold-light); font-weight: 700; }
   .price-card .btn { width: 100%; }
-  .pricing-note { text-align: center; font-size: 14px; color: var(--muted-2); margin-top: 32px; }
+  .pricing-note { text-align: center; font-size: 14.5px; color: var(--muted); margin-top: 30px; max-width: 620px; margin-left: auto; margin-right: auto; }
 
-  /* ---------- FEATURED WORK ---------- */
-  .work-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
-  .work-head h2 { font-size: clamp(30px, 4vw, 46px); }
-  .work-head p { font-size: 15px; color: var(--muted); max-width: 380px; line-height: 1.7; }
-  .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-  .work-tile {
-    position: relative; height: clamp(300px, 34vw, 400px); border-radius: var(--radius); overflow: hidden;
-    display: flex; align-items: flex-end; padding: 22px; text-decoration: none;
-    border: 1px solid var(--hair); transition: transform 0.25s ease, border-color 0.25s ease;
-  }
-  .work-tile:hover { transform: translateY(-4px); border-color: var(--gold); }
-  .work-tile.t1 { background: linear-gradient(160deg, #1c5540, #0a2018 85%), radial-gradient(circle at 70% 20%, rgba(201,169,97,0.28), transparent 55%); }
-  .work-tile.t2 { background: linear-gradient(160deg, #14463a, #0a2018 85%), radial-gradient(circle at 30% 30%, rgba(227,205,138,0.22), transparent 55%); }
-  .work-tile.t3 { background: linear-gradient(160deg, #22503b, #0a2018 85%), radial-gradient(circle at 60% 70%, rgba(201,169,97,0.24), transparent 55%); }
-  .work-tile .play {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 62px; height: 62px; border-radius: 50%; border: 1.5px solid rgba(246,241,230,0.6);
-    display: flex; align-items: center; justify-content: center; transition: 0.25s;
-    background: rgba(12,40,31,0.35); backdrop-filter: blur(2px);
-  }
-  .work-tile:hover .play { border-color: var(--gold); background: rgba(201,169,97,0.2); }
-  .work-tile .label { position: relative; z-index: 1; color: var(--cream); }
-  .work-tile .label .h { font-size: 17px; font-weight: 700; }
-  .work-tile .label .s { font-size: 13px; color: rgba(246,241,230,0.7); margin-top: 2px; }
+  /* FOUNDER */
+  .founder { max-width: 800px; margin: 0 auto; }
+  .founder p { font-size: 16.5px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
+  .founder p b { color: var(--cream); font-weight: 700; }
+  .pull-quote { margin: 36px 0 0; padding: 28px 32px; border-left: 3px solid var(--gold); background: var(--panel); border-radius: 0 12px 12px 0; }
+  .pull-quote .q { font-size: clamp(19px, 2.4vw, 24px); font-weight: 700; color: var(--cream); line-height: 1.45; font-style: italic; }
+  .pull-quote .a { font-size: 14px; color: var(--gold-light); margin-top: 12px; font-weight: 600; }
 
-  /* ---------- TESTIMONIALS ---------- */
-  .testimonials { background: var(--panel-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
-  .quote-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
-  .quote {
-    background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius);
-    padding: clamp(26px, 3vw, 34px); display: flex; flex-direction: column; gap: 18px;
-  }
-  .quote .stars { color: var(--gold); font-size: 15px; letter-spacing: 2px; }
-  .quote p { font-size: 15.5px; color: var(--cream); line-height: 1.7; flex-grow: 1; }
-  .quote .who { display: flex; align-items: center; gap: 13px; border-top: 1px solid var(--hair-soft); padding-top: 16px; }
-  .quote .avatar {
-    width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0; background: var(--grad-gold);
-    color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px;
-  }
-  .quote .who .name { font-size: 15px; font-weight: 700; }
-  .quote .who .role { font-size: 13px; color: var(--muted-2); }
+  /* WHO */
+  .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
+  .chip-item { display: inline-flex; align-items: center; gap: 9px; font-size: 15px; color: var(--cream); background: var(--panel); border: 1px solid var(--hair); border-radius: 999px; padding: 12px 20px; }
+  .chip-item svg { color: var(--gold); flex-shrink: 0; }
 
-  /* ---------- FINAL CTA ---------- */
+  /* FAQ */
+  .faq { max-width: 800px; margin: 0 auto; }
+  .faq details { border: 1px solid var(--hair); border-radius: 12px; background: var(--panel); margin-bottom: 12px; overflow: hidden; }
+  .faq summary { list-style: none; cursor: pointer; padding: 20px 24px; font-size: 16.5px; font-weight: 700; color: var(--cream); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary .ic { flex-shrink: 0; width: 22px; height: 22px; position: relative; transition: transform 0.25s ease; }
+  .faq summary .ic::before, .faq summary .ic::after { content: ""; position: absolute; background: var(--gold); border-radius: 2px; }
+  .faq summary .ic::before { top: 10px; left: 3px; right: 3px; height: 2px; }
+  .faq summary .ic::after { left: 10px; top: 3px; bottom: 3px; width: 2px; transition: opacity 0.25s ease; }
+  .faq details[open] summary .ic::after { opacity: 0; }
+  .faq details[open] summary { color: var(--gold-light); }
+  .faq .ans { padding: 0 24px 22px; font-size: 15.5px; color: var(--muted); line-height: 1.7; }
+
+  /* FINAL CTA */
   .final-cta { padding: clamp(24px, 5vw, 40px) 0 0; }
-  .cta-panel {
-    max-width: var(--maxw); margin: 0 auto; padding: clamp(56px, 8vw, 100px) clamp(24px, 5vw, 60px);
-    text-align: center; border: 1px solid rgba(201, 169, 97, 0.28); border-radius: 22px; position: relative; overflow: hidden;
-    background: radial-gradient(ellipse at 50% 0%, #1a4433, #0a2018 72%);
-  }
+  .cta-panel { max-width: var(--maxw); margin: 0 auto; padding: clamp(56px, 8vw, 100px) clamp(24px, 5vw, 60px); text-align: center; border: 1px solid rgba(201, 169, 97, 0.28); border-radius: 22px; position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 0%, #1a4433, #0a2018 72%); }
   .cta-panel::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 120%, rgba(201, 169, 97, 0.18), transparent 60%); }
-  .cta-panel .inner { position: relative; max-width: 620px; margin: 0 auto; }
-  .cta-panel h2 { font-size: clamp(32px, 5vw, 56px); margin-bottom: 18px; }
-  .cta-panel p { font-size: 16px; color: var(--muted); margin-bottom: 34px; line-height: 1.7; }
+  .cta-panel .inner { position: relative; max-width: 640px; margin: 0 auto; }
+  .cta-panel h2 { font-size: clamp(30px, 5vw, 54px); margin-bottom: 18px; }
+  .cta-panel p { font-size: 16.5px; color: var(--muted); margin-bottom: 30px; line-height: 1.7; }
+  .cta-panel .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .micro { font-size: 13.5px; color: var(--muted-2); display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .micro span { white-space: nowrap; }
 
-  /* ---------- FOOTER ---------- */
-  footer {
-    padding: clamp(44px, 6vw, 64px) 0 clamp(28px, 4vw, 36px); margin-top: clamp(56px, 8vw, 88px);
-    border-top: 1px solid var(--hair-soft);
-  }
+  /* FOOTER */
+  footer { padding: clamp(44px, 6vw, 64px) 0 clamp(28px, 4vw, 36px); margin-top: clamp(56px, 8vw, 88px); border-top: 1px solid var(--hair-soft); }
   .footer-inner { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; justify-content: space-between; }
-  .footer-inner .copy { font-size: 13px; color: var(--muted-2); max-width: 420px; }
+  .footer-inner .copy { font-size: 13px; color: var(--muted-2); max-width: 440px; }
   .footer-links { display: flex; gap: 22px; align-items: center; }
   .footer-links a { color: rgba(246, 241, 230, 0.6); font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 7px; }
   .footer-links a:hover { color: var(--gold-light); }
 
-  /* ---------- MODAL ---------- */
-  .modal-overlay {
-    position: fixed; inset: 0; z-index: 200; display: none;
-    align-items: center; justify-content: center; padding: 20px;
-    background: rgba(6, 20, 15, 0.72); backdrop-filter: blur(6px);
-  }
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(6, 20, 15, 0.72); backdrop-filter: blur(6px); }
   .modal-overlay.open { display: flex; animation: fade 0.2s ease; }
   @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-  .modal {
-    background: var(--panel); border: 1px solid var(--hair); border-radius: 20px;
-    max-width: 440px; width: 100%; padding: clamp(28px, 5vw, 40px); position: relative;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); animation: pop 0.25s ease;
-  }
+  .modal { background: var(--panel); border: 1px solid var(--hair); border-radius: 20px; max-width: 440px; width: 100%; padding: clamp(28px, 5vw, 40px); position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); animation: pop 0.25s ease; }
   @keyframes pop { from { transform: translateY(12px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
-  .modal-close {
-    position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(246, 241, 230, 0.06); border: 1px solid var(--hair-soft); color: var(--cream);
-    cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: 0.2s;
-  }
+  .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(246, 241, 230, 0.06); border: 1px solid var(--hair-soft); color: var(--cream); cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
   .modal-close:hover { background: rgba(246, 241, 230, 0.12); color: var(--gold-light); }
   .modal .eyebrow { text-align: left; }
   .modal h3 { font-size: 26px; margin-bottom: 10px; }
-  .modal .lead { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 26px; }
-  .contact-row {
-    display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 12px;
-    border: 1px solid var(--hair); background: var(--panel-2); margin-bottom: 12px; transition: 0.2s;
-  }
-  .contact-row:hover { border-color: var(--gold); }
-  .contact-row .ci {
-    width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(201, 169, 97, 0.14);
-    display: flex; align-items: center; justify-content: center; color: var(--gold-light);
-  }
+  .modal .lead { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+  a.contact-row { display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 12px; border: 1px solid var(--hair); background: var(--panel-2); margin-bottom: 12px; transition: 0.2s; text-decoration: none; }
+  a.contact-row:hover { border-color: var(--gold); }
+  .contact-row .ci { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(201, 169, 97, 0.14); display: flex; align-items: center; justify-content: center; color: var(--gold-light); }
   .contact-row .ct { flex-grow: 1; }
   .contact-row .ct .k { font-size: 12px; color: var(--muted-2); letter-spacing: 0.06em; text-transform: uppercase; }
   .contact-row .ct .v { font-size: 15.5px; font-weight: 600; color: var(--cream); word-break: break-word; }
   .contact-row .arrow { color: var(--muted-2); transition: 0.2s; }
   .contact-row:hover .arrow { color: var(--gold-light); transform: translateX(3px); }
   .modal-foot { font-size: 13px; color: var(--muted-2); text-align: center; margin-top: 18px; }
-
-  a.contact-row { text-decoration: none; }
-  a.contact-row .v { color: var(--cream); }
 </style>
 </head>
 <body>
 
-  <!-- ===================== NAV ===================== -->
+  <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#top" class="brand" style="color:var(--cream);">
-        <span class="mark">ن</span> Nur AI
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="#top" class="brand" style="color:var(--cream);"><span class="mark">ن</span> Nur AI</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
+        <a href="#chain" class="link">How it works</a>
         <a href="#agents" class="link">Agents</a>
-        <a href="#process" class="link">Process</a>
         <a href="#pricing" class="link">Pricing</a>
-        <a href="#work" class="link">Work</a>
-        <a href="#testimonials" class="link">Reviews</a>
-        <a href="#" class="btn btn-gold" data-open-modal>Book a Call</a>
+        <a href="#faq" class="link">FAQ</a>
+        <a href="#" class="btn btn-gold" data-open-modal>Start for $30/mo</a>
       </div>
     </div>
   </nav>
-
   <span id="top"></span>
 
-  <!-- ===================== HERO ===================== -->
+  <!-- HERO -->
   <header class="hero">
     <div class="hero-content wrap">
-      <div class="tag"><span class="rule"></span> AI Studio for Islamic Brands <span class="rule"></span></div>
-      <h1>Turn moments into<br><span class="accent">cinematic travel.</span></h1>
-      <p class="sub">Nur AI crafts cinematic travel content for Islamic brands and Muslim creators — halal-first storytelling, produced with a studio's precision.</p>
+      <img class="hero-logo" src="logo.png" alt="Nur AI">
+      <div class="tag"><span class="rule"></span> The AI content studio for Muslim creators <span class="rule"></span></div>
+      <h1>Your full cinematic content team.<br><span class="accent">Three agents. One chain.</span></h1>
+      <p class="sub">Nur AI plans your content, scouts your locations, writes your brand pitches, matches your nasheed and QAs the final cut — before it ever goes live. 100% halal, start to finish.</p>
       <div class="cta-row">
-        <a href="#" class="btn btn-gold" data-open-modal>Book a Call</a>
-        <a href="#work" class="btn btn-ghost">See the Work</a>
+        <a href="#" class="btn btn-gold" data-open-modal>Start for $30/month</a>
+        <a href="#chain" class="btn btn-ghost">See how the chain works</a>
+      </div>
+      <div class="trust">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 7.1-.9z" fill="currentColor"/></svg>
+        Built by the system that grew Baxx Thobes to 35,000 followers.
       </div>
     </div>
   </header>
 
-  <!-- ===================== AGENTS ===================== -->
-  <section id="agents" class="section-pad">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">The Studio</div>
-        <h2>Three agents. One studio.</h2>
-        <p>Every campaign moves through a chain of specialists — strategy, story, and final polish — so nothing ships until it's right.</p>
+  <!-- SOCIAL PROOF -->
+  <section class="proof">
+    <div class="wrap" style="padding-top: clamp(36px,5vw,52px); padding-bottom: clamp(36px,5vw,52px);">
+      <div class="proof-grid">
+        <div class="proof-item"><div class="n">35,000</div><div class="l">followers grown on Baxx Thobes</div></div>
+        <div class="proof-item"><div class="n">Multiple</div><div class="l">brand deals closed</div></div>
+        <div class="proof-item"><div class="n">Multiple</div><div class="l">viral videos produced</div></div>
+        <div class="proof-item"><div class="n">100%</div><div class="l">halal — vocal-only nasheeds, no haram content, ever</div></div>
       </div>
-      <div class="cards">
-        <div class="card">
-          <div class="agent-head">
-            <span class="monogram">م</span>
-            <div><div class="agent-name">Maryam</div><div class="agent-role">Strategist & Orchestrator</div></div>
-          </div>
-          <p class="agent-desc">Owns strategy — content direction, offers, campaign planning — and delegates the chain that turns a brief into a finished cut.</p>
-          <div class="agent-quote">"Every piece starts with why."</div>
-        </div>
-        <div class="card">
-          <div class="agent-head">
-            <span class="monogram">ع</span>
-            <div><div class="agent-name">Aisha</div><div class="agent-role">Guide & Outreach</div></div>
-          </div>
-          <p class="agent-desc">Scouts halal-friendly destinations, secures filming logistics and permits, and finds the best light before a lens ever opens.</p>
-          <div class="agent-quote">"The location is half the story."</div>
-        </div>
-        <div class="card">
-          <div class="agent-head">
-            <span class="monogram">أ</span>
-            <div><div class="agent-name">Ahmad</div><div class="agent-role">Audio & Final Polish</div></div>
-          </div>
-          <p class="agent-desc">Matches vocal-only nasheeds to the cut, times captions to the swell, and runs the final quality gate — nothing ships without his pass.</p>
-          <div class="agent-quote">"Precision, not impressions."</div>
-        </div>
-      </div>
+      <p class="proof-cap">Not theory. Nur AI is the exact system co-founder Bilal .Bax used to build his own brand.</p>
     </div>
   </section>
 
-  <!-- ===================== PROCESS ===================== -->
-  <section id="process" class="process section-pad">
+  <!-- PROBLEM -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">The Problem</div>
+        <h2>Most Muslim creators are doing five jobs at once</h2>
+        <p>You are the strategist, the location scout, the camera operator, the editor, the outreach person and the one deciding whether the audio is even permissible. Something always slips.</p>
+      </div>
+      <div class="prob-list">
+        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>The idea is good, but the hook takes 8 seconds to arrive — nobody stays.</p></div>
+        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>You get to the location at the wrong hour and the light is gone.</p></div>
+        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>The footage is beautiful and the audio is a trending pop song you can't post.</p></div>
+        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>The brand emails sit unanswered because you don't know what to charge.</p></div>
+        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>You post at a time your audience isn't awake.</p></div>
+      </div>
+      <p class="lead-line">Nur AI takes all five off your plate. <span class="g">You shoot. The agents handle the rest.</span></p>
+    </div>
+  </section>
+
+  <!-- CHAIN -->
+  <section id="chain" class="alt-bg section-pad">
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">How It Works</div>
-        <h2>From brief to broadcast</h2>
+        <h2>One trigger. Three agents. Nothing ships unchecked.</h2>
+        <p>You only ever talk to Maryam. She sets the strategy and passes the work down the chain. It runs in the same order every time — never skipped, never reordered.</p>
       </div>
-      <div class="steps">
-        <div class="step"><div class="num">01</div><h3>Strategy</h3><p>Maryam sets the direction — offer, audience, and the story worth telling.</p></div>
-        <div class="step"><div class="num">02</div><h3>Research & Logistics</h3><p>Aisha scouts locations, secures permits, and maps the light.</p></div>
-        <div class="step"><div class="num">03</div><h3>Production</h3><p>Cinematic capture, shot to the brand's aesthetic and pace.</p></div>
-        <div class="step"><div class="num">04</div><h3>Audio & Polish</h3><p>Ahmad scores, times, and clears the final cut for release.</p></div>
+      <div class="trigger">
+        <div class="box">"Maryam, I need you to work on this…"</div>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><div class="flow-node">You</div><div class="flow-body"><div class="who">Send the task &amp; footage context</div><p>You hand Maryam the job and what you've shot.</p></div></div>
+        <div class="flow-step"><div class="flow-node">م</div><div class="flow-body"><div class="who">Maryam — Strategy</div><p>Sets the offer, the angle, the hook, the shot list, the camera settings and the edit direction.</p></div></div>
+        <div class="flow-step"><div class="flow-node">ع</div><div class="flow-body"><div class="who">Aisha — Research &amp; Outreach</div><p>Researches the location, light windows, permits and logistics — and handles brand outreach.</p></div></div>
+        <div class="flow-step"><div class="flow-node">أ</div><div class="flow-body"><div class="who">Ahmad — Audio &amp; Polish</div><p>Matches the nasheed, writes the captions, sets the post time and runs the final QA scan.</p></div></div>
+        <div class="flow-step"><div class="flow-node">✓</div><div class="flow-body"><div class="who">Back to Maryam — Final approval</div><p>Only then is it cleared to post.</p></div></div>
+      </div>
+      <p class="lead-line">Every deliverable is signed by the agent who wrote it, <span class="g">so you always know who did what.</span></p>
+    </div>
+  </section>
+
+  <!-- AGENTS -->
+  <section id="agents" class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Meet the Agents</div>
+        <h2>Three specialists. One standard.</h2>
+      </div>
+
+      <!-- Maryam -->
+      <div class="agent-block">
+        <div class="agent-top">
+          <span class="monogram">م</span>
+          <div><div class="name">Maryam</div><div class="role">Lead Orchestrator — the only agent you talk to</div></div>
+        </div>
+        <p class="intro"><b style="color:var(--cream)">Strategy, hooks, shot lists, compliance.</b> Maryam decides what your content is actually selling and to whom, then builds the plan around it.</p>
+        <div class="agent-sub">What she does</div>
+        <ul class="feat-list">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Content strategy</b> on the Alex Hormozi $100M Leads playbook — value equation, Grand Slam Offers, Core Four, Hook → Retain → Reward.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Hooks written literally</b> — the exact on-screen text, landing inside 3 seconds.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Shot lists</b> — drone moves, gimbal moves, transitions and the light window for each shot.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>DJI camera settings</b> — resolution, frame rate, shutter, ISO, white balance and ND, scene by scene.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>CapCut edit direction</b> — grading, cut pacing, text timing, trending fonts, and beginner teaching if you're new.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Trend Scout</b> — finds viral Islamic and halal trends worth entering.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Compliance check</b> — blocks anything haram before it reaches the edit.</span></li>
+        </ul>
+        <p class="voice"><b>Her voice:</b> Direct, high-conviction, zero fluff. Leads with the offer and the hook.</p>
+      </div>
+
+      <!-- Aisha -->
+      <div class="agent-block">
+        <div class="agent-top">
+          <span class="monogram">ع</span>
+          <div><div class="name">Aisha</div><div class="role">Travel Guide & Brand Outreach</div></div>
+        </div>
+        <p class="intro"><b style="color:var(--cream)">Locations, logistics, permits, and the emails that turn into deals.</b> Aisha handles everything on the ground and everything in your inbox.</p>
+        <div class="lane-tag">Lane 1 — Location research (all plans)</div>
+        <ul class="feat-list">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Why a location shoots well — scale, texture, leading lines, architecture, water.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Light windows — sunrise, golden and blue hour for your exact date and latitude, plus light direction.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Access &amp; permits — drone legality, entry fees, opening hours, tripod/gimbal rules, guide requirements.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Crowd timing — the hour the frame is actually empty.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Muslim-traveller practicalities — nearest masjid, prayer timings, halal food, on-site prayer space.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Site-specific tips — where to stand, what to avoid, wind and dust warnings, plus a backup location.</span></li>
+        </ul>
+        <div class="lane-tag" style="margin-top:26px;">Lane 2 — Brand outreach (Business plan)</div>
+        <ul class="feat-list">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Builds a qualified prospect list — modest fashion, halal travel/umrah, Muslim-friendly hotels & airlines, Islamic finance & apps, halal food, education platforms.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Writes cold outreach that leads with value — a specific observation, the gap it's costing them, one free idea, one soft ask. Under 120 words.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Triages inbound brand emails into four buckets: real budget & good fit, real budget & bad fit, no budget, and unclear.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Clarifies usage rights and exclusivity before any number is quoted — an organic rate is not an ad-usage rate.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Drafts the reply in full for you to send. She never commits you to a price, date or contract term.</span></li>
+        </ul>
+        <p class="voice"><b>Her voice:</b> Warm but efficient. Street names, times, prices and rate ranges — not vibes.</p>
+      </div>
+
+      <!-- Ahmad -->
+      <div class="agent-block">
+        <div class="agent-top">
+          <span class="monogram">أ</span>
+          <div><div class="name">Ahmad</div><div class="role">Audio & Final Polish — nothing ships without his pass</div></div>
+        </div>
+        <p class="intro"><b style="color:var(--cream)">Nasheed matching, captions, thumbnails, post timing, and the QA gate.</b></p>
+        <div class="agent-sub">What he does</div>
+        <ul class="feat-list">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Nasheed matching</b> — vocal-only, no instrumentation, no trending pop audio. Ever.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Exact cut points &amp; sync maps</b> — the payoff shot hits the biggest vocal moment, never before it.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Captions</b> — three variations each time. Lowercase, poetic, calm. Faith woven naturally, max one emoji.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Hashtags</b> — a small mixed-reach set, never thirty generic tags.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Thumbnails</b> — designed to match the emerald-gold look.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>First 5 seconds</b> — optimises the hook frame by frame.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Post timing</b> — a specific day and window per platform, reasoned from prayer rhythm and commute patterns (Jummah and post-Isha behave differently).</span></li>
+        </ul>
+        <p class="voice"><b>His voice:</b> Precise, unhurried, exacting. Timecodes, not impressions. He says no when something isn't ready.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===================== PRICING ===================== -->
+  <!-- QA GATE -->
+  <section class="alt-bg section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">The Final Scan</div>
+        <h2>Ten checks. Any fail, and it doesn't ship.</h2>
+        <p>Ahmad runs this on every single deliverable and reports pass or fail on each line, with the fix.</p>
+      </div>
+      <div class="qa-grid">
+        <div class="qa-item"><span class="qn">1</span><p>Hook on screen within 3 seconds, written literally.</p></div>
+        <div class="qa-item"><span class="qn">2</span><p>Every shot achievable with your actual kit.</p></div>
+        <div class="qa-item"><span class="qn">3</span><p>Grading matches the emerald-gold look — green shadows, warm gold highlights, deep contrast, anamorphic feel.</p></div>
+        <div class="qa-item"><span class="qn">4</span><p>Text minimal and elegant, timed to vocal swells.</p></div>
+        <div class="qa-item"><span class="qn">5</span><p>Caption poetic and faith-natural, zero sales language.</p></div>
+        <div class="qa-item"><span class="qn">6</span><p>Vocal-only nasheed with a stated cut point and sync map.</p></div>
+        <div class="qa-item"><span class="qn">7</span><p>First and last frame both strong — the last frame is what a viewer sees on loop.</p></div>
+        <div class="qa-item"><span class="qn">8</span><p>Nothing off-brand anywhere in the piece.</p></div>
+        <div class="qa-item"><span class="qn">9</span><p>Brand woven in organically, not bolted on as an ad.</p></div>
+        <div class="qa-item"><span class="qn">10</span><p>Premium feel — would this hold up next to the best cinematic Muslim travel content out there.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LOOK -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">The Nur AI Look</div>
+        <h2>One aesthetic, enforced end to end</h2>
+        <p>This is the look the product exists to produce. It isn't a filter — it's a standard.</p>
+      </div>
+      <div class="look-grid">
+        <div class="look-card"><div class="lk">Palette</div><p>Deep emerald green shadows, warm gold highlights, cream mid-tones, near-black depths.</p></div>
+        <div class="look-card"><div class="lk">Grade</div><p>D-Log M 10-bit graded to emerald-gold. Shadows pushed green, highlights lifted warm, skin natural. Deep contrast, filmic, anamorphic. Never a stock preset.</p></div>
+        <div class="look-card"><div class="lk">Visuals</div><p>DJI drone and gimbal aesthetic — sweeping establishing shots, smooth reveals, transit transitions, blue hour, nature immersion.</p></div>
+        <div class="look-card"><div class="lk">Typography</div><p>Cormorant Garamond for elegant serif titles, Reem Kufi lowercase for minimal overlays and Arabic accents. Timed to vocal swells, never a beat grid.</p></div>
+        <div class="look-card"><div class="lk">Audio</div><p>Vocal-only nasheeds. No instrumentation. No trending pop audio.</p></div>
+        <div class="look-card"><div class="lk">Copy &amp; Pacing</div><p>Short, poetic, reflective — faith woven naturally, never salesy. Slow cinematic reveals, controlled speed ramps for transitions.</p></div>
+      </div>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#0c281f;"></div><div class="meta"><div class="hx">#0c281f</div><div class="nm">Emerald</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#102e24;"></div><div class="meta"><div class="hx">#102e24</div><div class="nm">Panel</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#c9a961;"></div><div class="meta"><div class="hx">#c9a961</div><div class="nm">Gold</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#e3cd8a;"></div><div class="meta"><div class="hx">#e3cd8a</div><div class="nm">Gold light</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#f6f1e6;"></div><div class="meta"><div class="hx">#f6f1e6</div><div class="nm">Cream</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMERA -->
+  <section class="alt-bg section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Camera Baseline</div>
+        <h2>Settings, not guesses</h2>
+        <p>Nur AI ships exact settings with every shot list. Default baseline is the DJI Osmo Pocket 3 — fixed f/2.0, so exposure is shutter, ISO and ND only. Shooting on something else? Tell Maryam and she adapts the whole list.</p>
+      </div>
+      <ul class="cam-list">
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>4K/60 default, slowed to 40% in CapCut. 4K/120 reserved for peak moments.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>D-Log M 10-bit always — the Normal profile bakes in contrast that kills the grade.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>180° shutter: 1/120 at 60fps, 1/240 at 120fps, 1/50 at 24fps.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Manual everything — WB, ISO and shutter locked per scene, re-locked when the light changes.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Gimbal: Follow for tracking, Tilt Locked for low glides, FPV for whip pans, ActiveTrack solo.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>As light drops: remove ND → drop frame rate → raise ISO, capped at 1600.</span></li>
+      </ul>
+      <div class="table-scroll">
+        <table class="cam">
+          <thead><tr><th>Scene</th><th>Settings</th></tr></thead>
+          <tbody>
+            <tr><td>Bright daylight</td><td>4K/60 · 1/120 · ISO 100 · 5600K · ND16–32</td></tr>
+            <tr><td>Golden hour</td><td>4K/60 · 1/120 · ISO 100–400 · 5600K · ND8</td></tr>
+            <tr><td>Blue hour</td><td>4K/24 · 1/50 · ISO 400–1600 · ~4300K</td></tr>
+            <tr><td>Indoor LED</td><td>4K/60 · 1/120 · ISO 800–1600 · 4300–4800K (drop to 4K/50 at 1/100 if banding)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
   <section id="pricing" class="section-pad">
     <div class="wrap">
       <div class="section-head">
-        <div class="eyebrow">Plans</div>
-        <h2>Simple monthly pricing</h2>
-        <p>Consistent, halal-first content on a monthly retainer — no long contracts, cancel anytime.</p>
+        <div class="eyebrow">Pricing</div>
+        <h2>Two plans. Cancel anytime.</h2>
       </div>
       <div class="pricing-grid">
-
         <div class="price-card">
-          <div class="plan-name">Essential</div>
+          <div class="plan-name">Personal</div>
           <div class="price"><span class="amt">$30</span><span class="per">/ month</span></div>
-          <p class="plan-tagline">Steady, professional short-form content to keep your feed alive.</p>
+          <p class="plan-tagline">For the creator building one brand.</p>
           <ul>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 4 short-form edits / month</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Edited from your footage</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Halal-first, music-free (nasheed audio)</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Captions + hook text</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 1 revision per video</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 48-hour delivery</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Full access to all three agents</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Content strategy, offers and hooks</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Shot lists and exact camera settings</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> CapCut edit direction and grading notes</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Location research, light windows and permits</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Nasheed matching with cut points and sync maps</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Captions, hashtags and thumbnails</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Post timing in your audience's timezone</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> The 10-point final scan on every deliverable</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> One brand voice</li>
           </ul>
-          <a href="#" class="btn btn-ghost" data-open-modal>Get Started</a>
+          <a href="#" class="btn btn-ghost" data-open-modal>Start for $30/month</a>
         </div>
 
         <div class="price-card featured">
           <span class="price-badge">Most Popular</span>
-          <div class="plan-name">Studio</div>
+          <div class="plan-name">Business</div>
           <div class="price"><span class="amt">$60</span><span class="per">/ month</span></div>
-          <p class="plan-tagline">Everything you need to grow — more videos, strategy, and priority turnaround.</p>
+          <p class="plan-tagline">For brands and creators who want deals coming in.</p>
           <ul>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 8 short-form edits / month</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Essential</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Content strategy & hooks (Maryam)</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Custom thumbnails</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Priority 24-hour delivery</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 2 revisions + monthly check-in</li>
+            <li class="plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e3cd8a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Personal, plus:</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Brand outreach — Aisha writes the pitches</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Qualified prospect lists, built for you</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Inbound brand email triage and full drafted replies</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Partnership rate and usage-rights guidance</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Multiple brand profiles</li>
           </ul>
-          <a href="#" class="btn btn-gold" data-open-modal>Get Started</a>
+          <a href="#" class="btn btn-gold" data-open-modal>Go Business — $60/month</a>
         </div>
-
       </div>
-      <p class="pricing-note">Need a custom package or brand campaign? <a href="#" data-open-modal>Let's talk →</a></p>
+      <p class="pricing-note">Both plans get all three agents. The Business plan adds the outreach lane that turns content into contracts.</p>
     </div>
   </section>
 
-  <!-- ===================== FEATURED WORK ===================== -->
-  <section id="work" class="section-pad">
-    <div class="wrap">
-      <div class="work-head">
-        <div>
-          <div class="eyebrow">Featured Work</div>
-          <h2>@baxxthobes</h2>
-        </div>
-        <p>Cinematic travel content produced end-to-end by the Nur AI chain — from location scouting to the final vocal-only cut.</p>
-      </div>
-      <div class="work-grid">
-        <a class="work-tile t1" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
-          <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#f6f1e6"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="label"><span class="h">Istanbul, Golden Hour</span><span class="s">Travel Reel · Nasheed cut</span></span>
-        </a>
-        <a class="work-tile t2" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
-          <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#f6f1e6"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="label"><span class="h">Desert Expedition</span><span class="s">Brand Campaign · Cinematic</span></span>
-        </a>
-        <a class="work-tile t3" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
-          <span class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#f6f1e6"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="label"><span class="h">Old City Walks</span><span class="s">Short-form Series</span></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== TESTIMONIALS ===================== -->
-  <section id="testimonials" class="testimonials section-pad">
+  <!-- FOUNDER -->
+  <section class="alt-bg section-pad">
     <div class="wrap">
       <div class="section-head">
-        <div class="eyebrow">What Clients Say</div>
-        <h2>Trusted by creators & brands</h2>
+        <div class="eyebrow">Founder Story</div>
+        <h2>This system built a brand before it became a product</h2>
       </div>
-      <div class="quote-grid">
-        <div class="quote">
-          <div class="stars">★★★★★</div>
-          <p>"Nur AI turned three days of raw travel footage into a Reel that hit 400k views. The nasheed sync alone made it feel like cinema."</p>
-          <div class="who"><span class="avatar">Y</span><div><div class="name">Yusuf A.</div><div class="role">Founder, Baraka Travels</div></div></div>
-        </div>
-        <div class="quote">
-          <div class="stars">★★★★★</div>
-          <p>"Finally a studio that gets halal-first content. No music worries, no back-and-forth — just clean, beautiful edits delivered every week."</p>
-          <div class="who"><span class="avatar">A</span><div><div class="name">Aisha K.</div><div class="role">Creator, @modestjourneys</div></div></div>
-        </div>
-        <div class="quote">
-          <div class="stars">★★★★★</div>
-          <p>"The monthly plan is a no-brainer. Consistent, professional Reels that actually grow the account — and the turnaround is unreal."</p>
-          <div class="who"><span class="avatar">B</span><div><div class="name">Bilal R.</div><div class="role">@baxxthobes</div></div></div>
-        </div>
-        <div class="quote">
-          <div class="stars">★★★★★</div>
-          <p>"Working with Maryam and the team felt like having a full production studio on retainer — for the price of a nice dinner."</p>
-          <div class="who"><span class="avatar">S</span><div><div class="name">Sara M.</div><div class="role">Brand Manager, Noor Apparel</div></div></div>
+      <div class="founder">
+        <p>Nur AI wasn't designed in a boardroom. It was reverse-engineered from what actually worked.</p>
+        <p><b>Bilal Mohammed — Bilal .Bax —</b> built Baxx Thobes the hard way first: filming his own footage, learning the grade, testing hooks, teaching himself which nasheed landed on which cut, and sending cold emails to brands with no idea what to charge.</p>
+        <p>What came out of that was a repeatable chain. Strategy first. Then location and outreach. Then audio, caption and a final check nothing gets past. Same order, every time.</p>
+        <p>Run properly, that chain took Baxx Thobes to <b>35,000 followers</b>, produced multiple viral videos, and landed multiple brand deals — all without a single haram frame or a trending pop song.</p>
+        <p>Nur AI is that chain, turned into software, with Maryam, Aisha and Ahmad running the parts he used to run alone.</p>
+        <div class="pull-quote">
+          <div class="q">"I'm not selling you content. I'm giving you the exact team I had to be."</div>
+          <div class="a">— Bilal .Bax, Co-founder</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== FINAL CTA ===================== -->
+  <!-- WHO -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Who It's For</div>
+        <h2>Built for Muslim creators &amp; Islamic brands</h2>
+      </div>
+      <div class="chips">
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Muslim travel & lifestyle creators</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Modest fashion & thobe brands</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Halal travel, umrah & hajj operators</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Islamic education platforms & apps</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Muslim-friendly hotels, airlines & hospitality</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Halal food, supplement & finance brands</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Any creator who wants premium cinematic output, permissibly</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="alt-bg section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Questions, answered</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Do I need a drone and a gimbal?<span class="ic"></span></summary><div class="ans">No. Nur AI defaults to the DJI Osmo Pocket 3, but tell Maryam what you shoot on — phone included — and every shot list and setting adapts to your kit.</div></details>
+        <details><summary>Is the content really 100% halal?<span class="ic"></span></summary><div class="ans">Yes, and it's enforced twice. Maryam blocks anything haram at the strategy stage, and Ahmad's final scan catches anything that slipped. Audio is vocal-only nasheeds — no instrumentation, no trending pop tracks.</div></details>
+        <details><summary>Do I have to shoot the footage myself?<span class="ic"></span></summary><div class="ans">Yes. Nur AI is your content team, not a production crew. You shoot, the agents handle strategy, research, audio, captions, timing and QA.</div></details>
+        <details><summary>Can I talk to Aisha or Ahmad directly?<span class="ic"></span></summary><div class="ans">You can, but the chain works best when you start with Maryam. She sets the strategy and hands off with the right context.</div></details>
+        <details><summary>What if I only want location research and no brand outreach?<span class="ic"></span></summary><div class="ans">Personal at $30/month covers location research in full. Outreach is the Business feature.</div></details>
+        <details><summary>Can Nur AI teach me CapCut?<span class="ic"></span></summary><div class="ans">Yes. Maryam is a CapCut expert and will teach you from beginner level — fonts, grading, clean visuals and the edits behind the Nur AI look.</div></details>
+        <details><summary>Can I cancel?<span class="ic"></span></summary><div class="ans">Anytime.</div></details>
+        <details><summary>Will more features be added?<span class="ic"></span></summary><div class="ans">Yes — new skills are being added to all three agents continuously, and the system is built so they slot straight in.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
   <section class="final-cta">
     <div class="cta-panel">
       <div class="inner">
-        <h2>Let's tell your story.</h2>
-        <p>A short call is all it takes to see if Nur AI is the right studio for your brand.</p>
-        <a href="#" class="btn btn-gold" data-open-modal>Book a Call</a>
+        <h2>You shoot it. They handle the rest.</h2>
+        <p>Three agents, one chain, and a final scan nothing gets past. Start today for less than the cost of one editor's hour.</p>
+        <div class="cta-row">
+          <a href="#" class="btn btn-gold" data-open-modal>Start for $30/month</a>
+          <a href="#pricing" class="btn btn-ghost">Compare plans</a>
+        </div>
+        <div class="micro"><span>Cancel anytime</span> · <span>100% halal</span> · <span>All three agents on every plan</span></div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== FOOTER ===================== -->
+  <!-- FOOTER -->
   <footer>
     <div class="wrap footer-inner">
       <a href="#top" class="brand" style="color:var(--cream);"><span class="mark">ن</span> Nur AI</a>
-      <p class="copy">© 2026 Nur AI Studio. Cinematic content for Islamic brands and Muslim creators.</p>
+      <p class="copy">© 2026 Nur AI Studio. Cinematic content for Muslim creators and Islamic brands. 100% halal.</p>
       <div class="footer-links">
         <a href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg>
@@ -529,15 +653,15 @@
     </div>
   </footer>
 
-  <!-- ===================== CONTACT MODAL ===================== -->
+  <!-- CONTACT MODAL -->
   <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal">
       <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-      <div class="eyebrow">Get in touch</div>
-      <h3 id="modalTitle">Book a Call</h3>
-      <p class="lead">Tell us about your brand and we'll map out the right content plan. We reply within 24 hours.</p>
+      <div class="eyebrow">Get Started</div>
+      <h3 id="modalTitle">Start with Nur AI</h3>
+      <p class="lead">Tell us about your brand and we'll get you set up on the right plan. We reply within 24 hours.</p>
 
-      <a class="contact-row" href="mailto:bilalm.boost@gmail.com?subject=Book%20a%20Call%20with%20Nur%20AI&body=Hi%20Nur%20AI%2C%0A%0AI'd%20like%20to%20book%20a%20call.%20Here's%20a%20bit%20about%20my%20brand%3A%0A%0A">
+      <a class="contact-row" href="mailto:bilalm.boost@gmail.com?subject=Start%20with%20Nur%20AI&body=Assalamu%20alaikum%2C%0A%0AI'd%20like%20to%20get%20started%20with%20Nur%20AI.%20Here's%20a%20bit%20about%20my%20brand%3A%0A%0A(Plan%20I'm%20interested%20in%3A%20Personal%20%2430%20%2F%20Business%20%2460)%0A%0A">
         <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 6l9 6 9-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
         <span class="ct"><span class="k">Email us</span><span class="v">bilalm.boost@gmail.com</span></span>
         <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -549,13 +673,12 @@
         <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </a>
 
-      <p class="modal-foot">Prefer WhatsApp or a scheduled slot? Mention it in your message.</p>
+      <p class="modal-foot">Cancel anytime · 100% halal · All three agents on every plan</p>
     </div>
   </div>
 
   <script>
     (function () {
-      // Mobile nav
       var nav = document.getElementById('nav');
       var toggle = document.getElementById('navToggle');
       var links = document.getElementById('navLinks');
@@ -564,34 +687,19 @@
         links.classList.toggle('open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-      // Close mobile menu when a link is tapped
       links.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () {
-          nav.classList.remove('open');
-          links.classList.remove('open');
+          nav.classList.remove('open'); links.classList.remove('open');
           toggle.setAttribute('aria-expanded', 'false');
         });
       });
 
-      // Modal
       var modal = document.getElementById('modal');
       var closeBtn = document.getElementById('modalClose');
       var lastFocus = null;
-      function openModal(e) {
-        if (e) e.preventDefault();
-        lastFocus = document.activeElement;
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        closeBtn.focus();
-      }
-      function closeModal() {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-        if (lastFocus) lastFocus.focus();
-      }
-      document.querySelectorAll('[data-open-modal]').forEach(function (el) {
-        el.addEventListener('click', openModal);
-      });
+      function openModal(e) { if (e) e.preventDefault(); lastFocus = document.activeElement; modal.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus(); }
+      function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+      document.querySelectorAll('[data-open-modal]').forEach(function (el) { el.addEventListener('click', openModal); });
       closeBtn.addEventListener('click', closeModal);
       modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
