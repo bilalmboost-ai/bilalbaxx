@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #0c281f; }
+    * { box-sizing: border-box; }
+    a { color: #e3cd8a; text-decoration: none; }
+    a:hover { color: #f6f1e6; }
+    ::selection { background: #c9a961; color: #0c281f; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #0c281f; color: #f6f1e6; overflow-x: hidden; min-height: 100vh;">
+
+  <!-- NAV -->
+  <nav ref="{{ navRef }}" style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: clamp(16px,2.5vw,26px) clamp(20px,5vw,64px); background: rgba(12,40,31,0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,169,97,0.18);">
+    <div style="display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: clamp(22px,2.6vw,28px); letter-spacing: 0.04em; font-weight: 600; color: #f6f1e6;">
+      <span style="width: 30px; height: 30px; border: 1.5px solid #c9a961; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; color: #c9a961;">ن</span>
+      Nur AI
+    </div>
+    <div style="display: flex; align-items: center; gap: clamp(18px,3vw,40px); flex-wrap: wrap;">
+      <a href="#agents" style="font-size: 15px; color: rgba(246,241,230,0.75); font-weight: 500;">Agents</a>
+      <a href="#process" style="font-size: 15px; color: rgba(246,241,230,0.75); font-weight: 500;">Process</a>
+      <a href="#work" style="font-size: 15px; color: rgba(246,241,230,0.75); font-weight: 500;">Work</a>
+      <a href="mailto:hello@nurai.studio?subject=Book%20a%20Call" style="font-size: 14px; font-weight: 600; color: #0c281f; background: linear-gradient(135deg,#e3cd8a,#c9a961); padding: 11px 24px; border-radius: 2px; letter-spacing: 0.03em;" style-hover="opacity:0.88;">Book a Call</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section style="position: relative; min-height: 92vh; display: flex; align-items: center; padding: clamp(40px,8vw,0px) clamp(20px,6vw,64px);">
+    <div style="position: absolute; inset: 0; z-index: 0;">
+      <image-slot id="hero-bg" shape="rect" fit="cover" placeholder="Drop cinematic travel footage still" style="width:100%; height:100%;"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,32,25,0.55) 0%, rgba(10,32,25,0.82) 62%, #0c281f 100%); pointer-events: none;"></div>
+      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 15% 20%, rgba(201,169,97,0.14), transparent 55%); pointer-events: none;"></div>
+    </div>
+    <div style="position: relative; z-index: 1; max-width: 980px; margin: 0 auto; text-align: center; padding: clamp(100px,16vw,160px) 0 clamp(60px,8vw,90px);">
+      <div style="display: inline-flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 28px;">
+        <span style="width: 30px; height: 1px; background: #c9a961;"></span>
+        AI Studio for Islamic Brands
+        <span style="width: 30px; height: 1px; background: #c9a961;"></span>
+      </div>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(46px,8vw,96px); line-height: 1.04; margin: 0 0 26px; color: #f6f1e6;">
+        Turn Cinematic<br><em style="font-style: italic; color: #e3cd8a;">Travel.</em>
+      </h1>
+      <p style="font-size: clamp(16px,1.6vw,20px); line-height: 1.7; color: rgba(246,241,230,0.78); max-width: 560px; margin: 0 auto 44px; font-weight: 400;">
+        Nur AI crafts cinematic travel content for Islamic brands and Muslim creators — halal-first storytelling, produced with a studio's precision.
+      </p>
+      <div style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
+        <a href="mailto:hello@nurai.studio?subject=Book%20a%20Call" style="font-size: 15px; font-weight: 600; color: #0c281f; background: linear-gradient(135deg,#e3cd8a,#c9a961); padding: 16px 34px; border-radius: 2px; letter-spacing: 0.02em;" style-hover="opacity:0.88;">Book a Call</a>
+        <a href="#work" style="font-size: 15px; font-weight: 600; color: #f6f1e6; border: 1px solid rgba(246,241,230,0.35); padding: 16px 34px; border-radius: 2px; letter-spacing: 0.02em;" style-hover="border-color:#c9a961;color:#e3cd8a;">See the Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE AGENTS -->
+  <section id="agents" style="padding: clamp(80px,10vw,140px) clamp(20px,6vw,64px); max-width: 1240px; margin: 0 auto;">
+    <div style="text-align: center; max-width: 640px; margin: 0 auto 72px;">
+      <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 18px;">The Studio</div>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px,4.4vw,54px); margin: 0 0 20px; color: #f6f1e6;">Three Agents. One Studio.</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: rgba(246,241,230,0.7); margin: 0;">Every campaign moves through a chain of specialists — strategy, story, and final polish — so nothing ships until it's right.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(201,169,97,0.18); border: 1px solid rgba(201,169,97,0.18);">
+      <sc-for list="{{ agents }}" as="agent" hint-placeholder-count="3">
+        <div style="background: #102e24; padding: clamp(36px,4vw,48px) clamp(28px,3vw,40px); display: flex; flex-direction: column; gap: 20px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <span style="width: 52px; height: 52px; flex-shrink: 0; border: 1px solid #c9a961; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #e3cd8a;">{{ agent.initial }}</span>
+            <div>
+              <div style="font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #f6f1e6; font-weight: 600;">{{ agent.name }}</div>
+              <div style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #c9a961;">{{ agent.role }}</div>
+            </div>
+          </div>
+          <p style="font-size: 15px; line-height: 1.7; color: rgba(246,241,230,0.72); margin: 0; flex-grow: 1;">{{ agent.description }}</p>
+          <div style="font-size: 13px; color: rgba(246,241,230,0.5); border-top: 1px solid rgba(201,169,97,0.16); padding-top: 16px; font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 16px;">"{{ agent.quote }}"</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" style="padding: clamp(70px,9vw,120px) clamp(20px,6vw,64px); background: #0a2018; border-top: 1px solid rgba(201,169,97,0.14); border-bottom: 1px solid rgba(201,169,97,0.14);">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto 64px;">
+        <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 18px;">How It Works</div>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px,4vw,48px); margin: 0; color: #f6f1e6;">From Brief to Broadcast</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: clamp(24px,4vw,40px);">
+        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="4">
+          <div style="padding-top: 26px; border-top: 1px solid #c9a961; position: relative;">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #c9a961; letter-spacing: 0.08em; margin-bottom: 14px;">{{ step.n }}</div>
+            <div style="font-size: 19px; font-weight: 600; color: #f6f1e6; margin-bottom: 10px;">{{ step.title }}</div>
+            <p style="font-size: 14.5px; line-height: 1.65; color: rgba(246,241,230,0.65); margin: 0;">{{ step.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section id="work" style="padding: clamp(80px,10vw,140px) clamp(20px,6vw,64px); max-width: 1240px; margin: 0 auto;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 56px;">
+      <div>
+        <div style="font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a961; margin-bottom: 18px;">Featured Work</div>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(32px,4vw,48px); margin: 0; color: #f6f1e6;">@baxxthobes</h2>
+      </div>
+      <p style="font-size: 15px; line-height: 1.7; color: rgba(246,241,230,0.65); max-width: 380px; margin: 0;">Cinematic travel content produced end-to-end by the Nur AI chain — from location scouting to the final vocal-only cut.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+      <image-slot id="work-1" shape="rect" fit="cover" placeholder="Drop a still from @baxxthobes" style="width:100%; height: clamp(280px,32vw,380px); border-radius: 2px;"></image-slot>
+      <image-slot id="work-2" shape="rect" fit="cover" placeholder="Drop a still from @baxxthobes" style="width:100%; height: clamp(280px,32vw,380px); border-radius: 2px;"></image-slot>
+      <image-slot id="work-3" shape="rect" fit="cover" placeholder="Drop a still from @baxxthobes" style="width:100%; height: clamp(280px,32vw,380px); border-radius: 2px;"></image-slot>
+    </div>
+  </section>
+
+  <!-- LOGOS -->
+  <section style="padding: clamp(50px,6vw,80px) clamp(20px,6vw,64px); border-top: 1px solid rgba(201,169,97,0.14);">
+    <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+      <div style="font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(246,241,230,0.5); margin-bottom: 36px;">Trusted by Islamic Brands &amp; Creators</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 28px; align-items: center; opacity: 0.85;">
+        <image-slot id="logo-1" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
+        <image-slot id="logo-2" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
+        <image-slot id="logo-3" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
+        <image-slot id="logo-4" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
+        <image-slot id="logo-5" shape="rect" fit="contain" placeholder="Brand logo" style="width:100%; height: 56px;"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="margin: clamp(40px,6vw,80px) clamp(20px,6vw,64px) 0; padding: clamp(70px,10vw,120px) clamp(24px,6vw,60px); text-align: center; background: radial-gradient(ellipse at 50% 0%, #1a4433, #0a2018 70%); border: 1px solid rgba(201,169,97,0.24); border-radius: 4px; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 120%, rgba(201,169,97,0.16), transparent 60%); pointer-events: none;"></div>
+    <div style="position: relative; max-width: 640px; margin: 0 auto;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(34px,5vw,58px); line-height: 1.15; margin: 0 0 22px; color: #f6f1e6;">Let's tell your story.</h2>
+      <p style="font-size: 16px; line-height: 1.7; color: rgba(246,241,230,0.7); margin: 0 0 40px;">A short call is all it takes to see if Nur AI is the right studio for your brand.</p>
+      <a href="mailto:hello@nurai.studio?subject=Book%20a%20Call" style="display: inline-block; font-size: 15px; font-weight: 600; color: #0c281f; background: linear-gradient(135deg,#e3cd8a,#c9a961); padding: 18px 44px; border-radius: 2px; letter-spacing: 0.03em;" style-hover="opacity:0.88;">Book a Call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="padding: clamp(50px,6vw,70px) clamp(20px,6vw,64px) clamp(30px,4vw,40px); margin-top: clamp(60px,8vw,90px); display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; border-top: 1px solid rgba(201,169,97,0.14);">
+    <div style="display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #f6f1e6;">
+      <span style="width: 26px; height: 26px; border: 1.5px solid #c9a961; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; color: #c9a961;">ن</span>
+      Nur AI
+    </div>
+    <p style="font-size: 13px; color: rgba(246,241,230,0.45); margin: 0;">© 2026 Nur AI Studio. Cinematic content for Islamic brands and Muslim creators.</p>
+    <div style="display: flex; gap: 22px; font-size: 13px;">
+      <a href="#" style="color: rgba(246,241,230,0.55);">Instagram</a>
+      <a href="mailto:hello@nurai.studio" style="color: rgba(246,241,230,0.55);">Email</a>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      agents: [
+        { initial: 'م', name: 'Maryam', role: 'Strategist & Orchestrator', description: 'Owns strategy — content direction, offers, campaign planning — and delegates the chain that turns a brief into a finished cut.', quote: 'Every piece starts with why.' },
+        { initial: 'ع', name: 'Aisha', role: 'Guide & Outreach', description: 'Scouts halal-friendly destinations, secures filming logistics and permits, and finds the best light before a lens ever opens.', quote: 'The location is half the story.' },
+        { initial: 'أ', name: 'Ahmad', role: 'Audio & Final Polish', description: 'Matches vocal-only nasheeds to the cut, times captions to the swell, and runs the final quality gate — nothing ships without his pass.', quote: 'Precision, not impressions.' }
+      ],
+      steps: [
+        { n: '01', title: 'Strategy', desc: 'Maryam sets the direction — offer, audience, and the story worth telling.' },
+        { n: '02', title: 'Research & Logistics', desc: 'Aisha scouts locations, secures permits, and maps the light.' },
+        { n: '03', title: 'Production', desc: 'Cinematic capture, shot to the brand\'s aesthetic and pace.' },
+        { n: '04', title: 'Audio & Polish', desc: 'Ahmad scores, times, and clears the final cut for release.' }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
