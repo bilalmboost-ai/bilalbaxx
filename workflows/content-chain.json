@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "nur-ai-content-chain",
+  "generatedAt": "2026-07-30T05:40:00-05:00",
+  "entrypoint": "maryam",
+  "sequence": [
+    {
+      "agent": "maryam",
+      "action": "Define strategy, offer, hook, shot list, camera settings, edit direction, and compliance constraints.",
+      "handoff": "Pass the approved brief and footage context to Aisha."
+    },
+    {
+      "agent": "aisha",
+      "action": "Research locations, timing, permissions, travel logistics, and eligible outreach opportunities.",
+      "handoff": "Pass the research brief and content package to Ahmad."
+    },
+    {
+      "agent": "ahmad",
+      "action": "Match permissible audio, create sync guidance and captions, recommend timing, and run final QA.",
+      "handoff": "Return the scored package to Maryam for final approval."
+    },
+    {
+      "agent": "maryam",
+      "action": "Review the complete package and approve it or route a failed item back to its owner.",
+      "handoff": "Release the final publishing package."
+    }
+  ],
+  "routingRules": [
+    "The default workflow order is Maryam → Aisha → Ahmad → Maryam final approval.",
+    "Work received by the wrong agent routes to the correct owner with its existing context.",
+    "No agent may claim an external tool or account was accessed unless that integration succeeded.",
+    "Brand outreach requires the Business plan.",
+    "Publishing, external outreach, purchases, and commitments require Bilal’s explicit approval."
+  ]
+}
