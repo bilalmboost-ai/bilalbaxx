@@ -1,28 +1,57 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "nur-ai-content-chain",
-  "generatedAt": "2026-07-30T05:40:00-05:00",
+  "generatedAt": "2026-07-30T09:55:00-05:00",
   "entrypoint": "maryam",
   "sequence": [
     {
       "agent": "maryam",
       "action": "Define strategy, offer, hook, shot list, camera settings, edit direction, and compliance constraints.",
-      "handoff": "Pass the approved brief and footage context to Aisha."
+      "handoff": "Pass the approved brief and footage context to Aisha.",
+      "outputs": [
+        "offerAndAngle",
+        "hook",
+        "shotList",
+        "cameraSettings",
+        "editDirection",
+        "researchAskForAisha",
+        "audioAskForAhmad"
+      ],
+      "exitCriteria": "Hook is literal on-screen text, shot list is shootable with the subscriber's kit, handoff asks are specific."
     },
     {
       "agent": "aisha",
       "action": "Research locations, timing, permissions, travel logistics, and eligible outreach opportunities.",
-      "handoff": "Pass the research brief and content package to Ahmad."
+      "handoff": "Pass the research brief and content package to Ahmad.",
+      "outputs": [
+        "locationDossier",
+        "droneLegalityFlag",
+        "outreachPackage"
+      ],
+      "exitCriteria": "Every time-sensitive claim searched, cited and date-stamped. Drone restrictions flagged loudly."
     },
     {
       "agent": "ahmad",
       "action": "Match permissible audio, create sync guidance and captions, recommend timing, and run final QA.",
-      "handoff": "Return the scored package to Maryam for final approval."
+      "handoff": "Return the scored package to Maryam for final approval.",
+      "outputs": [
+        "nasheedMatch",
+        "captions",
+        "hashtagSet",
+        "postTiming",
+        "qaScorecard"
+      ],
+      "exitCriteria": "Vocal-only track verified to exist; sync map lands the swell on the payoff shot; ten-point scan passed."
     },
     {
       "agent": "maryam",
       "action": "Review the complete package and approve it or route a failed item back to its owner.",
-      "handoff": "Release the final publishing package."
+      "handoff": "Release the final publishing package.",
+      "outputs": [
+        "approvedPackage",
+        "routedFailures"
+      ],
+      "exitCriteria": "Every QA item passes, or the failure is routed to its owner with the fix stated."
     }
   ],
   "routingRules": [
@@ -30,6 +59,48 @@
     "Work received by the wrong agent routes to the correct owner with its existing context.",
     "No agent may claim an external tool or account was accessed unless that integration succeeded.",
     "Brand outreach requires the Business plan.",
-    "Publishing, external outreach, purchases, and commitments require Bilal’s explicit approval."
-  ]
+    "Publishing, external outreach, purchases, and commitments require Bilal’s explicit approval.",
+    "Nothing ships without Ahmad's ten-point scan passing.",
+    "Vocal-only nasheeds — no instrumentation, no trending pop audio."
+  ],
+  "trigger": {
+    "phrase": "Maryam, I need you to work on this.",
+    "fallback": "Any Nur AI content planning request enters at Maryam."
+  },
+  "failureRouting": {
+    "principle": "QA failures route back to the agent who owns the failing item, never forward.",
+    "rules": [
+      {
+        "fails": [
+          "hook",
+          "shot achievability",
+          "grade direction",
+          "brand integration",
+          "premium feel",
+          "out-of-scope content"
+        ],
+        "routeTo": "maryam"
+      },
+      {
+        "fails": [
+          "location accuracy",
+          "permit or drone legality",
+          "outreach claim"
+        ],
+        "routeTo": "aisha"
+      },
+      {
+        "fails": [
+          "audio",
+          "caption",
+          "text timing",
+          "first or last frame",
+          "post timing"
+        ],
+        "routeTo": "ahmad"
+      }
+    ],
+    "maxLoops": 2,
+    "onMaxLoops": "Escalate to Bilal with the specific blocker and two options to resolve it."
+  }
 }
