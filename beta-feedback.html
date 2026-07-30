@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nur AI — Founder Beta Feedback</title>
+<meta name="description" content="Share your Nur AI Founder Beta feedback — help shape the studio.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+  :root { --bg:#0c281f; --panel:#102e24; --panel-2:#0a2018; --gold:#c9a961; --gold-light:#e3cd8a; --cream:#f6f1e6; --muted:rgba(246,241,230,0.72); --muted-2:rgba(246,241,230,0.5); --hair:rgba(201,169,97,0.18); --hair-soft:rgba(201,169,97,0.12); --err:#f0a58f; --ok:#86e0b0; --grad-gold:linear-gradient(135deg,#e3cd8a,#c9a961); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--cream); font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a { color:var(--gold-light); text-decoration:none; } a:hover { color:var(--cream); }
+  ::selection { background:var(--gold); color:var(--bg); }
+  img { max-width:100%; display:block; }
+  h1,h2,h3 { font-weight:800; line-height:1.14; letter-spacing:-0.02em; margin:0; }
+  p { margin:0; }
+  .wrap { max-width:720px; margin:0 auto; padding:0 clamp(20px,5vw,40px); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:inherit; font-size:15px; font-weight:700; padding:15px 30px; border-radius:999px; border:1px solid transparent; cursor:pointer; transition:transform .15s,opacity .2s,border-color .2s,color .2s; }
+  .btn-gold { background:var(--grad-gold); color:var(--bg); } .btn-gold:hover { opacity:.9; transform:translateY(-1px); color:var(--bg); }
+  .btn-gold:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+  .btn-ghost { background:transparent; color:var(--cream); border-color:rgba(246,241,230,.35); } .btn-ghost:hover { border-color:var(--gold); color:var(--gold-light); }
+
+  .topbar { border-bottom:1px solid var(--hair); background:rgba(12,40,31,.72); backdrop-filter:blur(12px); position:sticky; top:0; z-index:20; }
+  .topbar-inner { max-width:1080px; margin:0 auto; padding:14px clamp(20px,5vw,40px); display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:11px; font-size:20px; font-weight:800; color:var(--cream); }
+  .brand .mark { width:30px; height:30px; border:1.5px solid var(--gold); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:14px; color:var(--gold-light); font-family:Georgia,serif; }
+  .topbar a.home { font-size:14px; font-weight:500; color:var(--muted); }
+
+  .hero { text-align:center; padding:clamp(44px,6vw,72px) 0 clamp(24px,3vw,36px); background:radial-gradient(ellipse at 50% 0%, rgba(201,169,97,.13), transparent 55%); }
+  .pill { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); background:rgba(201,169,97,.1); border:1px solid var(--hair); padding:7px 16px; border-radius:999px; margin-bottom:20px; }
+  .hero h1 { font-size:clamp(30px,5vw,48px); margin-bottom:16px; }
+  .hero h1 .accent { color:var(--gold-light); }
+  .hero p.sub { font-size:clamp(15px,1.6vw,18px); color:var(--muted); max-width:520px; margin:0 auto; line-height:1.7; }
+
+  .section { padding:clamp(28px,4vw,44px) 0 60px; }
+  .card { background:var(--panel); border:1px solid var(--hair); border-radius:18px; padding:clamp(26px,4vw,40px); }
+
+  .form-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px 18px; }
+  .field { display:flex; flex-direction:column; gap:7px; }
+  .field.full { grid-column:1/-1; }
+  .field label { font-size:13.5px; font-weight:600; color:var(--cream); }
+  .field label .req { color:var(--gold); }
+  .field input, .field select, .field textarea { font-family:inherit; font-size:15px; color:var(--cream); background:var(--panel-2); border:1px solid var(--hair); border-radius:10px; padding:13px 14px; width:100%; transition:border-color .2s,box-shadow .2s; }
+  .field textarea { resize:vertical; min-height:90px; }
+  .field select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23c9a961' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; }
+  .field input::placeholder, .field textarea::placeholder { color:rgba(246,241,230,.35); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,169,97,.15); }
+  .field.invalid input, .field.invalid select, .field.invalid textarea { border-color:var(--err); box-shadow:0 0 0 3px rgba(240,165,143,.12); }
+  .field .err { font-size:12.5px; color:var(--err); display:none; }
+  .field.invalid .err { display:block; }
+
+  .rating { display:flex; gap:8px; }
+  .rating input { position:absolute; opacity:0; width:0; height:0; }
+  .rating label { flex:1; text-align:center; cursor:pointer; border:1px solid var(--hair); border-radius:10px; padding:12px 0; font-size:16px; font-weight:700; color:var(--muted); background:var(--panel-2); transition:.15s; }
+  .rating label:hover { border-color:var(--gold); color:var(--gold-light); }
+  .rating input:checked + label { background:var(--grad-gold); color:var(--bg); border-color:transparent; }
+  .rating.invalid label { border-color:var(--err); }
+
+  .consent { grid-column:1/-1; display:flex; align-items:flex-start; gap:12px; background:var(--panel-2); border:1px solid var(--hair); border-radius:10px; padding:15px 16px; }
+  .consent.invalid { border-color:var(--err); }
+  .consent input { width:20px; height:20px; flex-shrink:0; margin-top:1px; accent-color:var(--gold); cursor:pointer; }
+  .consent label { font-size:14px; color:var(--muted); line-height:1.5; cursor:pointer; }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .notice { grid-column:1/-1; font-size:14px; border-radius:10px; padding:14px 16px; line-height:1.55; display:none; }
+  .notice.warn { display:block; background:rgba(240,165,143,.1); border:1px solid rgba(240,165,143,.4); color:var(--err); }
+  .form-actions { grid-column:1/-1; }
+  .form-actions .btn { width:100%; }
+  .fallback { text-align:center; font-size:13.5px; color:var(--muted-2); margin-top:16px; }
+  .success { text-align:center; padding:clamp(28px,5vw,44px) 10px; }
+  .success .ok-ic { width:60px; height:60px; margin:0 auto 18px; border-radius:50%; background:rgba(134,224,176,.12); border:1px solid rgba(134,224,176,.4); display:flex; align-items:center; justify-content:center; color:var(--ok); }
+  .success h3 { font-size:23px; margin-bottom:10px; }
+  .success p { font-size:15.5px; color:var(--muted); max-width:440px; margin:0 auto; }
+  @media (max-width:600px){ .form-grid { grid-template-columns:1fr; } }
+  footer { text-align:center; padding:40px 20px; margin-top:20px; border-top:1px solid var(--hair-soft); font-size:13px; color:var(--muted-2); }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span class="mark">ن</span> Nur AI</a>
+      <a href="beta.html" class="home">← Back to beta</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="pill">Founder Beta · Feedback</div>
+      <h1>How's the beta <span class="accent">going?</span></h1>
+      <p class="sub">Your honest feedback shapes what Nur AI becomes. Two minutes — every answer is read by the founder.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="card" id="formCard">
+        <form id="fbForm" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="fb-name">Your name <span class="req">*</span></label><input id="fb-name" name="name" type="text" autocomplete="name" required placeholder="Your name"><span class="err">Please enter your name.</span></div>
+            <div class="field"><label for="fb-handle">Handle or email <span class="req">*</span></label><input id="fb-handle" name="handle" type="text" required placeholder="@handle or you@email.com"><span class="err">Please tell us who you are.</span></div>
+
+            <div class="field full">
+              <label>Overall, how would you rate the beta so far? <span class="req">*</span></label>
+              <div class="rating" id="rating" role="radiogroup" aria-label="Overall rating">
+                <input type="radio" id="r1" name="rating" value="1"><label for="r1">1</label>
+                <input type="radio" id="r2" name="rating" value="2"><label for="r2">2</label>
+                <input type="radio" id="r3" name="rating" value="3"><label for="r3">3</label>
+                <input type="radio" id="r4" name="rating" value="4"><label for="r4">4</label>
+                <input type="radio" id="r5" name="rating" value="5"><label for="r5">5</label>
+              </div>
+              <span class="err" id="ratingErr">Please choose a rating.</span>
+            </div>
+
+            <div class="field full"><label for="fb-good">What's working well? <span class="req">*</span></label><textarea id="fb-good" name="working_well" required placeholder="What's genuinely useful so far?"></textarea><span class="err">Please share what's working.</span></div>
+            <div class="field full"><label for="fb-bad">What's not working, or confusing? <span class="req">*</span></label><textarea id="fb-bad" name="not_working" required placeholder="Be honest — friction, confusion, anything missing."></textarea><span class="err">Please share what could be better.</span></div>
+            <div class="field full"><label for="fb-ideas">What would you most like added? <span style="color:var(--muted-2); font-weight:500;">(optional)</span></label><textarea id="fb-ideas" name="requests" placeholder="Features, agents, deliverables you'd love."></textarea></div>
+
+            <div class="field full">
+              <label for="fb-recommend">Would you recommend Nur AI to another creator? <span class="req">*</span></label>
+              <select id="fb-recommend" name="recommend" required>
+                <option value="" disabled selected>Choose one…</option>
+                <option>Yes, definitely</option>
+                <option>Probably</option>
+                <option>Not yet</option>
+                <option>No</option>
+              </select>
+              <span class="err">Please choose an option.</span>
+            </div>
+
+            <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+            <input type="hidden" name="cohort" value="Founder Beta feedback">
+
+            <div class="consent" id="consentWrap">
+              <input id="fb-consent" name="consent" type="checkbox" required>
+              <label for="fb-consent">I agree that Nur AI may follow up on my feedback. <span class="req">*</span></label>
+            </div>
+
+            <div class="notice" id="formNotice" role="alert"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-gold" id="fbSubmit">Send my feedback</button>
+            </div>
+          </div>
+        </form>
+        <p class="fallback">Prefer email? Write to <a href="mailto:bilalm.boost@gmail.com?subject=Founder%20Beta%20Feedback">bilalm.boost@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Nur AI Studio · Founder Beta · <a href="index.html">nuraibaxx.com</a></footer>
+
+  <script>
+    /* ===== FORM CONFIGURATION — see README.md =====
+       Paste a Formspree/Basin/Web3Forms endpoint to enable feedback submissions.
+       Until set, the form shows an HONEST DISABLED state — it never fakes success. */
+    var FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+    /* ============================================== */
+
+    (function () {
+      var form = document.getElementById('fbForm');
+      var card = document.getElementById('formCard');
+      var notice = document.getElementById('formNotice');
+      var btn = document.getElementById('fbSubmit');
+      var consentWrap = document.getElementById('consentWrap');
+      var ratingWrap = document.getElementById('rating');
+      var configured = FORM_ENDPOINT && FORM_ENDPOINT.indexOf('YOUR_FORM_ID') === -1;
+      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!configured) {
+        btn.disabled = true;
+        btn.textContent = 'Feedback not connected yet';
+        notice.className = 'notice warn';
+        notice.innerHTML = 'Feedback submission isn’t connected yet — the site owner needs to set <b>FORM_ENDPOINT</b> (see README.md). In the meantime, email <a href="mailto:bilalm.boost@gmail.com?subject=Founder%20Beta%20Feedback">bilalm.boost@gmail.com</a>.';
+      }
+
+      function setInvalid(field,bad){ if(!field) return; field.classList.toggle('invalid',bad); }
+      function validate(){
+        var firstBad=null;
+        function check(id,fn){ var i=document.getElementById(id); var f=i.closest('.field'); var ok=fn(i.value); setInvalid(f,!ok); if(!ok&&!firstBad) firstBad=i; return ok; }
+        var ok=true;
+        ok=check('fb-name',function(v){return v.trim().length>1;})&&ok;
+        ok=check('fb-handle',function(v){return v.trim().length>0;})&&ok;
+        // rating
+        var rated=form.querySelector('input[name="rating"]:checked');
+        ratingWrap.classList.toggle('invalid',!rated);
+        document.getElementById('ratingErr').style.display = rated ? 'none' : 'block';
+        if(!rated&&!firstBad) firstBad=document.getElementById('r1');
+        ok = !!rated && ok;
+        ok=check('fb-good',function(v){return v.trim().length>2;})&&ok;
+        ok=check('fb-bad',function(v){return v.trim().length>2;})&&ok;
+        ok=check('fb-recommend',function(v){return v!=='';})&&ok;
+        var c=document.getElementById('fb-consent'); var cok=c.checked; consentWrap.classList.toggle('invalid',!cok); if(!cok&&!firstBad) firstBad=c; ok=cok&&ok;
+        if(firstBad) firstBad.focus();
+        return ok;
+      }
+      form.addEventListener('input', function(e){ var f=e.target.closest('.field'); if(f&&f.classList.contains('invalid')) setInvalid(f,false); if(e.target.name==='rating'){ ratingWrap.classList.remove('invalid'); document.getElementById('ratingErr').style.display='none'; } if(e.target.id==='fb-consent'&&e.target.checked) consentWrap.classList.remove('invalid'); });
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (form.querySelector('[name="_gotcha"]').value) return;
+        if (!configured) { return; }
+        if (!validate()) { notice.className='notice warn'; notice.textContent='Please fix the highlighted fields and try again.'; return; }
+        var data={}; new FormData(form).forEach(function(v,k){ if(k!=='_gotcha') data[k]=v; });
+        data._subject='Founder Beta feedback — '+(data.name||'');
+        btn.disabled=true; var orig=btn.textContent; btn.textContent='Sending…'; notice.className='notice';
+        fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)})
+          .then(function(res){
+            if(res.ok){
+              card.innerHTML='<div class="success"><div class="ok-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Feedback received — JazakAllahu khayran!</h3><p>Thank you for helping shape Nur AI. The founder reads every response personally.</p></div>';
+              card.scrollIntoView({behavior:'smooth',block:'center'});
+            } else { btn.disabled=false; btn.textContent=orig; notice.className='notice warn'; notice.innerHTML='Something went wrong. Please try again, or email <a href="mailto:bilalm.boost@gmail.com">bilalm.boost@gmail.com</a>.'; }
+          })
+          .catch(function(){ btn.disabled=false; btn.textContent=orig; notice.className='notice warn'; notice.innerHTML='Network error — please try again, or email <a href="mailto:bilalm.boost@gmail.com">bilalm.boost@gmail.com</a>.'; });
+      });
+    })();
+  </script>
+</body>
+</html>

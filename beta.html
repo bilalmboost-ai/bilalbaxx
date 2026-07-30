@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nur AI — Founder Beta (Invite Only)</title>
+<meta name="description" content="The Nur AI Founder Beta — a 7-day founding-member trial of the studio workflow. Invitation only.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+  :root { --bg:#0c281f; --panel:#102e24; --panel-2:#0a2018; --gold:#c9a961; --gold-light:#e3cd8a; --cream:#f6f1e6; --muted:rgba(246,241,230,0.72); --muted-2:rgba(246,241,230,0.5); --hair:rgba(201,169,97,0.18); --hair-soft:rgba(201,169,97,0.12); --err:#f0a58f; --ok:#86e0b0; --grad-gold:linear-gradient(135deg,#e3cd8a,#c9a961); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--cream); font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a { color:var(--gold-light); text-decoration:none; } a:hover { color:var(--cream); }
+  ::selection { background:var(--gold); color:var(--bg); }
+  img { max-width:100%; display:block; }
+  h1,h2,h3 { font-weight:800; line-height:1.14; letter-spacing:-0.02em; margin:0; }
+  p { margin:0; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 clamp(20px,5vw,40px); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:inherit; font-size:15px; font-weight:700; padding:15px 30px; border-radius:999px; border:1px solid transparent; cursor:pointer; transition:transform .15s,opacity .2s,border-color .2s,color .2s; }
+  .btn-gold { background:var(--grad-gold); color:var(--bg); } .btn-gold:hover { opacity:.9; transform:translateY(-1px); color:var(--bg); }
+  .btn-gold:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+  .btn-ghost { background:transparent; color:var(--cream); border-color:rgba(246,241,230,.35); } .btn-ghost:hover { border-color:var(--gold); color:var(--gold-light); }
+
+  .topbar { border-bottom:1px solid var(--hair); background:rgba(12,40,31,.72); backdrop-filter:blur(12px); position:sticky; top:0; z-index:20; }
+  .topbar-inner { max-width:1080px; margin:0 auto; padding:14px clamp(20px,5vw,40px); display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:11px; font-size:20px; font-weight:800; color:var(--cream); }
+  .brand .mark { width:30px; height:30px; border:1.5px solid var(--gold); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:14px; color:var(--gold-light); font-family:Georgia,serif; }
+  .topbar a.home { font-size:14px; font-weight:500; color:var(--muted); }
+
+  .hero { text-align:center; padding:clamp(48px,7vw,84px) 0 clamp(30px,4vw,44px); background:radial-gradient(ellipse at 50% 0%, rgba(201,169,97,.14), transparent 55%); }
+  .hero-logo { width:clamp(120px,18vw,160px); margin:0 auto 8px; mix-blend-mode:screen; }
+  .pill { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); background:rgba(201,169,97,.1); border:1px solid var(--hair); padding:7px 16px; border-radius:999px; margin-bottom:22px; }
+  .hero h1 { font-size:clamp(32px,5.4vw,54px); margin-bottom:18px; }
+  .hero h1 .accent { color:var(--gold-light); }
+  .hero p.sub { font-size:clamp(16px,1.7vw,19px); color:var(--muted); max-width:560px; margin:0 auto; line-height:1.7; }
+
+  .section { padding:clamp(28px,4vw,44px) 0; }
+  .card { background:var(--panel); border:1px solid var(--hair); border-radius:18px; padding:clamp(26px,4vw,40px); }
+
+  /* GATE */
+  .gate { max-width:480px; margin:0 auto; text-align:center; }
+  .gate .lock { width:56px; height:56px; margin:0 auto 18px; border-radius:50%; background:rgba(201,169,97,.12); color:var(--gold-light); display:flex; align-items:center; justify-content:center; }
+  .gate h2 { font-size:24px; margin-bottom:8px; }
+  .gate p.g-sub { font-size:15px; color:var(--muted); margin-bottom:22px; }
+  .code-row { display:flex; gap:10px; flex-wrap:wrap; }
+  .code-row input { flex:1; min-width:180px; font-family:inherit; font-size:16px; letter-spacing:.12em; text-align:center; color:var(--cream); background:var(--panel-2); border:1px solid var(--hair); border-radius:10px; padding:14px 16px; text-transform:lowercase; }
+  .code-row input:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,169,97,.15); }
+  .code-row input.invalid { border-color:var(--err); box-shadow:0 0 0 3px rgba(240,165,143,.12); }
+  .code-err { display:none; font-size:13px; color:var(--err); margin-top:12px; }
+  .code-err.show { display:block; }
+  .code-hint { font-size:12.5px; color:var(--muted-2); margin-top:16px; }
+
+  /* BETA MAIN (hidden until unlocked) */
+  #betaMain { display:none; }
+  #betaMain.show { display:block; }
+  .welcome { text-align:center; margin-bottom:32px; }
+  .welcome .ok-ic { width:56px; height:56px; margin:0 auto 16px; border-radius:50%; background:rgba(134,224,176,.12); border:1px solid rgba(134,224,176,.4); display:flex; align-items:center; justify-content:center; color:var(--ok); }
+  .welcome h2 { font-size:clamp(26px,3.6vw,36px); margin-bottom:10px; }
+  .welcome p { font-size:16px; color:var(--muted); max-width:520px; margin:0 auto; }
+
+  .days { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:28px 0; }
+  .day { background:var(--panel-2); border:1px solid var(--hair); border-radius:12px; padding:16px 18px; }
+  .day .d { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); font-weight:700; }
+  .day .t { font-size:14.5px; color:var(--cream); font-weight:600; margin-top:5px; }
+  .perks { list-style:none; margin:0 0 8px; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px 20px; }
+  .perks li { display:flex; gap:10px; align-items:flex-start; font-size:15px; color:var(--muted); line-height:1.5; }
+  .perks li svg { flex-shrink:0; margin-top:3px; }
+  .perks li b { color:var(--cream); }
+
+  /* FORM */
+  .form-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px 18px; }
+  .field { display:flex; flex-direction:column; gap:7px; }
+  .field.full { grid-column:1/-1; }
+  .field label { font-size:13.5px; font-weight:600; color:var(--cream); }
+  .field label .req { color:var(--gold); }
+  .field input, .field select, .field textarea { font-family:inherit; font-size:15px; color:var(--cream); background:var(--panel-2); border:1px solid var(--hair); border-radius:10px; padding:13px 14px; width:100%; transition:border-color .2s,box-shadow .2s; }
+  .field textarea { resize:vertical; min-height:80px; }
+  .field select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23c9a961' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:40px; }
+  .field input::placeholder, .field textarea::placeholder { color:rgba(246,241,230,.35); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(201,169,97,.15); }
+  .field.invalid input, .field.invalid select, .field.invalid textarea { border-color:var(--err); box-shadow:0 0 0 3px rgba(240,165,143,.12); }
+  .field .err { font-size:12.5px; color:var(--err); display:none; }
+  .field.invalid .err { display:block; }
+  .consent { grid-column:1/-1; display:flex; align-items:flex-start; gap:12px; background:var(--panel-2); border:1px solid var(--hair); border-radius:10px; padding:15px 16px; }
+  .consent.invalid { border-color:var(--err); }
+  .consent input { width:20px; height:20px; flex-shrink:0; margin-top:1px; accent-color:var(--gold); cursor:pointer; }
+  .consent label { font-size:14px; color:var(--muted); line-height:1.5; cursor:pointer; }
+  .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .notice { grid-column:1/-1; font-size:14px; border-radius:10px; padding:14px 16px; line-height:1.55; display:none; }
+  .notice.show { display:block; }
+  .notice.warn { display:block; background:rgba(240,165,143,.1); border:1px solid rgba(240,165,143,.4); color:var(--err); }
+  .form-actions { grid-column:1/-1; }
+  .form-actions .btn { width:100%; }
+  .fallback { text-align:center; font-size:13.5px; color:var(--muted-2); margin-top:16px; }
+  .success { text-align:center; padding:clamp(28px,5vw,44px) 10px; }
+  .success .ok-ic { width:60px; height:60px; margin:0 auto 18px; border-radius:50%; background:rgba(134,224,176,.12); border:1px solid rgba(134,224,176,.4); display:flex; align-items:center; justify-content:center; color:var(--ok); }
+  .success h3 { font-size:23px; margin-bottom:10px; }
+  .success p { font-size:15.5px; color:var(--muted); max-width:440px; margin:0 auto 18px; }
+  .feedback-link { text-align:center; margin-top:26px; font-size:14.5px; color:var(--muted); }
+  @media (max-width:600px){ .form-grid { grid-template-columns:1fr; } }
+  footer { text-align:center; padding:40px 20px; margin-top:40px; border-top:1px solid var(--hair-soft); font-size:13px; color:var(--muted-2); }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="brand"><span class="mark">ن</span> Nur AI</a>
+      <a href="index.html" class="home">← Back to site</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <img class="hero-logo" src="logo.png" alt="Nur AI">
+      <div class="pill">Founder Beta · Invite only</div>
+      <h1>You're invited to the<br><span class="accent">Nur AI Founder Beta.</span></h1>
+      <p class="sub">A 7-day founding-member trial of the full Nur AI studio workflow — on your own content. Enter your invitation code to begin.</p>
+    </div>
+  </header>
+
+  <!-- CODE GATE -->
+  <section class="section" id="gateSection">
+    <div class="wrap">
+      <div class="card gate">
+        <div class="lock"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 1 1 8 0v3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h2>Enter your invitation code</h2>
+        <p class="g-sub">This beta is invite-only. Use the code from your invitation.</p>
+        <div class="code-row">
+          <input id="codeInput" type="text" inputmode="text" autocomplete="off" placeholder="Invitation code" aria-label="Invitation code">
+          <button class="btn btn-gold" id="unlockBtn" type="button">Unlock</button>
+        </div>
+        <div class="code-err" id="codeErr">That code isn't valid. Please check your invitation and try again.</div>
+        <div class="code-hint">Have a code but it won't work? Email <a href="mailto:bilalm.boost@gmail.com?subject=Founder%20Beta%20code">bilalm.boost@gmail.com</a>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BETA MAIN (revealed after code) -->
+  <section class="section" id="betaMain">
+    <div class="wrap">
+      <div class="welcome">
+        <div class="ok-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2>Access granted — welcome, founder.</h2>
+        <p>For the next 7 days you'll run your content through the full Nur AI chain — Maryam, Aisha and Ahmad — and help shape what the studio becomes.</p>
+      </div>
+
+      <div class="days">
+        <div class="day"><div class="d">Day 1–2</div><div class="t">Onboarding &amp; brand profile</div></div>
+        <div class="day"><div class="d">Day 3–4</div><div class="t">First video audit &amp; plan</div></div>
+        <div class="day"><div class="d">Day 5–6</div><div class="t">Research &amp; hook rewrites</div></div>
+        <div class="day"><div class="d">Day 7</div><div class="t">Review &amp; roadmap feedback</div></div>
+      </div>
+
+      <div class="card" style="margin-bottom:28px;">
+        <ul class="perks">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Priority audits</b> — 24-hour turnaround for the week.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Direct line to the founder</b> — feedback goes straight to Bilal.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>First access</b> to new agents as they launch.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Founding-member status</b> — shape the roadmap from the inside.</span></li>
+        </ul>
+      </div>
+
+      <h3 style="text-align:center; font-size:24px; margin-bottom:8px;">Claim your founder spot</h3>
+      <p style="text-align:center; color:var(--muted); font-size:15px; margin-bottom:26px;">Tell us where to start. We'll kick off your 7 days within 24 hours.</p>
+
+      <div class="card" id="formCard">
+        <form id="betaForm" novalidate>
+          <div class="form-grid">
+            <div class="field"><label for="b-name">Full name <span class="req">*</span></label><input id="b-name" name="name" type="text" autocomplete="name" required placeholder="Your name"><span class="err">Please enter your name.</span></div>
+            <div class="field"><label for="b-email">Email <span class="req">*</span></label><input id="b-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com"><span class="err">Please enter a valid email.</span></div>
+            <div class="field"><label for="b-brand">Brand or creator name <span class="req">*</span></label><input id="b-brand" name="brand" type="text" required placeholder="e.g. Baxx Thobes"><span class="err">Please enter your brand or creator name.</span></div>
+            <div class="field"><label for="b-handle">Instagram or TikTok handle <span class="req">*</span></label><input id="b-handle" name="handle" type="text" required placeholder="@yourhandle"><span class="err">Please enter your handle.</span></div>
+            <div class="field full"><label for="b-video">Your first video link <span class="req">*</span></label><input id="b-video" name="video" type="url" inputmode="url" required placeholder="https://instagram.com/reel/... or Drive/Dropbox link"><span class="err">Please enter a valid link starting with http(s)://</span></div>
+            <div class="field full"><label for="b-goal">What do you most want from the beta? <span class="req">*</span></label><textarea id="b-goal" name="goal" required placeholder="e.g. sharper hooks, more reach, a repeatable posting system"></textarea><span class="err">Please tell us your main goal.</span></div>
+
+            <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+            <input type="hidden" name="cohort" value="Founder Beta (code: baxx10)">
+
+            <div class="consent" id="consentWrap">
+              <input id="b-consent" name="consent" type="checkbox" required>
+              <label for="b-consent">I agree that Nur AI may contact me regarding the Founder Beta and related studio services. <span class="req">*</span></label>
+            </div>
+
+            <div class="notice" id="formNotice" role="alert"></div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-gold" id="betaSubmit">Claim my founder spot</button>
+            </div>
+          </div>
+        </form>
+        <p class="fallback">Prefer email? Write to <a href="mailto:bilalm.boost@gmail.com?subject=Founder%20Beta%20(baxx10)">bilalm.boost@gmail.com</a></p>
+      </div>
+
+      <p class="feedback-link">Already in the beta? <a href="beta-feedback.html">Share your feedback →</a></p>
+    </div>
+  </section>
+
+  <footer>© 2026 Nur AI Studio · Founder Beta · <a href="index.html">nuraibaxx.com</a></footer>
+
+  <script>
+    /* ===== FORM CONFIGURATION — see README.md =====
+       Paste a Formspree/Basin/Web3Forms endpoint to enable beta signups.
+       Until set, the form shows an HONEST DISABLED state — it never fakes success. */
+    var FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+    var INVITE_CODE = "baxx10";
+    /* ============================================== */
+
+    (function () {
+      var STORAGE_KEY = 'nurai_beta_unlocked';
+      var gateSection = document.getElementById('gateSection');
+      var betaMain = document.getElementById('betaMain');
+      var codeInput = document.getElementById('codeInput');
+      var unlockBtn = document.getElementById('unlockBtn');
+      var codeErr = document.getElementById('codeErr');
+
+      function unlock() {
+        gateSection.style.display = 'none';
+        betaMain.classList.add('show');
+        try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+        betaMain.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      function tryCode() {
+        var val = (codeInput.value || '').trim().toLowerCase();
+        if (val === INVITE_CODE) { unlock(); }
+        else { codeInput.classList.add('invalid'); codeErr.classList.add('show'); codeInput.focus(); }
+      }
+      unlockBtn.addEventListener('click', tryCode);
+      codeInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); tryCode(); } });
+      codeInput.addEventListener('input', function () { codeInput.classList.remove('invalid'); codeErr.classList.remove('show'); });
+      try { if (localStorage.getItem(STORAGE_KEY) === '1') { gateSection.style.display = 'none'; betaMain.classList.add('show'); } } catch (e) {}
+
+      // ----- Beta signup form -----
+      var form = document.getElementById('betaForm');
+      var card = document.getElementById('formCard');
+      var notice = document.getElementById('formNotice');
+      var btn = document.getElementById('betaSubmit');
+      var consentWrap = document.getElementById('consentWrap');
+      var configured = FORM_ENDPOINT && FORM_ENDPOINT.indexOf('YOUR_FORM_ID') === -1;
+      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      function isUrl(v){ try { var u=new URL(v.trim()); return u.protocol==='http:'||u.protocol==='https:'; } catch(e){ return false; } }
+
+      // Honest disabled state when no endpoint is configured
+      if (!configured) {
+        btn.disabled = true;
+        btn.textContent = 'Signup not connected yet';
+        notice.className = 'notice warn';
+        notice.innerHTML = 'Beta signups aren’t connected yet — the site owner needs to set <b>FORM_ENDPOINT</b> (see README.md). In the meantime, email <a href="mailto:bilalm.boost@gmail.com?subject=Founder%20Beta%20(baxx10)">bilalm.boost@gmail.com</a> to claim your spot.';
+      }
+
+      function setInvalid(field,bad){ if(!field) return; field.classList.toggle('invalid',bad); var i=field.querySelector('input,select,textarea'); if(i) i.setAttribute('aria-invalid',bad?'true':'false'); }
+      function validate(){
+        var firstBad=null;
+        function check(id,fn){ var i=document.getElementById(id); var f=i.closest('.field'); var ok=fn(i.value); setInvalid(f,!ok); if(!ok&&!firstBad) firstBad=i; return ok; }
+        var ok=true;
+        ok=check('b-name',function(v){return v.trim().length>1;})&&ok;
+        ok=check('b-email',function(v){return emailRe.test(v.trim());})&&ok;
+        ok=check('b-brand',function(v){return v.trim().length>0;})&&ok;
+        ok=check('b-handle',function(v){return v.trim().length>0;})&&ok;
+        ok=check('b-video',function(v){return isUrl(v);})&&ok;
+        ok=check('b-goal',function(v){return v.trim().length>2;})&&ok;
+        var c=document.getElementById('b-consent'); var cok=c.checked; consentWrap.classList.toggle('invalid',!cok); if(!cok&&!firstBad) firstBad=c; ok=cok&&ok;
+        if(firstBad) firstBad.focus();
+        return ok;
+      }
+      form.addEventListener('input', function(e){ var f=e.target.closest('.field'); if(f&&f.classList.contains('invalid')) setInvalid(f,false); if(e.target.id==='b-consent'&&e.target.checked) consentWrap.classList.remove('invalid'); });
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (form.querySelector('[name="_gotcha"]').value) return; // bot
+        if (!configured) { return; } // stays disabled, no fake success
+        if (!validate()) { notice.className='notice warn'; notice.textContent='Please fix the highlighted fields and try again.'; return; }
+        var data={}; new FormData(form).forEach(function(v,k){ if(k!=='_gotcha') data[k]=v; });
+        data._subject='New Founder Beta signup — '+(data.brand||data.name||'');
+        btn.disabled=true; var orig=btn.textContent; btn.textContent='Sending…'; notice.className='notice';
+        fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)})
+          .then(function(res){
+            if(res.ok){
+              card.innerHTML='<div class="success"><div class="ok-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>You’re in — JazakAllahu khayran!</h3><p>Welcome to the Nur AI Founder Beta. We’ll be in touch within 24 hours to kick off your 7 days.</p><a class="btn btn-ghost" href="beta-feedback.html">Go to beta feedback</a></div>';
+              card.scrollIntoView({behavior:'smooth',block:'center'});
+            } else { btn.disabled=false; btn.textContent=orig; notice.className='notice warn'; notice.innerHTML='Something went wrong. Please try again, or email <a href="mailto:bilalm.boost@gmail.com">bilalm.boost@gmail.com</a>.'; }
+          })
+          .catch(function(){ btn.disabled=false; btn.textContent=orig; notice.className='notice warn'; notice.innerHTML='Network error — please try again, or email <a href="mailto:bilalm.boost@gmail.com">bilalm.boost@gmail.com</a>.'; });
+      });
+    })();
+  </script>
+</body>
+</html>

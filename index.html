@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nur AI — The AI Content Studio for Muslim Creators & Islamic Brands</title>
-<meta name="description" content="Three AI agents plan, research and polish your cinematic content — 100% halal. Shot lists, camera settings, nasheed matching, captions and brand outreach. From $30/month.">
-<meta name="keywords" content="halal content creation, Muslim creator tools, Islamic brand marketing, nasheed video editing, modest fashion content, AI content studio, Muslim travel content">
-<meta property="og:title" content="Nur AI — The AI Content Studio for Muslim Creators & Islamic Brands">
-<meta property="og:description" content="The system that grew Baxx Thobes to 35,000 followers, now available as software. Maryam, Aisha and Ahmad — your full content team.">
+<title>Nur AI Studio — AI Content Strategy & Free Video Audits for Muslim Creators</title>
+<meta name="description" content="Nur AI Studio combines content strategy, trend research and video analysis to help Muslim creators and Islamic brands make stronger short-form content — without compromising their values. Send one video, get a free audit in 24–48 hours.">
+<meta name="keywords" content="halal content creation, Muslim creator tools, Islamic brand marketing, video audit, hook writing, short-form content strategy, nasheed video editing">
+<meta property="og:title" content="Nur AI Studio — AI Content Strategy & Free Video Audits">
+<meta property="og:description" content="Send us one video. We'll show you how to improve it — hook, first 3 seconds, pacing, caption and publishing. Free audit in 24–48 hours.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="logo.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
@@ -16,46 +16,29 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
   :root {
-    --bg: #0c281f;
-    --panel: #102e24;
-    --panel-2: #0a2018;
-    --gold: #c9a961;
-    --gold-light: #e3cd8a;
-    --cream: #f6f1e6;
-    --muted: rgba(246, 241, 230, 0.72);
-    --muted-2: rgba(246, 241, 230, 0.5);
-    --hair: rgba(201, 169, 97, 0.18);
-    --hair-soft: rgba(201, 169, 97, 0.12);
-    --maxw: 1180px;
-    --radius: 14px;
-    --grad-gold: linear-gradient(135deg, #e3cd8a, #c9a961);
+    --bg: #0c281f; --panel: #102e24; --panel-2: #0a2018;
+    --gold: #c9a961; --gold-light: #e3cd8a; --cream: #f6f1e6;
+    --muted: rgba(246, 241, 230, 0.72); --muted-2: rgba(246, 241, 230, 0.5);
+    --hair: rgba(201, 169, 97, 0.18); --hair-soft: rgba(201, 169, 97, 0.12);
+    --err: #f0a58f; --ok: #86e0b0;
+    --maxw: 1180px; --radius: 14px; --grad-gold: linear-gradient(135deg, #e3cd8a, #c9a961);
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-  body {
-    margin: 0; background: var(--bg); color: var(--cream);
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
-  }
+  body { margin: 0; background: var(--bg); color: var(--cream); font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   a { color: var(--gold-light); text-decoration: none; transition: color 0.2s ease, opacity 0.2s ease; }
   a:hover { color: var(--cream); }
   ::selection { background: var(--gold); color: var(--bg); }
   img { max-width: 100%; display: block; }
   h1, h2, h3, h4 { font-weight: 800; line-height: 1.12; letter-spacing: -0.02em; margin: 0; }
   p { margin: 0; }
-
   .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: clamp(20px, 5vw, 40px); padding-right: clamp(20px, 5vw, 40px); }
   .eyebrow { font-size: 12.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 16px; }
 
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.01em;
-    padding: 15px 30px; border-radius: 999px; border: 1px solid transparent; cursor: pointer;
-    transition: transform 0.15s ease, opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
-    text-align: center; line-height: 1;
-  }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: 0.01em; padding: 15px 30px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; transition: transform 0.15s ease, opacity 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease; text-align: center; line-height: 1; }
   .btn-gold { background: var(--grad-gold); color: var(--bg); }
   .btn-gold:hover { opacity: 0.9; transform: translateY(-1px); color: var(--bg); }
+  .btn-gold:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
   .btn-ghost { background: transparent; color: var(--cream); border-color: rgba(246, 241, 230, 0.35); }
   .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
 
@@ -64,15 +47,15 @@
   .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px clamp(20px, 5vw, 40px); max-width: var(--maxw); margin: 0 auto; }
   .brand { display: flex; align-items: center; gap: 11px; font-size: 21px; font-weight: 800; letter-spacing: -0.01em; color: var(--cream); }
   .brand .mark { width: 32px; height: 32px; border: 1.5px solid var(--gold); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; color: var(--gold-light); font-family: Georgia, 'Times New Roman', serif; }
-  .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.6vw, 30px); }
+  .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 28px); }
   .nav-links a.link { font-size: 15px; font-weight: 500; color: rgba(246, 241, 230, 0.78); }
   .nav-links a.link:hover { color: var(--gold-light); }
   .nav-toggle { display: none; background: none; border: 1px solid var(--hair); border-radius: 10px; width: 42px; height: 42px; cursor: pointer; padding: 0; color: var(--cream); }
   .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--cream); margin: 3px auto; border-radius: 2px; transition: 0.25s; }
-  @media (max-width: 900px) {
+  @media (max-width: 920px) {
     .nav-toggle { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; }
     .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: rgba(10, 32, 24, 0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--hair); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .nav-links.open { max-height: 520px; }
+    .nav-links.open { max-height: 560px; }
     .nav-links a.link { padding: 15px clamp(20px, 5vw, 40px); border-top: 1px solid var(--hair-soft); }
     .nav-links .btn { margin: 14px clamp(20px, 5vw, 40px); }
     .nav.open .nav-toggle span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
@@ -81,130 +64,132 @@
   }
 
   /* HERO */
-  .hero {
-    position: relative; display: flex; align-items: center; text-align: center; overflow: hidden;
-    padding: clamp(56px, 8vw, 96px) 0 clamp(64px, 9vw, 110px);
-    background: radial-gradient(ellipse at 18% 12%, rgba(201, 169, 97, 0.16), transparent 52%), radial-gradient(ellipse at 85% 95%, rgba(26, 68, 51, 0.7), transparent 55%), linear-gradient(180deg, #0e3125 0%, var(--bg) 72%);
-  }
-  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 120%, rgba(201, 169, 97, 0.10), transparent 60%); }
+  .hero { position: relative; text-align: center; overflow: hidden; padding: clamp(52px, 7vw, 88px) 0 clamp(40px, 6vw, 64px); background: radial-gradient(ellipse at 18% 12%, rgba(201, 169, 97, 0.16), transparent 52%), radial-gradient(ellipse at 85% 95%, rgba(26, 68, 51, 0.7), transparent 55%), linear-gradient(180deg, #0e3125 0%, var(--bg) 78%); }
+  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 130%, rgba(201, 169, 97, 0.10), transparent 60%); }
   .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
-  .hero-logo { width: clamp(150px, 22vw, 210px); margin: 0 auto 6px; mix-blend-mode: screen; }
-  .hero .tag { display: inline-flex; align-items: center; gap: 12px; font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 22px; }
-  .hero .tag .rule { width: 26px; height: 1px; background: var(--gold); }
-  .hero h1 { font-size: clamp(38px, 6.4vw, 72px); margin-bottom: 22px; }
+  .hero-logo { width: clamp(140px, 20vw, 190px); margin: 0 auto 6px; mix-blend-mode: screen; }
+  .hero .tag { display: inline-flex; align-items: center; gap: 12px; font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 22px; max-width: 620px; }
+  .hero .tag .rule { width: 24px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .hero h1 { font-size: clamp(36px, 6vw, 66px); margin-bottom: 22px; }
   .hero h1 .accent { color: var(--gold-light); }
-  .hero p.sub { font-size: clamp(16px, 1.6vw, 20px); color: var(--muted); max-width: 640px; margin: 0 auto 34px; line-height: 1.7; }
-  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
-  .hero .trust { font-size: 14px; color: var(--muted-2); display: inline-flex; align-items: center; gap: 9px; }
+  .hero p.sub { font-size: clamp(16px, 1.6vw, 20px); color: var(--muted); max-width: 660px; margin: 0 auto 32px; line-height: 1.7; }
+  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px; }
+  .hero .trust { font-size: 14px; color: var(--muted-2); display: inline-flex; align-items: center; gap: 9px; flex-wrap: wrap; justify-content: center; }
   .hero .trust svg { color: var(--gold); flex-shrink: 0; }
 
-  /* SOCIAL PROOF BAR */
-  .proof { border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); background: var(--panel-2); }
-  .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--hair-soft); }
-  .proof-item { background: var(--panel-2); padding: clamp(26px, 3vw, 34px) 24px; text-align: center; }
-  .proof-item .n { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; color: var(--gold-light); letter-spacing: -0.02em; }
-  .proof-item .l { font-size: 13.5px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
-  .proof-cap { text-align: center; font-size: 13.5px; color: var(--muted-2); padding: 20px 24px 0; max-width: 720px; margin: 0 auto; }
+  /* SYSTEM DIAGRAM */
+  .system { border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); background: var(--panel-2); }
+  .system .head { text-align: center; margin-bottom: 30px; }
+  .system .head .k { font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .system .head p { font-size: 15px; color: var(--muted); margin-top: 8px; }
+  .chain-row { display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap; gap: 10px; }
+  .node { flex: 0 1 auto; min-width: 120px; background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 16px 18px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+  .node.you { border-color: rgba(246,241,230,0.3); }
+  .node.hub { border-color: var(--gold); background: linear-gradient(180deg, #143a2c, var(--panel)); }
+  .node.final { border-color: var(--gold); }
+  .node .t { font-size: 15px; font-weight: 800; color: var(--cream); }
+  .node .s { font-size: 12px; color: var(--gold-light); margin-top: 3px; letter-spacing: 0.02em; }
+  .arrow-c { display: flex; align-items: center; color: var(--gold); }
+  .arrow-c svg { width: 22px; height: 22px; }
+  @media (max-width: 760px) { .chain-row { flex-direction: column; align-items: center; } .node { width: 100%; max-width: 320px; } .arrow-c { transform: rotate(90deg); } }
 
   /* SECTIONS */
-  .section-pad { padding: clamp(64px, 9vw, 120px) 0; }
-  .section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(44px, 6vw, 68px); }
-  .section-head h2 { font-size: clamp(30px, 4.4vw, 50px); margin-bottom: 18px; }
+  .section-pad { padding: clamp(60px, 8vw, 112px) 0; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(40px, 6vw, 62px); }
+  .section-head h2 { font-size: clamp(30px, 4.4vw, 48px); margin-bottom: 18px; }
   .section-head p { font-size: 17px; color: var(--muted); line-height: 1.7; }
   .alt-bg { background: var(--panel-2); border-top: 1px solid var(--hair-soft); border-bottom: 1px solid var(--hair-soft); }
-  .lead-line { text-align: center; font-size: clamp(17px, 1.8vw, 20px); color: var(--cream); max-width: 760px; margin: clamp(36px,5vw,52px) auto 0; line-height: 1.6; font-weight: 600; }
-  .lead-line .g { color: var(--gold-light); }
 
-  /* PROBLEM */
-  .prob-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; max-width: 980px; margin: 0 auto; }
-  .prob { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: 24px 26px; display: flex; gap: 15px; align-items: flex-start; }
-  .prob .x { flex-shrink: 0; width: 34px; height: 34px; border-radius: 9px; background: rgba(201,169,97,0.12); color: var(--gold); display: flex; align-items: center; justify-content: center; }
-  .prob p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+  /* OFFER */
+  .offer-panel { max-width: 960px; margin: 0 auto; background: var(--panel); border: 1px solid var(--hair); border-radius: 20px; padding: clamp(30px, 5vw, 56px); }
+  .offer-panel h2 { font-size: clamp(26px, 3.6vw, 42px); text-align: center; margin-bottom: 10px; }
+  .offer-sub { text-align: center; color: var(--muted); font-size: 16px; margin-bottom: 36px; }
+  .offer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-bottom: 34px; }
+  .offer-col h3 { font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .offer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+  .offer-col li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--muted); line-height: 1.5; }
+  .offer-col li svg { flex-shrink: 0; margin-top: 3px; }
+  .offer-foot { text-align: center; border-top: 1px solid var(--hair-soft); padding-top: 28px; }
+  .offer-foot .promise { font-size: 17px; font-weight: 700; color: var(--cream); margin-bottom: 6px; }
+  .offer-foot .microtrust { font-size: 14px; color: var(--muted-2); margin-bottom: 24px; }
 
-  /* CHAIN */
-  .trigger { max-width: 620px; margin: 0 auto clamp(44px,6vw,60px); text-align: center; }
-  .trigger .box { border: 1px dashed var(--gold); border-radius: 12px; padding: 22px 26px; background: rgba(201,169,97,0.06); font-size: clamp(18px,2.4vw,24px); font-weight: 700; color: var(--gold-light); font-style: italic; }
-  .flow { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+  /* HOW IT WORKS */
+  .flow { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; }
   .flow-step { display: flex; gap: 20px; align-items: flex-start; position: relative; padding-bottom: 30px; }
   .flow-step:last-child { padding-bottom: 0; }
-  .flow-step::before { content: ""; position: absolute; left: 21px; top: 44px; bottom: -2px; width: 2px; background: linear-gradient(var(--gold), var(--hair-soft)); }
+  .flow-step::before { content: ""; position: absolute; left: 21px; top: 46px; bottom: -2px; width: 2px; background: linear-gradient(var(--gold), var(--hair-soft)); }
   .flow-step:last-child::before { display: none; }
   .flow-node { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--panel); border: 1.5px solid var(--gold); color: var(--gold-light); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; z-index: 1; }
   .flow-body { padding-top: 8px; }
-  .flow-body .who { font-size: 17px; font-weight: 700; color: var(--cream); }
+  .flow-body .who { font-size: 18px; font-weight: 800; color: var(--cream); }
   .flow-body p { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: 4px; }
 
-  /* AGENTS (detailed) */
-  .agent-block { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: clamp(28px, 4vw, 46px); margin-bottom: 20px; }
-  .agent-block:last-child { margin-bottom: 0; }
-  .agent-top { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 8px; }
-  .agent-top .monogram { width: 60px; height: 60px; flex-shrink: 0; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--gold-light); font-family: Georgia, 'Times New Roman', serif; }
-  .agent-top .name { font-size: clamp(24px, 3vw, 32px); font-weight: 800; }
-  .agent-top .role { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 4px; }
-  .agent-block > .intro { font-size: 16px; color: var(--muted); line-height: 1.7; margin: 14px 0 22px; max-width: 760px; }
-  .agent-sub { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-light); font-weight: 700; margin: 22px 0 14px; }
-  .feat-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px 26px; }
-  .feat-list li { display: flex; align-items: flex-start; gap: 11px; font-size: 15px; color: var(--muted); line-height: 1.55; }
-  .feat-list li b { color: var(--cream); font-weight: 700; }
-  .feat-list li svg { flex-shrink: 0; margin-top: 3px; }
-  .voice { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--hair-soft); font-size: 15px; color: var(--muted-2); font-style: italic; }
-  .voice b { color: var(--gold-light); font-style: normal; font-weight: 700; }
-  .lane-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--gold); background: rgba(201,169,97,0.1); border: 1px solid var(--hair); padding: 5px 12px; border-radius: 999px; margin-bottom: 14px; }
+  /* AGENTS */
+  .cards3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
+  .agent-card { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: clamp(26px, 3vw, 36px); display: flex; flex-direction: column; gap: 16px; transition: transform 0.2s ease, border-color 0.2s ease; }
+  .agent-card:hover { transform: translateY(-4px); border-color: rgba(201, 169, 97, 0.4); }
+  .agent-card .top { display: flex; align-items: center; gap: 15px; }
+  .agent-card .monogram { width: 54px; height: 54px; flex-shrink: 0; border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 23px; color: var(--gold-light); font-family: Georgia, 'Times New Roman', serif; }
+  .agent-card .name { font-size: 21px; font-weight: 800; }
+  .agent-card .role { font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 3px; }
+  .agent-card .lbl { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2); font-weight: 700; }
+  .agent-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .agent-card li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--muted); line-height: 1.45; }
+  .agent-card li svg { flex-shrink: 0; margin-top: 3px; }
 
-  /* QA */
-  .qa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; max-width: 980px; margin: 0 auto; }
-  .qa-item { display: flex; gap: 14px; align-items: flex-start; background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 18px 20px; }
-  .qa-item .qn { flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--grad-gold); color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; }
-  .qa-item p { font-size: 15px; color: var(--muted); line-height: 1.55; }
+  /* SAMPLE AUDIT */
+  .audit-sample { max-width: 720px; margin: 0 auto; background: var(--panel); border: 1px solid var(--hair); border-radius: 18px; overflow: hidden; }
+  .audit-sample .as-head { padding: 22px 26px; border-bottom: 1px solid var(--hair-soft); display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: linear-gradient(180deg, #143a2c, var(--panel)); }
+  .audit-sample .as-head .t { font-size: 18px; font-weight: 800; }
+  .audit-sample .as-head .t span { color: var(--gold-light); }
+  .audit-sample .as-head .badge { font-size: 12px; font-weight: 700; color: var(--bg); background: var(--grad-gold); padding: 6px 14px; border-radius: 999px; }
+  .scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; background: var(--hair-soft); }
+  .score { background: var(--panel); padding: 20px; text-align: center; }
+  .score .v { font-size: 30px; font-weight: 800; color: var(--gold-light); }
+  .score .v small { font-size: 15px; color: var(--muted-2); }
+  .score .k { font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .as-body { padding: 24px 26px; display: flex; flex-direction: column; gap: 16px; }
+  .as-row { }
+  .as-row .k { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 5px; }
+  .as-row .before { font-size: 14.5px; color: var(--muted-2); text-decoration: line-through; }
+  .as-row .after { font-size: 15.5px; color: var(--cream); font-weight: 600; }
+  .as-row p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+  .as-note { padding: 16px 26px 24px; font-size: 13px; color: var(--muted-2); text-align: center; }
 
-  /* THE LOOK */
-  .look-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 40px; }
-  .look-card { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: 26px 28px; }
-  .look-card .lk { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 10px; }
-  .look-card p { font-size: 15px; color: var(--muted); line-height: 1.65; }
-  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; max-width: 820px; margin: 0 auto; }
-  .swatch { border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; }
-  .swatch .chip { height: 70px; }
-  .swatch .meta { padding: 12px 14px; }
-  .swatch .meta .hx { font-size: 14px; font-weight: 700; color: var(--cream); }
-  .swatch .meta .nm { font-size: 12px; color: var(--muted-2); margin-top: 2px; }
+  /* SERVICES */
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .svc { background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: 26px 28px; }
+  .svc .ic { width: 44px; height: 44px; border-radius: 11px; background: rgba(201,169,97,0.12); color: var(--gold-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .svc h3 { font-size: 18px; margin-bottom: 8px; }
+  .svc p { font-size: 14.5px; color: var(--muted); line-height: 1.6; }
+  .svc .tagfree { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: var(--bg); background: var(--grad-gold); padding: 4px 10px; border-radius: 999px; margin-top: 12px; }
 
-  /* CAMERA */
-  .cam-list { list-style: none; margin: 0 auto clamp(32px,4vw,44px); padding: 0; max-width: 820px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 12px 26px; }
-  .cam-list li { display: flex; gap: 11px; align-items: flex-start; font-size: 15px; color: var(--muted); line-height: 1.55; }
-  .cam-list li svg { flex-shrink: 0; margin-top: 3px; }
-  .table-scroll { overflow-x: auto; max-width: 820px; margin: 0 auto; border: 1px solid var(--hair); border-radius: var(--radius); }
-  table.cam { width: 100%; border-collapse: collapse; min-width: 520px; }
-  table.cam th, table.cam td { text-align: left; padding: 15px 20px; font-size: 14.5px; border-bottom: 1px solid var(--hair-soft); }
-  table.cam th { background: var(--panel); color: var(--gold-light); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 12px; }
-  table.cam td:first-child { color: var(--cream); font-weight: 600; white-space: nowrap; }
-  table.cam td { color: var(--muted); }
-  table.cam tr:last-child td { border-bottom: none; }
-  table.cam tbody tr:nth-child(odd) td { background: rgba(16,46,36,0.4); }
-
-  /* PRICING */
-  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; max-width: 860px; margin: 0 auto; }
-  .price-card { position: relative; background: var(--panel); border: 1px solid var(--hair); border-radius: var(--radius); padding: clamp(30px, 3.5vw, 42px); display: flex; flex-direction: column; gap: 20px; transition: transform 0.2s ease, border-color 0.2s ease; }
-  .price-card:hover { transform: translateY(-4px); }
-  .price-card.featured { border-color: var(--gold); background: linear-gradient(180deg, #143a2c, var(--panel)); }
-  .price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--grad-gold); color: var(--bg); font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; white-space: nowrap; }
-  .price-card .plan-name { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
-  .price-card .price { display: flex; align-items: baseline; gap: 6px; }
-  .price-card .price .amt { font-size: clamp(42px, 6vw, 54px); font-weight: 800; letter-spacing: -0.03em; }
-  .price-card .price .per { font-size: 15px; color: var(--muted-2); font-weight: 500; }
-  .price-card .plan-tagline { font-size: 15px; color: var(--muted); line-height: 1.6; margin-top: -6px; }
-  .price-card ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
-  .price-card li { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; color: var(--cream); line-height: 1.5; }
-  .price-card li svg { flex-shrink: 0; margin-top: 2px; }
-  .price-card li.plus { color: var(--gold-light); font-weight: 700; }
-  .price-card .btn { width: 100%; }
-  .pricing-note { text-align: center; font-size: 14.5px; color: var(--muted); margin-top: 30px; max-width: 620px; margin-left: auto; margin-right: auto; }
+  /* VISION */
+  .vision-diff { max-width: 820px; margin: 0 auto 48px; text-align: center; }
+  .vision-diff p { font-size: clamp(17px, 2vw, 21px); color: var(--cream); line-height: 1.6; font-weight: 600; }
+  .vision-diff p .g { color: var(--gold-light); }
+  .loop { max-width: 720px; margin: 0 auto 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .loop-item { display: flex; gap: 13px; align-items: flex-start; background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 16px 18px; }
+  .loop-item .n { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--grad-gold); color: var(--bg); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+  .loop-item p { font-size: 14.5px; color: var(--muted); line-height: 1.5; }
+  .loop-item p b { color: var(--cream); }
+  .road-sub { text-align: center; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 22px; }
+  .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 44px; }
+  .pillar { background: var(--panel-2); border: 1px dashed var(--hair); border-radius: 12px; padding: 22px 24px; }
+  .pillar h4 { font-size: 16px; margin-bottom: 7px; color: var(--cream); }
+  .pillar p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+  .future-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .future { background: var(--panel-2); border: 1px dashed var(--hair); border-radius: 12px; padding: 18px 20px; }
+  .future .nm { font-size: 16px; font-weight: 800; color: var(--gold-light); }
+  .future .rl { font-size: 12px; color: var(--muted-2); text-transform: uppercase; letter-spacing: 0.06em; margin: 3px 0 8px; }
+  .future p { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .roadmap-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); background: rgba(201,169,97,0.1); border: 1px solid var(--hair); padding: 7px 16px; border-radius: 999px; }
 
   /* FOUNDER */
   .founder { max-width: 800px; margin: 0 auto; }
   .founder p { font-size: 16.5px; color: var(--muted); line-height: 1.8; margin-bottom: 18px; }
   .founder p b { color: var(--cream); font-weight: 700; }
-  .pull-quote { margin: 36px 0 0; padding: 28px 32px; border-left: 3px solid var(--gold); background: var(--panel); border-radius: 0 12px 12px 0; }
+  .pull-quote { margin: 34px 0 0; padding: 28px 32px; border-left: 3px solid var(--gold); background: var(--panel); border-radius: 0 12px 12px 0; }
   .pull-quote .q { font-size: clamp(19px, 2.4vw, 24px); font-weight: 700; color: var(--cream); line-height: 1.45; font-style: italic; }
   .pull-quote .a { font-size: 14px; color: var(--gold-light); margin-top: 12px; font-weight: 600; }
 
@@ -213,12 +198,45 @@
   .chip-item { display: inline-flex; align-items: center; gap: 9px; font-size: 15px; color: var(--cream); background: var(--panel); border: 1px solid var(--hair); border-radius: 999px; padding: 12px 20px; }
   .chip-item svg { color: var(--gold); flex-shrink: 0; }
 
+  /* AUDIT FORM */
+  .form-wrap { max-width: 760px; margin: 0 auto; }
+  .form-card { background: var(--panel); border: 1px solid var(--hair); border-radius: 20px; padding: clamp(26px, 4vw, 46px); }
+  .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 20px; }
+  .field { display: flex; flex-direction: column; gap: 7px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label { font-size: 13.5px; font-weight: 600; color: var(--cream); }
+  .field label .req { color: var(--gold); }
+  .field input, .field select, .field textarea { font-family: inherit; font-size: 15px; color: var(--cream); background: var(--panel-2); border: 1px solid var(--hair); border-radius: 10px; padding: 13px 14px; transition: border-color 0.2s ease, box-shadow 0.2s ease; width: 100%; }
+  .field textarea { resize: vertical; min-height: 90px; }
+  .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23c9a961' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(246,241,230,0.35); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,169,97,0.15); }
+  .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--err); box-shadow: 0 0 0 3px rgba(240,165,143,0.12); }
+  .field .err { font-size: 12.5px; color: var(--err); display: none; }
+  .field.invalid .err { display: block; }
+  .consent { grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 12px; background: var(--panel-2); border: 1px solid var(--hair); border-radius: 10px; padding: 15px 16px; }
+  .consent.invalid { border-color: var(--err); }
+  .consent input { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; accent-color: var(--gold); cursor: pointer; }
+  .consent label { font-size: 14px; color: var(--muted); line-height: 1.5; cursor: pointer; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .form-actions { grid-column: 1 / -1; margin-top: 6px; }
+  .form-actions .btn { width: 100%; }
+  .form-status { grid-column: 1 / -1; font-size: 14.5px; border-radius: 10px; padding: 14px 16px; display: none; line-height: 1.55; }
+  .form-status.show { display: block; }
+  .form-status.error { display: block; background: rgba(240,165,143,0.1); border: 1px solid rgba(240,165,143,0.4); color: var(--err); }
+  .form-fallback { text-align: center; font-size: 13.5px; color: var(--muted-2); margin-top: 18px; }
+  .form-success { text-align: center; padding: clamp(30px, 5vw, 50px) 20px; }
+  .form-success .ok-ic { width: 64px; height: 64px; margin: 0 auto 20px; border-radius: 50%; background: rgba(134,224,176,0.12); border: 1px solid rgba(134,224,176,0.4); display: flex; align-items: center; justify-content: center; color: var(--ok); }
+  .form-success h3 { font-size: 24px; margin-bottom: 12px; }
+  .form-success p { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 440px; margin: 0 auto; }
+  @media (max-width: 620px) { .form-grid { grid-template-columns: 1fr; } }
+
   /* FAQ */
   .faq { max-width: 800px; margin: 0 auto; }
   .faq details { border: 1px solid var(--hair); border-radius: 12px; background: var(--panel); margin-bottom: 12px; overflow: hidden; }
   .faq summary { list-style: none; cursor: pointer; padding: 20px 24px; font-size: 16.5px; font-weight: 700; color: var(--cream); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary .ic { flex-shrink: 0; width: 22px; height: 22px; position: relative; transition: transform 0.25s ease; }
+  .faq summary .ic { flex-shrink: 0; width: 22px; height: 22px; position: relative; }
   .faq summary .ic::before, .faq summary .ic::after { content: ""; position: absolute; background: var(--gold); border-radius: 2px; }
   .faq summary .ic::before { top: 10px; left: 3px; right: 3px; height: 2px; }
   .faq summary .ic::after { left: 10px; top: 3px; bottom: 3px; width: 2px; transition: opacity 0.25s ease; }
@@ -231,7 +249,7 @@
   .cta-panel { max-width: var(--maxw); margin: 0 auto; padding: clamp(56px, 8vw, 100px) clamp(24px, 5vw, 60px); text-align: center; border: 1px solid rgba(201, 169, 97, 0.28); border-radius: 22px; position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 0%, #1a4433, #0a2018 72%); }
   .cta-panel::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 120%, rgba(201, 169, 97, 0.18), transparent 60%); }
   .cta-panel .inner { position: relative; max-width: 640px; margin: 0 auto; }
-  .cta-panel h2 { font-size: clamp(30px, 5vw, 54px); margin-bottom: 18px; }
+  .cta-panel h2 { font-size: clamp(30px, 5vw, 52px); margin-bottom: 18px; }
   .cta-panel p { font-size: 16.5px; color: var(--muted); margin-bottom: 30px; line-height: 1.7; }
   .cta-panel .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
   .micro { font-size: 13.5px; color: var(--muted-2); display: inline-flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
@@ -240,31 +258,10 @@
   /* FOOTER */
   footer { padding: clamp(44px, 6vw, 64px) 0 clamp(28px, 4vw, 36px); margin-top: clamp(56px, 8vw, 88px); border-top: 1px solid var(--hair-soft); }
   .footer-inner { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; justify-content: space-between; }
-  .footer-inner .copy { font-size: 13px; color: var(--muted-2); max-width: 440px; }
+  .footer-inner .copy { font-size: 13px; color: var(--muted-2); max-width: 460px; }
   .footer-links { display: flex; gap: 22px; align-items: center; }
   .footer-links a { color: rgba(246, 241, 230, 0.6); font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; gap: 7px; }
   .footer-links a:hover { color: var(--gold-light); }
-
-  /* MODAL */
-  .modal-overlay { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(6, 20, 15, 0.72); backdrop-filter: blur(6px); }
-  .modal-overlay.open { display: flex; animation: fade 0.2s ease; }
-  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
-  .modal { background: var(--panel); border: 1px solid var(--hair); border-radius: 20px; max-width: 440px; width: 100%; padding: clamp(28px, 5vw, 40px); position: relative; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5); animation: pop 0.25s ease; }
-  @keyframes pop { from { transform: translateY(12px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
-  .modal-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: rgba(246, 241, 230, 0.06); border: 1px solid var(--hair-soft); color: var(--cream); cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-  .modal-close:hover { background: rgba(246, 241, 230, 0.12); color: var(--gold-light); }
-  .modal .eyebrow { text-align: left; }
-  .modal h3 { font-size: 26px; margin-bottom: 10px; }
-  .modal .lead { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
-  a.contact-row { display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 12px; border: 1px solid var(--hair); background: var(--panel-2); margin-bottom: 12px; transition: 0.2s; text-decoration: none; }
-  a.contact-row:hover { border-color: var(--gold); }
-  .contact-row .ci { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; background: rgba(201, 169, 97, 0.14); display: flex; align-items: center; justify-content: center; color: var(--gold-light); }
-  .contact-row .ct { flex-grow: 1; }
-  .contact-row .ct .k { font-size: 12px; color: var(--muted-2); letter-spacing: 0.06em; text-transform: uppercase; }
-  .contact-row .ct .v { font-size: 15.5px; font-weight: 600; color: var(--cream); word-break: break-word; }
-  .contact-row .arrow { color: var(--muted-2); transition: 0.2s; }
-  .contact-row:hover .arrow { color: var(--gold-light); transform: translateX(3px); }
-  .modal-foot { font-size: 13px; color: var(--muted-2); text-align: center; margin-top: 18px; }
 </style>
 </head>
 <body>
@@ -275,11 +272,12 @@
       <a href="#top" class="brand" style="color:var(--cream);"><span class="mark">ن</span> Nur AI</a>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <div class="nav-links" id="navLinks">
-        <a href="#chain" class="link">How it works</a>
-        <a href="#agents" class="link">Agents</a>
-        <a href="#pricing" class="link">Pricing</a>
+        <a href="#how" class="link">How It Works</a>
+        <a href="#agents" class="link">The Agents</a>
+        <a href="#sample" class="link">Sample Audit</a>
+        <a href="#services" class="link">Services</a>
         <a href="#faq" class="link">FAQ</a>
-        <a href="#" class="btn btn-gold" data-open-modal>Start for $30/mo</a>
+        <a href="#audit" class="btn btn-gold">Get Free Audit</a>
       </div>
     </div>
   </nav>
@@ -288,72 +286,98 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-content wrap">
-      <img class="hero-logo" src="logo.png" alt="Nur AI">
-      <div class="tag"><span class="rule"></span> The AI content studio for Muslim creators <span class="rule"></span></div>
-      <h1>Your full cinematic content team.<br><span class="accent">Three agents. One chain.</span></h1>
-      <p class="sub">Nur AI plans your content, scouts your locations, writes your brand pitches, matches your nasheed and QAs the final cut — before it ever goes live. 100% halal, start to finish.</p>
+      <img class="hero-logo" src="logo.png" alt="Nur AI Studio">
+      <div class="tag"><span class="rule"></span> The AI content studio for Muslim creators and Islamic brands <span class="rule"></span></div>
+      <h1>Better Ideas. Stronger Hooks.<br><span class="accent">Smarter Content Decisions.</span></h1>
+      <p class="sub">Nur AI combines content strategy, trend research, and video analysis to help Muslim creators and Islamic brands produce stronger short-form content — without compromising their values.</p>
       <div class="cta-row">
-        <a href="#" class="btn btn-gold" data-open-modal>Start for $30/month</a>
-        <a href="#chain" class="btn btn-ghost">See how the chain works</a>
+        <a href="#audit" class="btn btn-gold">Get My Free Video Audit</a>
+        <a href="#how" class="btn btn-ghost">See the Workflow</a>
       </div>
       <div class="trust">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 7.1-.9z" fill="currentColor"/></svg>
-        Built by the system that grew Baxx Thobes to 35,000 followers.
+        No credit card. One video. Clear feedback within 24–48 hours.
       </div>
     </div>
   </header>
 
-  <!-- SOCIAL PROOF -->
-  <section class="proof">
-    <div class="wrap" style="padding-top: clamp(36px,5vw,52px); padding-bottom: clamp(36px,5vw,52px);">
-      <div class="proof-grid">
-        <div class="proof-item"><div class="n">35,000</div><div class="l">followers grown on Baxx Thobes</div></div>
-        <div class="proof-item"><div class="n">Multiple</div><div class="l">brand deals closed</div></div>
-        <div class="proof-item"><div class="n">Multiple</div><div class="l">viral videos produced</div></div>
-        <div class="proof-item"><div class="n">100%</div><div class="l">halal — vocal-only nasheeds, no haram content, ever</div></div>
+  <!-- SYSTEM DIAGRAM -->
+  <section class="system">
+    <div class="wrap" style="padding-top: clamp(40px,5vw,56px); padding-bottom: clamp(40px,5vw,56px);">
+      <div class="head">
+        <div class="k">One system, not three chatbots</div>
+        <p>Every video moves through the same chain — in the same order, every time.</p>
       </div>
-      <p class="proof-cap">Not theory. Nur AI is the exact system co-founder Bilal .Bax used to build his own brand.</p>
+      <div class="chain-row">
+        <div class="node you"><div class="t">You</div><div class="s">Your video</div></div>
+        <div class="arrow-c"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="node hub"><div class="t">Nur AI</div><div class="s">The studio</div></div>
+        <div class="arrow-c"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="node"><div class="t">Maryam</div><div class="s">Content Strategy</div></div>
+        <div class="arrow-c"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="node"><div class="t">Aisha</div><div class="s">Research</div></div>
+        <div class="arrow-c"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="node"><div class="t">Ahmad</div><div class="s">Quality Control</div></div>
+        <div class="arrow-c"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="node final"><div class="t">Your Audit</div><div class="s">Improvement plan</div></div>
+      </div>
     </div>
   </section>
 
-  <!-- PROBLEM -->
+  <!-- OFFER -->
   <section class="section-pad">
     <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">The Problem</div>
-        <h2>Most Muslim creators are doing five jobs at once</h2>
-        <p>You are the strategist, the location scout, the camera operator, the editor, the outreach person and the one deciding whether the audio is even permissible. Something always slips.</p>
+      <div class="offer-panel">
+        <h2>Send Us One Video.<br>We'll Show You How to Improve It.</h2>
+        <p class="offer-sub">A real audit of your content — free, and built to make your next video stronger.</p>
+        <div class="offer-cols">
+          <div class="offer-col">
+            <h3>You can submit</h3>
+            <ul>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> An Instagram Reel</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A TikTok</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A YouTube Short</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A public video URL</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A shareable Google Drive or Dropbox link</li>
+            </ul>
+          </div>
+          <div class="offer-col">
+            <h3>You'll receive</h3>
+            <ul>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A rewritten hook</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A review of the first three seconds</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Pacing and retention feedback</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A stronger caption</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A publishing recommendation</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A practical content scorecard</li>
+              <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Recommended next steps</li>
+            </ul>
+          </div>
+        </div>
+        <div class="offer-foot">
+          <div class="promise">Receive your free audit within 24–48 hours.</div>
+          <div class="microtrust">No credit card. One video. Clear, actionable feedback.</div>
+          <a href="#audit" class="btn btn-gold">Get My Free Video Audit</a>
+        </div>
       </div>
-      <div class="prob-list">
-        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>The idea is good, but the hook takes 8 seconds to arrive — nobody stays.</p></div>
-        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>You get to the location at the wrong hour and the light is gone.</p></div>
-        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>The footage is beautiful and the audio is a trending pop song you can't post.</p></div>
-        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>The brand emails sit unanswered because you don't know what to charge.</p></div>
-        <div class="prob"><span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><p>You post at a time your audience isn't awake.</p></div>
-      </div>
-      <p class="lead-line">Nur AI takes all five off your plate. <span class="g">You shoot. The agents handle the rest.</span></p>
     </div>
   </section>
 
-  <!-- CHAIN -->
-  <section id="chain" class="alt-bg section-pad">
+  <!-- HOW IT WORKS -->
+  <section id="how" class="alt-bg section-pad">
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">How It Works</div>
-        <h2>One trigger. Three agents. Nothing ships unchecked.</h2>
-        <p>You only ever talk to Maryam. She sets the strategy and passes the work down the chain. It runs in the same order every time — never skipped, never reordered.</p>
-      </div>
-      <div class="trigger">
-        <div class="box">"Maryam, I need you to work on this…"</div>
+        <h2>From one video to a clear plan</h2>
+        <p>You send one video. The chain reviews it, researches the angle, and builds a practical improvement plan.</p>
       </div>
       <div class="flow">
-        <div class="flow-step"><div class="flow-node">You</div><div class="flow-body"><div class="who">Send the task &amp; footage context</div><p>You hand Maryam the job and what you've shot.</p></div></div>
-        <div class="flow-step"><div class="flow-node">م</div><div class="flow-body"><div class="who">Maryam — Strategy</div><p>Sets the offer, the angle, the hook, the shot list, the camera settings and the edit direction.</p></div></div>
-        <div class="flow-step"><div class="flow-node">ع</div><div class="flow-body"><div class="who">Aisha — Research &amp; Outreach</div><p>Researches the location, light windows, permits and logistics — and handles brand outreach.</p></div></div>
-        <div class="flow-step"><div class="flow-node">أ</div><div class="flow-body"><div class="who">Ahmad — Audio &amp; Polish</div><p>Matches the nasheed, writes the captions, sets the post time and runs the final QA scan.</p></div></div>
-        <div class="flow-step"><div class="flow-node">✓</div><div class="flow-body"><div class="who">Back to Maryam — Final approval</div><p>Only then is it cleared to post.</p></div></div>
+        <div class="flow-step"><div class="flow-node">1</div><div class="flow-body"><div class="who">Submit your video</div><p>Send one Reel, TikTok, YouTube Short, or public video link.</p></div></div>
+        <div class="flow-step"><div class="flow-node">2</div><div class="flow-body"><div class="who">Aisha researches the angle</div><p>She reviews the niche, audience, competitors, positioning, and the content formats working right now.</p></div></div>
+        <div class="flow-step"><div class="flow-node">3</div><div class="flow-body"><div class="who">Ahmad reviews the video</div><p>He examines the hook, first three seconds, structure, pacing, clarity, retention risks, caption, and publishing readiness.</p></div></div>
+        <div class="flow-step"><div class="flow-node">4</div><div class="flow-body"><div class="who">Maryam builds the improvement plan</div><p>She rewrites the hook, clarifies the message, and creates a practical recommendation for your next move.</p></div></div>
+        <div class="flow-step"><div class="flow-node">5</div><div class="flow-body"><div class="who">Receive your audit</div><p>Your full audit is delivered within 24–48 hours — clear, honest, and actionable.</p></div></div>
       </div>
-      <p class="lead-line">Every deliverable is signed by the agent who wrote it, <span class="g">so you always know who did what.</span></p>
     </div>
   </section>
 
@@ -361,218 +385,184 @@
   <section id="agents" class="section-pad">
     <div class="wrap">
       <div class="section-head">
-        <div class="eyebrow">Meet the Agents</div>
+        <div class="eyebrow">The Agents</div>
         <h2>Three specialists. One standard.</h2>
+        <p>Each agent owns a lane and delivers real outputs — no fluff, no guesswork.</p>
       </div>
-
-      <!-- Maryam -->
-      <div class="agent-block">
-        <div class="agent-top">
-          <span class="monogram">م</span>
-          <div><div class="name">Maryam</div><div class="role">Lead Orchestrator — the only agent you talk to</div></div>
+      <div class="cards3">
+        <div class="agent-card">
+          <div class="top"><span class="monogram">م</span><div><div class="name">Maryam</div><div class="role">Chief Creative Officer</div></div></div>
+          <div class="lbl">Strategy & creative direction — delivers</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Brand positioning & content pillars</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Content ideas & hook rewrites</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Scripts, shot direction & CTAs</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Content calendars</li>
+          </ul>
         </div>
-        <p class="intro"><b style="color:var(--cream)">Strategy, hooks, shot lists, compliance.</b> Maryam decides what your content is actually selling and to whom, then builds the plan around it.</p>
-        <div class="agent-sub">What she does</div>
-        <ul class="feat-list">
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Content strategy</b> on the Alex Hormozi $100M Leads playbook — value equation, Grand Slam Offers, Core Four, Hook → Retain → Reward.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Hooks written literally</b> — the exact on-screen text, landing inside 3 seconds.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Shot lists</b> — drone moves, gimbal moves, transitions and the light window for each shot.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>DJI camera settings</b> — resolution, frame rate, shutter, ISO, white balance and ND, scene by scene.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>CapCut edit direction</b> — grading, cut pacing, text timing, trending fonts, and beginner teaching if you're new.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Trend Scout</b> — finds viral Islamic and halal trends worth entering.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Compliance check</b> — blocks anything haram before it reaches the edit.</span></li>
-        </ul>
-        <p class="voice"><b>Her voice:</b> Direct, high-conviction, zero fluff. Leads with the offer and the hook.</p>
-      </div>
-
-      <!-- Aisha -->
-      <div class="agent-block">
-        <div class="agent-top">
-          <span class="monogram">ع</span>
-          <div><div class="name">Aisha</div><div class="role">Travel Guide & Brand Outreach</div></div>
+        <div class="agent-card">
+          <div class="top"><span class="monogram">ع</span><div><div class="name">Aisha</div><div class="role">Head of Research</div></div></div>
+          <div class="lbl">Research & opportunities — delivers</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Competitor & trend research</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Audience angles & content gaps</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Location research</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Outreach drafts</li>
+          </ul>
         </div>
-        <p class="intro"><b style="color:var(--cream)">Locations, logistics, permits, and the emails that turn into deals.</b> Aisha handles everything on the ground and everything in your inbox.</p>
-        <div class="lane-tag">Lane 1 — Location research (all plans)</div>
-        <ul class="feat-list">
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Why a location shoots well — scale, texture, leading lines, architecture, water.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Light windows — sunrise, golden and blue hour for your exact date and latitude, plus light direction.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Access &amp; permits — drone legality, entry fees, opening hours, tripod/gimbal rules, guide requirements.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Crowd timing — the hour the frame is actually empty.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Muslim-traveller practicalities — nearest masjid, prayer timings, halal food, on-site prayer space.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Site-specific tips — where to stand, what to avoid, wind and dust warnings, plus a backup location.</span></li>
-        </ul>
-        <div class="lane-tag" style="margin-top:26px;">Lane 2 — Brand outreach (Business plan)</div>
-        <ul class="feat-list">
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Builds a qualified prospect list — modest fashion, halal travel/umrah, Muslim-friendly hotels & airlines, Islamic finance & apps, halal food, education platforms.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Writes cold outreach that leads with value — a specific observation, the gap it's costing them, one free idea, one soft ask. Under 120 words.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Triages inbound brand emails into four buckets: real budget & good fit, real budget & bad fit, no budget, and unclear.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Clarifies usage rights and exclusivity before any number is quoted — an organic rate is not an ad-usage rate.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Drafts the reply in full for you to send. She never commits you to a price, date or contract term.</span></li>
-        </ul>
-        <p class="voice"><b>Her voice:</b> Warm but efficient. Street names, times, prices and rate ranges — not vibes.</p>
-      </div>
-
-      <!-- Ahmad -->
-      <div class="agent-block">
-        <div class="agent-top">
-          <span class="monogram">أ</span>
-          <div><div class="name">Ahmad</div><div class="role">Audio & Final Polish — nothing ships without his pass</div></div>
+        <div class="agent-card">
+          <div class="top"><span class="monogram">أ</span><div><div class="name">Ahmad</div><div class="role">Creative Director</div></div></div>
+          <div class="lbl">Video review & quality control — delivers</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Hook score & first-3-seconds review</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Pacing feedback & retention risks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Caption feedback</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Publishing recommendation</li>
+          </ul>
         </div>
-        <p class="intro"><b style="color:var(--cream)">Nasheed matching, captions, thumbnails, post timing, and the QA gate.</b></p>
-        <div class="agent-sub">What he does</div>
-        <ul class="feat-list">
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Nasheed matching</b> — vocal-only, no instrumentation, no trending pop audio. Ever.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Exact cut points &amp; sync maps</b> — the payoff shot hits the biggest vocal moment, never before it.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Captions</b> — three variations each time. Lowercase, poetic, calm. Faith woven naturally, max one emoji.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Hashtags</b> — a small mixed-reach set, never thirty generic tags.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Thumbnails</b> — designed to match the emerald-gold look.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>First 5 seconds</b> — optimises the hook frame by frame.</span></li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Post timing</b> — a specific day and window per platform, reasoned from prayer rhythm and commute patterns (Jummah and post-Isha behave differently).</span></li>
-        </ul>
-        <p class="voice"><b>His voice:</b> Precise, unhurried, exacting. Timecodes, not impressions. He says no when something isn't ready.</p>
       </div>
     </div>
   </section>
 
-  <!-- QA GATE -->
+  <!-- SAMPLE AUDIT -->
+  <section id="sample" class="alt-bg section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Sample Audit</div>
+        <h2>Exactly what you'll receive</h2>
+        <p>Here's a shortened example of a Nur AI video audit — the real thing goes deeper.</p>
+      </div>
+      <div class="audit-sample">
+        <div class="as-head">
+          <div class="t">Video Audit — <span>@yourbrand</span></div>
+          <div class="badge">Overall 6.5 → 8.5</div>
+        </div>
+        <div class="scores">
+          <div class="score"><div class="v">4<small>/10</small></div><div class="k">Hook</div></div>
+          <div class="score"><div class="v">6<small>/10</small></div><div class="k">First 3s</div></div>
+          <div class="score"><div class="v">7<small>/10</small></div><div class="k">Retention</div></div>
+          <div class="score"><div class="v">5<small>/10</small></div><div class="k">Caption</div></div>
+        </div>
+        <div class="as-body">
+          <div class="as-row">
+            <div class="k">Hook rewrite</div>
+            <div class="before">"Here's my trip to Istanbul 🕌"</div>
+            <div class="after">"The one view in Istanbul nobody films at sunrise."</div>
+          </div>
+          <div class="as-row">
+            <div class="k">First 3 seconds</div>
+            <p>The payoff shot arrives at 0:07 — too late. Open on the sunrise reveal and let the establishing wide come second.</p>
+          </div>
+          <div class="as-row">
+            <div class="k">Publishing recommendation</div>
+            <p>Post Friday, the hour after Jummah, when your audience is most active. Add a vocal-only nasheed with the swell landing on the reveal.</p>
+          </div>
+          <div class="as-row">
+            <div class="k">Next step</div>
+            <p>Reshoot the first 2 seconds only — everything else holds. Estimated impact: stronger 3-second retention and a cleaner loop.</p>
+          </div>
+        </div>
+        <div class="as-note">Illustrative example. Your audit is written for your actual video, niche and goals.</div>
+      </div>
+      <div style="text-align:center; margin-top:36px;"><a href="#audit" class="btn btn-gold">Get My Free Video Audit</a></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Services</div>
+        <h2>What the studio does</h2>
+        <p>Nur AI is a content strategy and video-review studio — you keep creative control, we make every video sharper.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></div>
+          <h3>Free Video Audit</h3>
+          <p>Send one video and get a full scorecard — hook, first 3 seconds, pacing, caption and publishing.</p>
+          <span class="tagfree">Free · 24–48h</span>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M4 15l4-4 3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Content Strategy</h3>
+          <p>Positioning, content pillars, hooks and calendars built around your brand and audience.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Trend & Competitor Research</h3>
+          <p>What's working in your niche, where the gaps are, and the angles worth entering.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h10M4 17h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Hook & Script Writing</h3>
+          <p>Literal on-screen hooks and tight scripts designed to land inside the first 3 seconds.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Video Review & QC</h3>
+          <p>Frame-level feedback on pacing, retention, captions and publishing readiness.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h3>Brand Consistency</h3>
+          <p>A single look, voice and standard across every piece — halal-first, always.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION / ROADMAP -->
   <section class="alt-bg section-pad">
     <div class="wrap">
       <div class="section-head">
-        <div class="eyebrow">The Final Scan</div>
-        <h2>Ten checks. Any fail, and it doesn't ship.</h2>
-        <p>Ahmad runs this on every single deliverable and reports pass or fail on each line, with the fix.</p>
+        <span class="roadmap-badge">The Vision · On the roadmap</span>
+        <h2 style="margin-top:20px;">Toward an AI creative operating system</h2>
+        <p>Today Nur AI is a studio service. We're building it into a platform where your whole content operation runs on one connected workflow. Here's where it's headed.</p>
       </div>
-      <div class="qa-grid">
-        <div class="qa-item"><span class="qn">1</span><p>Hook on screen within 3 seconds, written literally.</p></div>
-        <div class="qa-item"><span class="qn">2</span><p>Every shot achievable with your actual kit.</p></div>
-        <div class="qa-item"><span class="qn">3</span><p>Grading matches the emerald-gold look — green shadows, warm gold highlights, deep contrast, anamorphic feel.</p></div>
-        <div class="qa-item"><span class="qn">4</span><p>Text minimal and elegant, timed to vocal swells.</p></div>
-        <div class="qa-item"><span class="qn">5</span><p>Caption poetic and faith-natural, zero sales language.</p></div>
-        <div class="qa-item"><span class="qn">6</span><p>Vocal-only nasheed with a stated cut point and sync map.</p></div>
-        <div class="qa-item"><span class="qn">7</span><p>First and last frame both strong — the last frame is what a viewer sees on loop.</p></div>
-        <div class="qa-item"><span class="qn">8</span><p>Nothing off-brand anywhere in the piece.</p></div>
-        <div class="qa-item"><span class="qn">9</span><p>Brand woven in organically, not bolted on as an ad.</p></div>
-        <div class="qa-item"><span class="qn">10</span><p>Premium feel — would this hold up next to the best cinematic Muslim travel content out there.</p></div>
+      <div class="vision-diff">
+        <p>Most AI tools answer questions. <span class="g">Nur AI runs a workflow</span> — a closed loop that gets smarter with every video.</p>
       </div>
-    </div>
-  </section>
+      <div class="loop">
+        <div class="loop-item"><span class="n">1</span><p><b>Maryam</b> builds the strategy.</p></div>
+        <div class="loop-item"><span class="n">2</span><p><b>Aisha</b> researches competitors and trends.</p></div>
+        <div class="loop-item"><span class="n">3</span><p><b>Ahmad</b> reviews the finished video.</p></div>
+        <div class="loop-item"><span class="n">4</span><p>Everything is stored in your <b>Brand Profile</b>.</p></div>
+        <div class="loop-item"><span class="n">5</span><p><b>Analytics</b> feed back into the next strategy.</p></div>
+      </div>
 
-  <!-- THE LOOK -->
-  <section class="section-pad">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">The Nur AI Look</div>
-        <h2>One aesthetic, enforced end to end</h2>
-        <p>This is the look the product exists to produce. It isn't a filter — it's a standard.</p>
+      <div class="road-sub">Platform pillars we're building</div>
+      <div class="pillars">
+        <div class="pillar"><h4>Brand Memory</h4><p>One persistent Brand Profile — voice, audience, colours, goals — that every agent shares, so you never repeat yourself.</p></div>
+        <div class="pillar"><h4>Real Agent Handoffs</h4><p>Work moves Maryam → Aisha → Ahmad automatically, not three isolated chatbots.</p></div>
+        <div class="pillar"><h4>Project Dashboard</h4><p>Every video becomes a project with status, assets, reviews and history.</p></div>
+        <div class="pillar"><h4>Sample Deliverables</h4><p>Content calendars, trend reports, video scorecards and improvement plans in one place.</p></div>
       </div>
-      <div class="look-grid">
-        <div class="look-card"><div class="lk">Palette</div><p>Deep emerald green shadows, warm gold highlights, cream mid-tones, near-black depths.</p></div>
-        <div class="look-card"><div class="lk">Grade</div><p>D-Log M 10-bit graded to emerald-gold. Shadows pushed green, highlights lifted warm, skin natural. Deep contrast, filmic, anamorphic. Never a stock preset.</p></div>
-        <div class="look-card"><div class="lk">Visuals</div><p>DJI drone and gimbal aesthetic — sweeping establishing shots, smooth reveals, transit transitions, blue hour, nature immersion.</p></div>
-        <div class="look-card"><div class="lk">Typography</div><p>Cormorant Garamond for elegant serif titles, Reem Kufi lowercase for minimal overlays and Arabic accents. Timed to vocal swells, never a beat grid.</p></div>
-        <div class="look-card"><div class="lk">Audio</div><p>Vocal-only nasheeds. No instrumentation. No trending pop audio.</p></div>
-        <div class="look-card"><div class="lk">Copy &amp; Pacing</div><p>Short, poetic, reflective — faith woven naturally, never salesy. Slow cinematic reveals, controlled speed ramps for transitions.</p></div>
-      </div>
-      <div class="swatches">
-        <div class="swatch"><div class="chip" style="background:#0c281f;"></div><div class="meta"><div class="hx">#0c281f</div><div class="nm">Emerald</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#102e24;"></div><div class="meta"><div class="hx">#102e24</div><div class="nm">Panel</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#c9a961;"></div><div class="meta"><div class="hx">#c9a961</div><div class="nm">Gold</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#e3cd8a;"></div><div class="meta"><div class="hx">#e3cd8a</div><div class="nm">Gold light</div></div></div>
-        <div class="swatch"><div class="chip" style="background:#f6f1e6;"></div><div class="meta"><div class="hx">#f6f1e6</div><div class="nm">Cream</div></div></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CAMERA -->
-  <section class="alt-bg section-pad">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Camera Baseline</div>
-        <h2>Settings, not guesses</h2>
-        <p>Nur AI ships exact settings with every shot list. Default baseline is the DJI Osmo Pocket 3 — fixed f/2.0, so exposure is shutter, ISO and ND only. Shooting on something else? Tell Maryam and she adapts the whole list.</p>
+      <div class="road-sub">Future agents joining the team</div>
+      <div class="future-grid">
+        <div class="future"><div class="nm">Noor</div><div class="rl">Brand Partnerships</div><p>Finds sponsorships, writes outreach, tracks negotiations.</p></div>
+        <div class="future"><div class="nm">Adam</div><div class="rl">Sales</div><p>Converts enquiries and handles leads with a simple CRM.</p></div>
+        <div class="future"><div class="nm">Zayd</div><div class="rl">SEO</div><p>Blogs, keywords, website and Google rankings.</p></div>
+        <div class="future"><div class="nm">Fatima</div><div class="rl">Email Marketing</div><p>Campaigns, flows, newsletters and launches.</p></div>
+        <div class="future"><div class="nm">Khalid</div><div class="rl">Analytics</div><p>Explains why videos succeed and predicts what to make next.</p></div>
+        <div class="future"><div class="nm">Omar</div><div class="rl">Automation</div><p>Connects Meta, Google, Notion, Claude, OpenAI, Zapier and n8n.</p></div>
       </div>
-      <ul class="cam-list">
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>4K/60 default, slowed to 40% in CapCut. 4K/120 reserved for peak moments.</span></li>
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>D-Log M 10-bit always — the Normal profile bakes in contrast that kills the grade.</span></li>
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>180° shutter: 1/120 at 60fps, 1/240 at 120fps, 1/50 at 24fps.</span></li>
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Manual everything — WB, ISO and shutter locked per scene, re-locked when the light changes.</span></li>
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Gimbal: Follow for tracking, Tilt Locked for low glides, FPV for whip pans, ActiveTrack solo.</span></li>
-        <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>As light drops: remove ND → drop frame rate → raise ISO, capped at 1600.</span></li>
-      </ul>
-      <div class="table-scroll">
-        <table class="cam">
-          <thead><tr><th>Scene</th><th>Settings</th></tr></thead>
-          <tbody>
-            <tr><td>Bright daylight</td><td>4K/60 · 1/120 · ISO 100 · 5600K · ND16–32</td></tr>
-            <tr><td>Golden hour</td><td>4K/60 · 1/120 · ISO 100–400 · 5600K · ND8</td></tr>
-            <tr><td>Blue hour</td><td>4K/24 · 1/50 · ISO 400–1600 · ~4300K</td></tr>
-            <tr><td>Indoor LED</td><td>4K/60 · 1/120 · ISO 800–1600 · 4300–4800K (drop to 4K/50 at 1/100 if banding)</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing" class="section-pad">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Pricing</div>
-        <h2>Two plans. Cancel anytime.</h2>
-      </div>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="plan-name">Personal</div>
-          <div class="price"><span class="amt">$30</span><span class="per">/ month</span></div>
-          <p class="plan-tagline">For the creator building one brand.</p>
-          <ul>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Full access to all three agents</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Content strategy, offers and hooks</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Shot lists and exact camera settings</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> CapCut edit direction and grading notes</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Location research, light windows and permits</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Nasheed matching with cut points and sync maps</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Captions, hashtags and thumbnails</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Post timing in your audience's timezone</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> The 10-point final scan on every deliverable</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> One brand voice</li>
-          </ul>
-          <a href="#" class="btn btn-ghost" data-open-modal>Start for $30/month</a>
-        </div>
-
-        <div class="price-card featured">
-          <span class="price-badge">Most Popular</span>
-          <div class="plan-name">Business</div>
-          <div class="price"><span class="amt">$60</span><span class="per">/ month</span></div>
-          <p class="plan-tagline">For brands and creators who want deals coming in.</p>
-          <ul>
-            <li class="plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e3cd8a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Everything in Personal, plus:</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Brand outreach — Aisha writes the pitches</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Qualified prospect lists, built for you</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Inbound brand email triage and full drafted replies</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Partnership rate and usage-rights guidance</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Multiple brand profiles</li>
-          </ul>
-          <a href="#" class="btn btn-gold" data-open-modal>Go Business — $60/month</a>
-        </div>
-      </div>
-      <p class="pricing-note">Both plans get all three agents. The Business plan adds the outreach lane that turns content into contracts.</p>
     </div>
   </section>
 
   <!-- FOUNDER -->
-  <section class="alt-bg section-pad">
+  <section class="section-pad">
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">Founder Story</div>
-        <h2>This system built a brand before it became a product</h2>
+        <h2>Built by a creator, for creators</h2>
       </div>
       <div class="founder">
         <p>Nur AI wasn't designed in a boardroom. It was reverse-engineered from what actually worked.</p>
-        <p><b>Bilal Mohammed — Bilal .Bax —</b> built Baxx Thobes the hard way first: filming his own footage, learning the grade, testing hooks, teaching himself which nasheed landed on which cut, and sending cold emails to brands with no idea what to charge.</p>
-        <p>What came out of that was a repeatable chain. Strategy first. Then location and outreach. Then audio, caption and a final check nothing gets past. Same order, every time.</p>
-        <p>Run properly, that chain took Baxx Thobes to <b>35,000 followers</b>, produced multiple viral videos, and landed multiple brand deals — all without a single haram frame or a trending pop song.</p>
-        <p>Nur AI is that chain, turned into software, with Maryam, Aisha and Ahmad running the parts he used to run alone.</p>
+        <p><b>Bilal Mohammed — Bilal .Bax —</b> built Baxx Thobes the hard way first: filming his own footage, learning the grade, testing hooks, teaching himself which nasheed landed on which cut, and reaching out to brands with no idea what to charge.</p>
+        <p>What came out of that was a repeatable chain: research the angle, review the video, then build the plan — same order, every time. Run properly, that approach grew Baxx Thobes to <b>35,000 followers</b>, produced multiple viral videos, and opened real brand conversations — all without a single haram frame or a trending pop song.</p>
+        <p>Nur AI is that studio, offered to other creators — with Maryam, Aisha and Ahmad reviewing your content the way he learned to review his own.</p>
         <div class="pull-quote">
           <div class="q">"I'm not selling you content. I'm giving you the exact team I had to be."</div>
           <div class="a">— Bilal .Bax, Co-founder</div>
@@ -582,7 +572,7 @@
   </section>
 
   <!-- WHO -->
-  <section class="section-pad">
+  <section class="alt-bg section-pad">
     <div class="wrap">
       <div class="section-head">
         <div class="eyebrow">Who It's For</div>
@@ -593,9 +583,95 @@
         <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Modest fashion & thobe brands</span>
         <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Halal travel, umrah & hajj operators</span>
         <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Islamic education platforms & apps</span>
-        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Muslim-friendly hotels, airlines & hospitality</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Muslim-friendly hotels & airlines</span>
         <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Halal food, supplement & finance brands</span>
-        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Any creator who wants premium cinematic output, permissibly</span>
+        <span class="chip-item"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Any creator who wants premium output, permissibly</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIT FORM -->
+  <section id="audit" class="section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Free Video Audit</div>
+        <h2>Get My Free Video Audit</h2>
+        <p>Fill this in and we'll review your video. No credit card — clear, actionable feedback within 24–48 hours.</p>
+      </div>
+      <div class="form-wrap">
+        <div class="form-card" id="formCard">
+          <form id="auditForm" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="f-name">Full name <span class="req">*</span></label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required aria-required="true" placeholder="Your name">
+                <span class="err">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="f-email">Email address <span class="req">*</span></label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" placeholder="you@email.com">
+                <span class="err">Please enter a valid email address.</span>
+              </div>
+              <div class="field">
+                <label for="f-brand">Brand or creator name <span class="req">*</span></label>
+                <input id="f-brand" name="brand" type="text" required aria-required="true" placeholder="e.g. Baxx Thobes">
+                <span class="err">Please enter your brand or creator name.</span>
+              </div>
+              <div class="field">
+                <label for="f-handle">Instagram or TikTok handle <span class="req">*</span></label>
+                <input id="f-handle" name="handle" type="text" required aria-required="true" placeholder="@yourhandle">
+                <span class="err">Please enter your handle.</span>
+              </div>
+              <div class="field full">
+                <label for="f-video">Video link <span class="req">*</span></label>
+                <input id="f-video" name="video" type="url" inputmode="url" required aria-required="true" placeholder="https://instagram.com/reel/... or Drive/Dropbox link">
+                <span class="err">Please enter a valid link starting with http(s)://</span>
+              </div>
+              <div class="field">
+                <label for="f-niche">Niche or industry <span class="req">*</span></label>
+                <input id="f-niche" name="niche" type="text" required aria-required="true" placeholder="e.g. modest fashion, travel">
+                <span class="err">Please enter your niche or industry.</span>
+              </div>
+              <div class="field">
+                <label for="f-goal">Main content goal <span class="req">*</span></label>
+                <select id="f-goal" name="goal" required aria-required="true">
+                  <option value="" disabled selected>Choose one…</option>
+                  <option>Grow my audience</option>
+                  <option>Get brand deals</option>
+                  <option>More views &amp; reach</option>
+                  <option>Better engagement &amp; retention</option>
+                  <option>Launch a product</option>
+                  <option>Other</option>
+                </select>
+                <span class="err">Please choose your main goal.</span>
+              </div>
+              <div class="field full">
+                <label for="f-challenge">Biggest current content challenge <span class="req">*</span></label>
+                <textarea id="f-challenge" name="challenge" required aria-required="true" placeholder="What's holding your content back right now?"></textarea>
+                <span class="err">Please tell us your biggest challenge.</span>
+              </div>
+              <div class="field full">
+                <label for="f-notes">Additional notes <span style="color:var(--muted-2); font-weight:500;">(optional)</span></label>
+                <textarea id="f-notes" name="notes" placeholder="Anything else we should know?"></textarea>
+              </div>
+
+              <!-- honeypot (spam trap) -->
+              <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+
+              <div class="consent" id="consentWrap">
+                <input id="f-consent" name="consent" type="checkbox" required aria-required="true">
+                <label for="f-consent">I agree that Nur AI may contact me regarding my audit and related studio services. <span class="req">*</span></label>
+              </div>
+
+              <div class="form-status error" id="formStatus" role="alert"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-gold" id="submitBtn">Get My Free Video Audit</button>
+              </div>
+            </div>
+          </form>
+          <p class="form-fallback">Prefer email? Send your video to <a href="mailto:bilalm.boost@gmail.com?subject=Free%20Video%20Audit">bilalm.boost@gmail.com</a></p>
+        </div>
       </div>
     </div>
   </section>
@@ -608,14 +684,14 @@
         <h2>Questions, answered</h2>
       </div>
       <div class="faq">
-        <details><summary>Do I need a drone and a gimbal?<span class="ic"></span></summary><div class="ans">No. Nur AI defaults to the DJI Osmo Pocket 3, but tell Maryam what you shoot on — phone included — and every shot list and setting adapts to your kit.</div></details>
-        <details><summary>Is the content really 100% halal?<span class="ic"></span></summary><div class="ans">Yes, and it's enforced twice. Maryam blocks anything haram at the strategy stage, and Ahmad's final scan catches anything that slipped. Audio is vocal-only nasheeds — no instrumentation, no trending pop tracks.</div></details>
-        <details><summary>Do I have to shoot the footage myself?<span class="ic"></span></summary><div class="ans">Yes. Nur AI is your content team, not a production crew. You shoot, the agents handle strategy, research, audio, captions, timing and QA.</div></details>
-        <details><summary>Can I talk to Aisha or Ahmad directly?<span class="ic"></span></summary><div class="ans">You can, but the chain works best when you start with Maryam. She sets the strategy and hands off with the right context.</div></details>
-        <details><summary>What if I only want location research and no brand outreach?<span class="ic"></span></summary><div class="ans">Personal at $30/month covers location research in full. Outreach is the Business feature.</div></details>
-        <details><summary>Can Nur AI teach me CapCut?<span class="ic"></span></summary><div class="ans">Yes. Maryam is a CapCut expert and will teach you from beginner level — fonts, grading, clean visuals and the edits behind the Nur AI look.</div></details>
-        <details><summary>Can I cancel?<span class="ic"></span></summary><div class="ans">Anytime.</div></details>
-        <details><summary>Will more features be added?<span class="ic"></span></summary><div class="ans">Yes — new skills are being added to all three agents continuously, and the system is built so they slot straight in.</div></details>
+        <details><summary>Is the video audit really free?<span class="ic"></span></summary><div class="ans">Yes. Send one video and you'll receive a full audit within 24–48 hours — no credit card, no catch.</div></details>
+        <details><summary>What kind of videos can I submit?<span class="ic"></span></summary><div class="ans">An Instagram Reel, a TikTok, a YouTube Short, a public video URL, or a shareable Google Drive / Dropbox link.</div></details>
+        <details><summary>Do you edit or publish the video for me?<span class="ic"></span></summary><div class="ans">No. Nur AI is a content strategy and video-review studio — you get the plan, the feedback and the direction, and you keep full creative control of your work.</div></details>
+        <details><summary>Is the guidance really 100% halal?<span class="ic"></span></summary><div class="ans">Yes. Everything is built halal-first — vocal-only nasheeds, no instrumentation, nothing haram. Maryam sets the standard and Ahmad checks it.</div></details>
+        <details><summary>Do I need a drone or a gimbal?<span class="ic"></span></summary><div class="ans">No. Recommendations default to the DJI Osmo Pocket 3, but tell us what you shoot on — phone included — and the advice adapts to your kit.</div></details>
+        <details><summary>Can Nur AI help me with CapCut?<span class="ic"></span></summary><div class="ans">Yes. Maryam can guide you from beginner level — fonts, grading, clean visuals and the edits behind the Nur AI look.</div></details>
+        <details><summary>What happens after the free audit?<span class="ic"></span></summary><div class="ans">If you'd like ongoing help, the studio offers deeper strategy, research and review support. There's no obligation — just reply to your audit and we'll take it from there.</div></details>
+        <details><summary>Will more services be added?<span class="ic"></span></summary><div class="ans">Yes — new capabilities are being added continuously as the studio grows toward a full creative platform.</div></details>
       </div>
     </div>
   </section>
@@ -624,13 +700,13 @@
   <section class="final-cta">
     <div class="cta-panel">
       <div class="inner">
-        <h2>You shoot it. They handle the rest.</h2>
-        <p>Three agents, one chain, and a final scan nothing gets past. Start today for less than the cost of one editor's hour.</p>
+        <h2>Send us one video. See the difference.</h2>
+        <p>A rewritten hook, a review of your first three seconds, and a clear plan for your next post — free.</p>
         <div class="cta-row">
-          <a href="#" class="btn btn-gold" data-open-modal>Start for $30/month</a>
-          <a href="#pricing" class="btn btn-ghost">Compare plans</a>
+          <a href="#audit" class="btn btn-gold">Get My Free Video Audit</a>
+          <a href="#how" class="btn btn-ghost">See How Nur AI Works</a>
         </div>
-        <div class="micro"><span>Cancel anytime</span> · <span>100% halal</span> · <span>All three agents on every plan</span></div>
+        <div class="micro"><span>No credit card</span> · <span>100% halal</span> · <span>Feedback in 24–48 hours</span></div>
       </div>
     </div>
   </section>
@@ -639,8 +715,9 @@
   <footer>
     <div class="wrap footer-inner">
       <a href="#top" class="brand" style="color:var(--cream);"><span class="mark">ن</span> Nur AI</a>
-      <p class="copy">© 2026 Nur AI Studio. Cinematic content for Muslim creators and Islamic brands. 100% halal.</p>
+      <p class="copy">© 2026 Nur AI Studio. AI content strategy & video audits for Muslim creators and Islamic brands. 100% halal.</p>
       <div class="footer-links">
+        <a href="beta.html" title="Founder Beta — invite only">Founder Beta</a>
         <a href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg>
           Instagram
@@ -653,32 +730,23 @@
     </div>
   </footer>
 
-  <!-- CONTACT MODAL -->
-  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
-      <div class="eyebrow">Get Started</div>
-      <h3 id="modalTitle">Start with Nur AI</h3>
-      <p class="lead">Tell us about your brand and we'll get you set up on the right plan. We reply within 24 hours.</p>
-
-      <a class="contact-row" href="mailto:bilalm.boost@gmail.com?subject=Start%20with%20Nur%20AI&body=Assalamu%20alaikum%2C%0A%0AI'd%20like%20to%20get%20started%20with%20Nur%20AI.%20Here's%20a%20bit%20about%20my%20brand%3A%0A%0A(Plan%20I'm%20interested%20in%3A%20Personal%20%2430%20%2F%20Business%20%2460)%0A%0A">
-        <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M3 6l9 6 9-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-        <span class="ct"><span class="k">Email us</span><span class="v">bilalm.boost@gmail.com</span></span>
-        <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-
-      <a class="contact-row" href="https://www.instagram.com/baxxthobes/" target="_blank" rel="noopener">
-        <span class="ci"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg></span>
-        <span class="ct"><span class="k">DM us</span><span class="v">@baxxthobes</span></span>
-        <span class="arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </a>
-
-      <p class="modal-foot">Cancel anytime · 100% halal · All three agents on every plan</p>
-    </div>
-  </div>
-
   <script>
+    /* =====================================================================
+       FORM CONFIGURATION
+       ---------------------------------------------------------------------
+       Paste your form endpoint below to make the Free Video Audit form live.
+       Recommended: Formspree (https://formspree.io) — create a form and copy
+       its endpoint, which looks like:  https://formspree.io/f/abcdwxyz
+       (Basin and Web3Forms endpoints also work — see README.md.)
+
+       Until a real endpoint is set, the form validates fully but will NOT
+       fake a successful submission — it shows a clear "not connected" notice.
+    ===================================================================== */
+    var FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+    /* ===================================================================== */
+
     (function () {
+      // Mobile nav
       var nav = document.getElementById('nav');
       var toggle = document.getElementById('navToggle');
       var links = document.getElementById('navLinks');
@@ -694,15 +762,113 @@
         });
       });
 
-      var modal = document.getElementById('modal');
-      var closeBtn = document.getElementById('modalClose');
-      var lastFocus = null;
-      function openModal(e) { if (e) e.preventDefault(); lastFocus = document.activeElement; modal.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus(); }
-      function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
-      document.querySelectorAll('[data-open-modal]').forEach(function (el) { el.addEventListener('click', openModal); });
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+      // Form
+      var form = document.getElementById('auditForm');
+      var card = document.getElementById('formCard');
+      var statusEl = document.getElementById('formStatus');
+      var btn = document.getElementById('submitBtn');
+      var consentWrap = document.getElementById('consentWrap');
+
+      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      function isUrl(v) { try { var u = new URL(v.trim()); return u.protocol === 'http:' || u.protocol === 'https:'; } catch (e) { return false; } }
+
+      function setInvalid(field, bad) {
+        if (!field) return;
+        field.classList.toggle('invalid', bad);
+        var input = field.querySelector('input, select, textarea');
+        if (input) input.setAttribute('aria-invalid', bad ? 'true' : 'false');
+      }
+
+      function validate() {
+        var firstBad = null;
+        function check(id, testFn) {
+          var input = document.getElementById(id);
+          var field = input.closest('.field');
+          var ok = testFn(input.value);
+          setInvalid(field, !ok);
+          if (!ok && !firstBad) firstBad = input;
+          return ok;
+        }
+        var ok = true;
+        ok = check('f-name', function (v) { return v.trim().length > 1; }) && ok;
+        ok = check('f-email', function (v) { return emailRe.test(v.trim()); }) && ok;
+        ok = check('f-brand', function (v) { return v.trim().length > 0; }) && ok;
+        ok = check('f-handle', function (v) { return v.trim().length > 0; }) && ok;
+        ok = check('f-video', function (v) { return isUrl(v); }) && ok;
+        ok = check('f-niche', function (v) { return v.trim().length > 0; }) && ok;
+        ok = check('f-goal', function (v) { return v !== ''; }) && ok;
+        ok = check('f-challenge', function (v) { return v.trim().length > 2; }) && ok;
+        // consent
+        var consent = document.getElementById('f-consent');
+        var consentOk = consent.checked;
+        consentWrap.classList.toggle('invalid', !consentOk);
+        if (!consentOk && !firstBad) firstBad = consent;
+        ok = consentOk && ok;
+
+        if (firstBad) firstBad.focus();
+        return ok;
+      }
+
+      function showError(msg) {
+        statusEl.className = 'form-status error show';
+        statusEl.textContent = msg;
+      }
+
+      // Live-clear errors as the user fixes fields
+      form.addEventListener('input', function (e) {
+        var field = e.target.closest('.field');
+        if (field && field.classList.contains('invalid')) setInvalid(field, false);
+        if (e.target.id === 'f-consent' && e.target.checked) consentWrap.classList.remove('invalid');
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        statusEl.className = 'form-status'; // hide
+
+        // Honeypot: silently ignore bots
+        if (form.querySelector('[name="_gotcha"]').value) return;
+
+        if (!validate()) {
+          showError('Please fix the highlighted fields and try again.');
+          return;
+        }
+
+        // Endpoint not configured — never fake success
+        if (!FORM_ENDPOINT || FORM_ENDPOINT.indexOf('YOUR_FORM_ID') !== -1) {
+          showError('This form isn’t connected yet. The site owner needs to set FORM_ENDPOINT (see README.md). In the meantime, please email your video to bilalm.boost@gmail.com.');
+          return;
+        }
+
+        var data = {};
+        new FormData(form).forEach(function (v, k) { if (k !== '_gotcha') data[k] = v; });
+        data._subject = 'New Free Video Audit request — ' + (data.brand || data.name || '');
+
+        btn.disabled = true;
+        var original = btn.textContent;
+        btn.textContent = 'Sending…';
+
+        fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        }).then(function (res) {
+          if (res.ok) {
+            card.innerHTML =
+              '<div class="form-success">' +
+                '<div class="ok-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>' +
+                '<h3>Video submitted — JazakAllahu khayran!</h3>' +
+                '<p>Your video has been submitted. The Nur AI team will review it and send your audit within 24–48 hours.</p>' +
+              '</div>';
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            btn.disabled = false; btn.textContent = original;
+            showError('Something went wrong while submitting. Please try again, or email your video to bilalm.boost@gmail.com.');
+          }
+        }).catch(function () {
+          btn.disabled = false; btn.textContent = original;
+          showError('Network error — please try again, or email your video to bilalm.boost@gmail.com.');
+        });
+      });
     })();
   </script>
 
