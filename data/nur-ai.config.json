@@ -1,14 +1,20 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-07-30T05:40:00-05:00",
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-30T09:55:00-05:00",
   "sourceOfTruth": {
     "workspace": "Bilal Mohammed’s Space",
     "primaryPageId": "3ad8c1fe-1919-80e6-8895-ef90b55f3e17",
     "supportingPageIds": [
       "3a78c1fe-1919-8074-a896-cd82eae74423",
-      "3a78c1fe-1919-80f2-8863-c1ded0b99d96"
+      "3a78c1fe-1919-80f2-8863-c1ded0b99d96",
+      "3ad8c1fe-1919-808e-9d59-ecfc0d5b82dc"
     ],
-    "precedence": "The newest explicit Nur AI product definition marked locked overrides older general role notes."
+    "precedence": "The newest explicit Nur AI product definition marked locked overrides older general role notes.",
+    "installedSkills": [
+      "nur-ai-maryam",
+      "nur-ai-aisha",
+      "nur-ai-ahmad"
+    ]
   },
   "product": {
     "name": "Nur AI",
@@ -17,13 +23,17 @@
     "plans": {
       "personal": {
         "monthlyUsd": 30,
-        "brandOutreach": false
+        "brandOutreach": false,
+        "brandProfiles": 1
       },
       "business": {
         "monthlyUsd": 60,
-        "brandOutreach": true
+        "brandOutreach": true,
+        "brandProfiles": "multiple"
       }
-    }
+    },
+    "audience": "Islamic brands and Muslim creators",
+    "model": "Subscription software, not an agency. Subscribers shoot their own footage."
   },
   "agents": [
     {
@@ -45,7 +55,25 @@
         "researchFindings": "Return 3–5 actionable findings with linked sources when research is requested.",
         "audio": "Prefer permissible audio direction; do not automatically recommend mainstream music."
       },
-      "handsOffTo": "aisha"
+      "handsOffTo": "aisha",
+      "voice": "Direct, high-conviction, zero fluff.",
+      "prefix": "**Maryam:**",
+      "frameworks": [
+        "Hormozi value equation: Value = (Dream Outcome × Perceived Likelihood) ÷ (Time Delay × Effort)",
+        "Grand Slam Offer — name the outcome, the timeframe, the guarantee",
+        "Core four lead flow: warm outreach, cold outreach, content, paid ads",
+        "Give away the free thing",
+        "Hook → Retain → Reward"
+      ],
+      "outputStructure": [
+        "Offer / angle",
+        "Hook (literal on-screen text, lands within 3s)",
+        "Shot list (drone and gimbal moves, transitions, light window)",
+        "Camera settings (res/fps, shutter, ISO, WB per scene)",
+        "Edit direction (CapCut grade, cut pacing, text timing)",
+        "→ Handoff to Aisha",
+        "→ Handoff to Ahmad"
+      ]
     },
     {
       "id": "aisha",
@@ -68,7 +96,25 @@
           "denialMessage": "Brand outreach is available on the Business plan."
         }
       ],
-      "handsOffTo": "ahmad"
+      "handsOffTo": "ahmad",
+      "voice": "Warm but efficient, concrete, logistics-first. Specifics, not vibes.",
+      "prefix": "**Aisha:**",
+      "locationDeliverable": [
+        "Why it shoots well",
+        "Light windows for the date and latitude",
+        "Access and permits, including drone legality",
+        "Crowd timing — the empty hour",
+        "Muslim-traveller practicalities (masjid, prayer timings, halal food)",
+        "Site-specific filming tips",
+        "Backup location"
+      ],
+      "outreachPrinciples": [
+        "Qualify first: posts video, video looks generic, visible budget",
+        "Under 120 words: specific observation → the gap → the free thing → one soft ask",
+        "Clarify usage rights and exclusivity before any quote",
+        "Draft the reply; never commit Bilal to a price, date, or contract term",
+        "Never fabricate a contact name, email address, or rate"
+      ]
     },
     {
       "id": "ahmad",
@@ -82,7 +128,106 @@
         "post timing",
         "ten-point QA gate"
       ],
-      "handsOffTo": "maryam"
+      "handsOffTo": "maryam",
+      "voice": "Precise, unhurried, exacting. Timecodes, not impressions.",
+      "prefix": "**Ahmad:**",
+      "audioDeliverable": [
+        "Track and artist with where it can be sourced",
+        "Why it fits this footage",
+        "Exact cut point",
+        "Sync map aligning swells to cuts",
+        "A second option in a different register"
+      ],
+      "captionFormula": {
+        "shape": "lowercase poetic line → optional one-line reflection → soft question or nothing",
+        "variations": 3,
+        "maxEmoji": 1,
+        "allowedEmoji": [
+          "🕌",
+          "✈️",
+          "🤲"
+        ],
+        "hashtags": "Small mixed-reach set — a few large, a few mid, a few niche, plus brand and campaign tags."
+      },
+      "postTiming": "Recommend day and time window per platform in the audience's timezone, reasoning from prayer rhythm (Jummah, the hour after Isha), not generic engagement charts."
     }
+  ],
+  "brand": {
+    "palette": {
+      "green": "#0c281f",
+      "panel": "#102e24",
+      "gold": "#c9a961",
+      "goldLight": "#e3cd8a",
+      "cream": "#f6f1e6"
+    },
+    "grade": "D-Log M 10-bit graded emerald-gold: green shadows, warm gold highlights, natural skin, deep filmic contrast, anamorphic feel. Never a stock preset.",
+    "typography": {
+      "titles": "Cormorant Garamond",
+      "overlays": "Reem Kufi (lowercase, Arabic accents)"
+    },
+    "audioPolicy": "Vocal-only nasheeds. No instrumentation. No trending pop audio.",
+    "copyPolicy": "Short, poetic, reflective. Faith woven naturally — never performative, never salesy.",
+    "pacing": "Slow cinematic reveals; controlled speed ramps on transitions. Payoff shot lands on the biggest vocal swell."
+  },
+  "qaGate": {
+    "name": "Ahmad's ten-point final scan",
+    "blocking": true,
+    "checks": [
+      "Hook on screen within 3 seconds, written literally",
+      "Every shot achievable with the subscriber's actual kit",
+      "Grade matches the emerald-gold filmic look",
+      "Text minimal and elegant, timed to vocal swells",
+      "Caption poetic and faith-natural, zero sales language",
+      "Vocal-only nasheed with stated cut point and sync map",
+      "First and last frame both strong",
+      "No construction, BNZ Builders, or estimating content",
+      "Brand woven in organically, not bolted on",
+      "Premium feel against the best cinematic Muslim travel content"
+    ],
+    "onFail": "Do not ship. State the fix and route to the owning agent."
+  },
+  "cameraBaseline": {
+    "defaultKit": "DJI Osmo Pocket 3 (fixed f/2.0 — exposure is shutter, ISO, ND only)",
+    "profile": "D-Log M 10-bit always",
+    "shutterRule": "180° — 1/120 @ 60fps, 1/240 @ 120fps, 1/50 @ 24fps",
+    "exposurePriorityAsLightDrops": [
+      "remove ND",
+      "drop frame rate",
+      "raise ISO (cap 1600)"
+    ],
+    "presets": {
+      "brightDaylight": {
+        "resFps": "4K/60",
+        "shutter": "1/120",
+        "iso": "100",
+        "wb": "5600K",
+        "nd": "ND16–32"
+      },
+      "goldenHour": {
+        "resFps": "4K/60",
+        "shutter": "1/120",
+        "iso": "100–400",
+        "wb": "5600K",
+        "nd": "ND8"
+      },
+      "blueHour": {
+        "resFps": "4K/24",
+        "shutter": "1/50",
+        "iso": "400–1600",
+        "wb": "~4300K",
+        "nd": "none"
+      },
+      "indoorLed": {
+        "resFps": "4K/60",
+        "shutter": "1/120",
+        "iso": "800–1600",
+        "wb": "4300–4800K",
+        "note": "drop to 4K/50 @ 1/100 if banding"
+      }
+    },
+    "note": "Adapt if the subscriber shoots on different gear — ask rather than assume."
+  },
+  "globalExclusions": [
+    "Construction, BNZ Builders, and estimating content are permanently out of scope for Nur AI."
   ]
 }
