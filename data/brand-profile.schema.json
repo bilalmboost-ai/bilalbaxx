@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuraibaxx.com/data/brand-profile.schema.json",
+  "title": "Nur AI Brand Profile",
+  "description": "Persistent per-subscriber brand profile shared across Maryam, Aisha and Ahmad.",
+  "type": "object",
+  "required": [
+    "profile_id",
+    "plan",
+    "brand_name",
+    "voice",
+    "audience"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string"
+    },
+    "plan": {
+      "enum": [
+        "personal",
+        "business"
+      ]
+    },
+    "brand_name": {
+      "type": "string"
+    },
+    "handles": {
+      "type": "object",
+      "properties": {
+        "instagram": {
+          "type": "string"
+        },
+        "tiktok": {
+          "type": "string"
+        },
+        "youtube": {
+          "type": "string"
+        }
+      }
+    },
+    "voice": {
+      "type": "object",
+      "required": [
+        "register"
+      ],
+      "properties": {
+        "register": {
+          "type": "string",
+          "description": "e.g. calm, reflective, high-conviction"
+        },
+        "faith_expression": {
+          "enum": [
+            "natural",
+            "minimal",
+            "explicit"
+          ],
+          "default": "natural"
+        },
+        "banned_phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "audience": {
+      "type": "object",
+      "required": [
+        "primary_regions"
+      ],
+      "properties": {
+        "primary_regions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "age_range": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "kit": {
+      "type": "object",
+      "properties": {
+        "camera": {
+          "type": "string",
+          "default": "DJI Osmo Pocket 3"
+        },
+        "drone": {
+          "type": "string"
+        },
+        "editor": {
+          "type": "string",
+          "default": "CapCut"
+        },
+        "supports_dlog": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "look": {
+      "type": "object",
+      "properties": {
+        "palette": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          }
+        },
+        "grade_notes": {
+          "type": "string"
+        },
+        "title_font": {
+          "type": "string",
+          "default": "Cormorant Garamond"
+        },
+        "overlay_font": {
+          "type": "string",
+          "default": "Reem Kufi"
+        }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "properties": {
+        "vocal_only": {
+          "type": "boolean",
+          "const": true
+        },
+        "preferred_artists": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "used_tracks": {
+          "type": "array",
+          "description": "Recently used tracks, so Ahmad does not repeat.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "track": {
+                "type": "string"
+              },
+              "artist": {
+                "type": "string"
+              },
+              "used_on": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          }
+        }
+      }
+    },
+    "outreach": {
+      "type": "object",
+      "description": "Business plan only.",
+      "properties": {
+        "rate_card": {
+          "type": "object",
+          "properties": {
+            "organic_post": {
+              "type": "string"
+            },
+            "ad_usage_multiplier": {
+              "type": "number"
+            },
+            "exclusivity_multiplier": {
+              "type": "number"
+            }
+          }
+        },
+        "target_categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded_brands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "campaign_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
