@@ -158,7 +158,7 @@
 
       <div class="card" style="margin-bottom:28px;">
         <ul class="perks">
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Priority audits</b> — 24-hour turnaround for the week.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Priority audits</b> — focused support throughout the beta.</span></li>
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Direct line to the founder</b> — feedback goes straight to Bilal.</span></li>
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>First access</b> to new agents as they launch.</span></li>
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#c9a961" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Founding-member status</b> — shape the roadmap from the inside.</span></li>
@@ -166,7 +166,7 @@
       </div>
 
       <h3 style="text-align:center; font-size:24px; margin-bottom:8px;">Claim your founder spot</h3>
-      <p style="text-align:center; color:var(--muted); font-size:15px; margin-bottom:26px;">Tell us where to start. We'll kick off your 7 days within 24 hours.</p>
+      <p style="text-align:center; color:var(--muted); font-size:15px; margin-bottom:26px;">Tell us where to start. Your beta begins after your onboarding is confirmed.</p>
 
       <div class="card" id="formCard">
         <form id="betaForm" novalidate>
@@ -179,7 +179,7 @@
             <div class="field full"><label for="b-goal">What do you most want from the beta? <span class="req">*</span></label><textarea id="b-goal" name="goal" required placeholder="e.g. sharper hooks, more reach, a repeatable posting system"></textarea><span class="err">Please tell us your main goal.</span></div>
 
             <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-            <input type="hidden" name="cohort" value="Founder Beta (code: baxx10)">
+            <input type="hidden" name="cohort" value="Founder Beta">
 
             <div class="consent" id="consentWrap">
               <input id="b-consent" name="consent" type="checkbox" required>
@@ -206,7 +206,7 @@
     /* ===== FORM CONFIGURATION — see README.md =====
        Paste a Formspree/Basin/Web3Forms endpoint to enable beta signups.
        Until set, the form shows an HONEST DISABLED state — it never fakes success. */
-    var FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+    var FORM_ENDPOINT = "https://formspree.io/f/mbdneown";
     var INVITE_CODE = "baxx10";
     /* ============================================== */
 
@@ -280,7 +280,7 @@
         fetch(FORM_ENDPOINT,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(data)})
           .then(function(res){
             if(res.ok){
-              card.innerHTML='<div class="success"><div class="ok-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>You’re in — JazakAllahu khayran!</h3><p>Welcome to the Nur AI Founder Beta. We’ll be in touch within 24 hours to kick off your 7 days.</p><a class="btn btn-ghost" href="beta-feedback.html">Go to beta feedback</a></div>';
+              card.innerHTML='<div class="success"><div class="ok-ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>You’re in — JazakAllahu khayran!</h3><p>Welcome to the Nur AI Founder Beta. Your onboarding has been received. We’ll confirm when your 7-day beta begins.</p><a class="btn btn-ghost" href="beta-feedback.html">Go to beta feedback</a></div>';
               card.scrollIntoView({behavior:'smooth',block:'center'});
             } else { btn.disabled=false; btn.textContent=orig; notice.className='notice warn'; notice.innerHTML='Something went wrong. Please try again, or email <a href="mailto:bilalm.boost@gmail.com">bilalm.boost@gmail.com</a>.'; }
           })
