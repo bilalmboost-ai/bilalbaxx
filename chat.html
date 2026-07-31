@@ -344,7 +344,9 @@
       "use strict";
 
       // Public endpoint only. Secrets belong in the Cloudflare Worker, never here.
-      const API_URL = "https://nurai-agent-proxy.murai.workers.dev";
+      const API_URL = "https://nurai-agent-proxy.nurai.workers.dev";
+      // Must match the PROXY_SECRET value set on the Worker
+      const NUR_KEY = "REPLACE_WITH_YOUR_PROXY_SECRET";
       const REQUEST_TIMEOUT_MS = 45000;
 
       const form = document.getElementById("chatForm");
@@ -469,7 +471,8 @@
             mode: "cors",
             headers: {
               "Accept": "application/json",
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "X-Nur-Key": NUR_KEY
             },
             body: JSON.stringify({
               agent: "maryam",
