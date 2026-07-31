@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Nur AI — Chat</title>
+<meta name="description" content="Talk to Maryam, Aisha and Ahmad — Nur AI content & growth agents.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a1f18;
+    --panel: #0f2a21;
+    --panel-2: #132f26;
+    --gold: #c9a961;
+    --gold-light: #e3cd8a;
+    --cream: #f7f3eb;
+    --cream-soft: #efe9dc;
+    --muted: rgba(247,243,235,0.65);
+    --muted-2: rgba(247,243,235,0.4);
+    --user-bubble: #1a3d32;
+    --ai-bubble: #f7f3eb;
+    --border: rgba(201,169,97,0.18);
+    --ok: #6fd9a5;
+    --err: #e8a090;
+    --radius: 18px;
+    --shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--cream);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ========== HEADER ========== */
+  .header {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(15,42,33,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    z-index: 20;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    color: var(--gold-light);
+  }
+  .brand-name {
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ok);
+    background: rgba(111,217,165,0.1);
+    border: 1px solid rgba(111,217,165,0.25);
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--ok);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.85); }
+  }
+
+  /* ========== AGENT TABS ========== */
+  .agent-bar {
+    flex-shrink: 0;
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    -webkit-overflow-scrolling: touch;
+  }
+  .agent-tab {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  .agent-tab:hover {
+    border-color: var(--gold);
+    color: var(--cream);
+  }
+  .agent-tab.active {
+    background: linear-gradient(135deg, #e3cd8a, #c9a961);
+    color: #0a1f18;
+    border-color: transparent;
+  }
+  .agent-tab .mono {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  /* ========== CHAT AREA ========== */
+  .chat-wrap {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
+  }
+  .msg {
+    max-width: 86%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    animation: fadeUp 0.28s ease;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .msg.user {
+    align-self: flex-end;
+  }
+  .msg.ai {
+    align-self: flex-start;
+  }
+  .msg-meta {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    padding: 0 4px;
+  }
+  .msg.user .msg-meta { text-align: right; }
+  .bubble {
+    padding: 13px 16px;
+    border-radius: var(--radius);
+    font-size: 15px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .msg.user .bubble {
+    background: var(--user-bubble);
+    color: var(--cream);
+    border-bottom-right-radius: 5px;
+    border: 1px solid rgba(201,169,97,0.15);
+  }
+  .msg.ai .bubble {
+    background: var(--ai-bubble);
+    color: #1a2e26;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  /* Typing indicator */
+  .typing {
+    align-self: flex-start;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--ai-bubble);
+    border-radius: var(--radius);
+    border-bottom-left-radius: 5px;
+  }
+  .typing.show { display: flex; }
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+  }
+  .typing-dots span {
+    width: 7px;
+    height: 7px;
+    background: #3d5c4e;
+    border-radius: 50%;
+    animation: bounce 1.2s infinite ease-in-out;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+    30% { transform: translateY(-5px); opacity: 1; }
+  }
+  .typing-label {
+    font-size: 12.5px;
+    color: #4a6b5c;
+    font-weight: 500;
+  }
+
+  /* ========== INPUT AREA ========== */
+  .input-area {
+    flex-shrink: 0;
+    padding: 12px 16px 18px;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+  }
+  .input-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 8px 8px 8px 18px;
+    transition: border-color 0.2s;
+  }
+  .input-row:focus-within {
+    border-color: var(--gold);
+  }
+  #userInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--cream);
+    font-size: 15.5px;
+    font-family: inherit;
+    resize: none;
+    max-height: 120px;
+    line-height: 1.45;
+    padding: 8px 0;
+  }
+  #userInput::placeholder { color: var(--muted-2); }
+  .send-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #e3cd8a, #c9a961);
+    color: #0a1f18;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .send-btn:hover { opacity: 0.9; }
+  .send-btn:active { transform: scale(0.94); }
+  .send-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .send-btn svg { width: 18px; height: 18px; }
+
+  .footer {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--muted-2);
+    padding: 6px 0 2px;
+  }
+
+  /* Error toast */
+  .toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #3d1f1a;
+    color: var(--err);
+    border: 1px solid rgba(232,160,144,0.35);
+    padding: 11px 18px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 50;
+    max-width: 90%;
+    text-align: center;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 480px) {
+    .header { padding: 12px 14px; }
+    .brand-name { font-size: 17px; }
+    .msg { max-width: 92%; }
+    .bubble { font-size: 14.5px; padding: 12px 14px; }
+    .agent-bar { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">ن</div>
+      <div class="brand-name">Nur AI</div>
+    </div>
+    <div class="status">
+      <span class="status-dot"></span>
+      Agents Online
+    </div>
+  </header>
+
+  <!-- AGENT SELECTOR -->
+  <div class="agent-bar" id="agentBar">
+    <button class="agent-tab active" data-agent="maryam">
+      <span class="mono">م</span> Maryam
+    </button>
+    <button class="agent-tab" data-agent="aisha">
+      <span class="mono">ع</span> Aisha
+    </button>
+    <button class="agent-tab" data-agent="ahmad">
+      <span class="mono">أ</span> Ahmad
+    </button>
+  </div>
+
+  <!-- CHAT MESSAGES -->
+  <div class="chat-wrap" id="chatWrap">
+    <!-- Welcome message injected by JS -->
+  </div>
+
+  <!-- TYPING INDICATOR -->
+  <div class="typing" id="typing">
+    <div class="typing-dots"><span></span><span></span><span></span></div>
+    <span class="typing-label" id="typingLabel">Maryam is thinking…</span>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-area">
+    <div class="input-row">
+      <textarea id="userInput" rows="1" placeholder="Message Maryam…" autofocus></textarea>
+      <button class="send-btn" id="sendBtn" aria-label="Send">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="footer">Powered by Nur AI</div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   Nur AI Chat — Live Agent Interface
+   Connects to Cloudflare Worker proxy
+   ============================================================ */
+
+const AGENT_API = "https://nurai-agent-proxy.murai.workers.dev";
+const PROXY_SECRET = "nurai_proxy_7860";
+
+// Agent display names & welcome messages
+const AGENTS = {
+  maryam: {
+    name: "Maryam",
+    mono: "م",
+    role: "Lead Orchestrator",
+    welcome: "Assalamu Alaikum. I’m Maryam, your main Nur AI agent.\n\nI help with content strategy, hooks, shot lists, CapCut direction, and growth planning.\n\nHow can I support you today?"
+  },
+  aisha: {
+    name: "Aisha",
+    mono: "ع",
+    role: "Research & Outreach",
+    welcome: "Assalamu Alaikum. I’m Aisha.\n\nI specialise in location research, competitor analysis, trend spotting, and brand outreach.\n\nWhat would you like me to research?"
+  },
+  ahmad: {
+    name: "Ahmad",
+    mono: "أ",
+    role: "Quality & Polish",
+    welcome: "Assalamu Alaikum. I’m Ahmad.\n\nI handle nasheed matching, captions, timing, and the final quality gate.\n\nSend me a video idea or ask me to review something."
+  }
+};
+
+let currentAgent = "maryam";
+let isWaiting = false;
+let conversationHistory = []; // simple multi-turn memory on the page
+
+// ---------- DOM ----------
+const chatWrap = document.getElementById("chatWrap");
+const userInput = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
+const typingEl = document.getElementById("typing");
+const typingLabel = document.getElementById("typingLabel");
+const toastEl = document.getElementById("toast");
+
+// ---------- Agent tabs ----------
+document.querySelectorAll(".agent-tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    if (isWaiting) return;
+    document.querySelectorAll(".agent-tab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    currentAgent = tab.dataset.agent;
+    userInput.placeholder = `Message ${AGENTS[currentAgent].name}…`;
+    // Reset chat for new agent with fresh welcome
+    conversationHistory = [];
+    chatWrap.innerHTML = "";
+    addMessage("ai", AGENTS[currentAgent].welcome, AGENTS[currentAgent].name);
+  });
+});
+
+// ---------- Helpers ----------
+function addMessage(role, text, name) {
+  const msg = document.createElement("div");
+  msg.className = `msg ${role}`;
+
+  const meta = document.createElement("div");
+  meta.className = "msg-meta";
+  meta.textContent = role === "user" ? "You" : (name || AGENTS[currentAgent].name);
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.textContent = text;
+
+  msg.appendChild(meta);
+  msg.appendChild(bubble);
+  chatWrap.appendChild(msg);
+  chatWrap.scrollTop = chatWrap.scrollHeight;
+
+  conversationHistory.push({ role, text, agent: currentAgent });
+}
+
+function showTyping(show) {
+  typingEl.classList.toggle("show", show);
+  if (show) {
+    typingLabel.textContent = `${AGENTS[currentAgent].name} is thinking…`;
+    chatWrap.scrollTop = chatWrap.scrollHeight;
+  }
+}
+
+function showToast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  setTimeout(() => toastEl.classList.remove("show"), 3800);
+}
+
+// Auto-resize textarea
+userInput.addEventListener("input", () => {
+  userInput.style.height = "auto";
+  userInput.style.height = Math.min(userInput.scrollHeight, 120) + "px";
+});
+
+// Enter to send (Shift+Enter for new line)
+userInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+sendBtn.addEventListener("click", sendMessage);
+
+// ---------- Core send logic ----------
+async function sendMessage() {
+  const text = userInput.value.trim();
+  if (!text || isWaiting) return;
+
+  addMessage("user", text);
+  userInput.value = "";
+  userInput.style.height = "auto";
+  isWaiting = true;
+  sendBtn.disabled = true;
+  showTyping(true);
+
+  try {
+    const payload = {
+      agent: currentAgent,
+      action: text,                       // free-form message treated as the request
+      brandProfile: {},
+      project: { idea: text },
+      previousOutputs: buildPreviousOutputs()
+    };
+
+    const res = await fetch(AGENT_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Nur-Key": PROXY_SECRET
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || `Server error ${res.status}`);
+    }
+
+    const reply = data.output || "I couldn’t generate a response. Please try again.";
+    addMessage("ai", reply, AGENTS[currentAgent].name);
+
+  } catch (err) {
+    console.error(err);
+    showToast(err.message || "Something went wrong. Please try again.");
+    addMessage("ai", "I’m having trouble reaching the server right now. Please try again in a moment.", AGENTS[currentAgent].name);
+  } finally {
+    isWaiting = false;
+    sendBtn.disabled = false;
+    showTyping(false);
+    userInput.focus();
+  }
+}
+
+// Keep a short rolling history so agents have context
+function buildPreviousOutputs() {
+  const outs = {};
+  // last AI message per agent
+  conversationHistory.filter(m => m.role === "ai").slice(-3).forEach(m => {
+    outs[m.agent] = m.text;
+  });
+  return outs;
+}
+
+// ---------- Init ----------
+addMessage("ai", AGENTS.maryam.welcome, "Maryam");
+userInput.focus();
+</script>
+</body>
+</html>
