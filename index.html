@@ -444,12 +444,20 @@
         return typeof choice === "string" ? choice.trim() : "";
       }
 
+      function buildPreviousOutputs() {
+        const lastReply = [...history]
+          .reverse()
+          .find(turn => turn.role === "assistant" && turn.content);
+
+        return lastReply ? { maryam: lastReply.content } : {};
+      }
+
       async function requestMaryam(message) {
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-        // The payload includes both common single-message fields and an
-        // OpenAI-style messages array. The Worker can read its preferred shape.
+        // Keep the deployed Worker's task-oriented fields while also sending
+        // standard history fields for reliable multi-turn context.
         const conversation = [
           ...history,
           { role: "user", content: message }
@@ -465,7 +473,11 @@
             },
             body: JSON.stringify({
               agent: "maryam",
+              action: message,
               message,
+              brandProfile: {},
+              project: { idea: message },
+              previousOutputs: buildPreviousOutputs(),
               history,
               messages: conversation
             }),
