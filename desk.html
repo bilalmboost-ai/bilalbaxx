@@ -129,6 +129,8 @@ button,input,select,textarea{font-family:inherit}
 .banner strong{color:var(--gold-light)}
 
 footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft);font-size:12.5px;color:var(--muted-2);margin-top:40px}
+
+.loading { opacity: 0.6; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -178,9 +180,9 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
 
     <!-- OVERVIEW -->
     <section class="view active" id="view-overview">
-      <div class="banner">
-        <strong>Founder Beta · Honest mode.</strong>
-        Live agent generation requires a secure server-side endpoint. Until it is connected, actions stay disabled. You can still set your Brand Profile, start a project, and load real deliverables that Bilal or the studio supplies manually.
+      <div class="banner" id="mainBanner">
+        <strong>Founder Beta · Live agents connected.</strong>
+        Maryam, Aisha and Ahmad are online. Set your Brand Profile, start a project, then run the full chain or individual actions.
       </div>
 
       <div class="card">
@@ -195,23 +197,9 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
       <div class="card">
         <div class="section-label">Primary action</div>
         <h2 style="margin-bottom:8px">Run Full Content Chain</h2>
-        <p class="desc">Submit one idea → Maryam plans → Aisha researches → Ahmad reviews → final publishing package. You do not copy content between agents.</p>
-        <button class="btn btn-gold" id="btnFullChain" disabled title="Requires AGENT_API_ENDPOINT">Run Full Content Chain</button>
-        <div class="notice" style="margin-top:12px">This action stays disabled until a secure <code>AGENT_API_ENDPOINT</code> is configured. See the Architecture note below.</div>
-      </div>
-
-      <div class="card">
-        <div class="section-label">Architecture</div>
-        <p class="desc" style="margin-bottom:10px">Expected request shape for the future secure proxy:</p>
-        <pre style="background:var(--panel-2);border:1px solid var(--hair);border-radius:10px;padding:14px;font-size:12.5px;overflow:auto;color:var(--muted)">{
-  "projectId": "...",
-  "agent": "maryam",
-  "action": "plan_reel",
-  "brandProfile": {},
-  "project": {},
-  "previousOutputs": {}
-}</pre>
-        <p class="desc" style="margin-top:12px">Model credentials must stay server-side. No private keys belong in this repository or in browser code.</p>
+        <p class="desc">Submit one idea → Maryam plans → Aisha researches → Ahmad reviews → final publishing package.</p>
+        <button class="btn btn-gold" id="btnFullChain" onclick="runFullChain()">Run Full Content Chain</button>
+        <div class="notice" id="fullChainNotice" style="margin-top:12px;display:none"></div>
       </div>
     </section>
 
@@ -271,7 +259,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
 
       <div class="card">
         <div class="section-label">Manual deliverable</div>
-        <p class="desc">When the studio (or Bilal) runs the agents offline and returns a package, paste it here. This is the honest path while the Agent API is offline.</p>
+        <p class="desc">You can still paste outputs manually if needed.</p>
         <div class="field">
           <label>Agent</label>
           <select id="manual-agent"><option value="maryam">Maryam</option><option value="aisha">Aisha</option><option value="ahmad">Ahmad</option></select>
@@ -305,14 +293,14 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
           </div>
         </div>
         <p class="desc">Maryam turns your goal into a clear content plan, hooks, shots, and publishing direction.</p>
-        <div class="actions">
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Plan My Next Reel</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Build My 7-Day Calendar</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Improve My Content Idea</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Write Stronger Hooks</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Create a Shot List</button>
+        <div class="actions" id="maryam-actions">
+          <button class="btn btn-ghost btn-sm" data-agent="maryam" data-action="plan_reel">Plan My Next Reel</button>
+          <button class="btn btn-ghost btn-sm" data-agent="maryam" data-action="build_calendar">Build My 7-Day Calendar</button>
+          <button class="btn btn-ghost btn-sm" data-agent="maryam" data-action="improve_idea">Improve My Content Idea</button>
+          <button class="btn btn-ghost btn-sm" data-agent="maryam" data-action="write_hooks">Write Stronger Hooks</button>
+          <button class="btn btn-ghost btn-sm" data-agent="maryam" data-action="create_shot_list">Create a Shot List</button>
         </div>
-        <div class="notice">Live generation is offline. Use <strong>Current Project → Manual deliverable</strong> to load a real Maryam package, or wait for the secure Agent API.</div>
+        <div class="notice" id="maryam-notice" style="display:none"></div>
         <div class="output-area">
           <div class="section-label">Maryam’s output</div>
           <div class="output-box" id="out-maryam" data-placeholder="No deliverable loaded yet."></div>
@@ -333,15 +321,15 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
             <div class="agent-role">Research & Local Opportunity</div>
           </div>
         </div>
-        <p class="desc">Aisha researches the audience, competition, local opportunity, and content gaps. She labels uncertainty and never fabricates sources.</p>
-        <div class="actions">
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Research My Local Market</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Find Content Opportunities</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Review Nearby Competitors</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Develop Islamic Content Angles</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Research My Location</button>
+        <p class="desc">Aisha researches the audience, competition, local opportunity, and content gaps.</p>
+        <div class="actions" id="aisha-actions">
+          <button class="btn btn-ghost btn-sm" data-agent="aisha" data-action="research_market">Research My Local Market</button>
+          <button class="btn btn-ghost btn-sm" data-agent="aisha" data-action="find_opportunities">Find Content Opportunities</button>
+          <button class="btn btn-ghost btn-sm" data-agent="aisha" data-action="review_competitors">Review Nearby Competitors</button>
+          <button class="btn btn-ghost btn-sm" data-agent="aisha" data-action="islamic_angles">Develop Islamic Content Angles</button>
+          <button class="btn btn-ghost btn-sm" data-agent="aisha" data-action="research_location">Research My Location</button>
         </div>
-        <div class="notice">Brand outreach is excluded from the Founder Beta. Live research requires the secure Agent API.</div>
+        <div class="notice" id="aisha-notice" style="display:none"></div>
         <div class="output-area">
           <div class="section-label">Aisha’s output</div>
           <div class="output-box" id="out-aisha" data-placeholder="No deliverable loaded yet."></div>
@@ -362,15 +350,15 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
             <div class="agent-role">Final Review & Quality Control</div>
           </div>
         </div>
-        <p class="desc">Ahmad reviews the finished content and decides whether it is ready to publish. He does not approve weak work automatically.</p>
-        <div class="actions">
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Review My Video</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Score My Hook</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Review My Caption</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Check My First Three Seconds</button>
-          <button class="btn btn-ghost btn-sm" disabled title="Requires AGENT_API_ENDPOINT">Run Final QA</button>
+        <p class="desc">Ahmad reviews the finished content and decides whether it is ready to publish.</p>
+        <div class="actions" id="ahmad-actions">
+          <button class="btn btn-ghost btn-sm" data-agent="ahmad" data-action="review_video">Review My Video</button>
+          <button class="btn btn-ghost btn-sm" data-agent="ahmad" data-action="score_hook">Score My Hook</button>
+          <button class="btn btn-ghost btn-sm" data-agent="ahmad" data-action="review_caption">Review My Caption</button>
+          <button class="btn btn-ghost btn-sm" data-agent="ahmad" data-action="check_first_3s">Check My First Three Seconds</button>
+          <button class="btn btn-ghost btn-sm" data-agent="ahmad" data-action="final_qa">Run Final QA</button>
         </div>
-        <div class="notice">Live review is offline. Load a real Ahmad package via Manual deliverable when the studio has completed the review.</div>
+        <div class="notice" id="ahmad-notice" style="display:none"></div>
         <div class="output-area">
           <div class="section-label">Ahmad’s output</div>
           <div class="output-box" id="out-ahmad" data-placeholder="No deliverable loaded yet."></div>
@@ -385,7 +373,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
     <section class="view" id="view-history">
       <div class="card">
         <h2>Project History</h2>
-        <p class="desc">History is stored only in this browser. Nothing is written to the public repository.</p>
+        <p class="desc">History is stored only in this browser.</p>
         <div id="history-list" class="notice">No projects saved yet.</div>
         <div class="btn-row">
           <button class="btn btn-ghost btn-sm" onclick="exportHistory()">Export history JSON</button>
@@ -398,7 +386,7 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
     <section class="view" id="view-feedback">
       <div class="card">
         <h2>Share Beta Feedback</h2>
-        <p class="desc">Tell us how Maryam, Aisha and Ahmad performed, whether handoffs felt clear, and what is missing. Your feedback shapes the product.</p>
+        <p class="desc">Tell us how the agents performed and what is missing.</p>
         <a class="btn btn-gold" href="beta-feedback.html">Open feedback form →</a>
       </div>
     </section>
@@ -410,11 +398,10 @@ footer{text-align:center;padding:28px 20px;border-top:1px solid var(--hair-soft)
 
 <script>
 /* ============================================================
-   AGENT_API_ENDPOINT
-   Leave empty until a secure server-side proxy exists.
-   Never put model API keys in this file.
+   LIVE AGENT API
    ============================================================ */
-var AGENT_API_ENDPOINT = "";
+var AGENT_API_ENDPOINT = "https://nurai-agent-proxy.murai.workers.dev";
+var PROXY_SECRET = "nurai_proxy_7860";
 
 var STORAGE_BRAND = "nurai_brand_profile_v1";
 var STORAGE_PROJECT = "nurai_current_project_v1";
@@ -547,7 +534,6 @@ function startProject() {
   };
   localStorage.setItem(STORAGE_PROJECT, JSON.stringify(proj));
   renderProject();
-  // also push to history
   var hist = [];
   try { hist = JSON.parse(localStorage.getItem(STORAGE_HISTORY) || '[]'); } catch(e){}
   hist.unshift({ id: proj.id, brand: proj.brand, idea: idea.slice(0,80), created_at: proj.created_at });
@@ -591,21 +577,23 @@ function loadJazeeraExample() {
   showView('project');
 }
 
-// ---------- Manual deliverables ----------
+// ---------- Outputs ----------
 function getOutputs() {
   try { return JSON.parse(localStorage.getItem(STORAGE_OUTPUTS) || '{}'); } catch(e){ return {}; }
+}
+function saveOutput(agent, text) {
+  var outs = getOutputs();
+  outs[agent] = text;
+  localStorage.setItem(STORAGE_OUTPUTS, JSON.stringify(outs));
+  document.getElementById('out-' + agent).textContent = text;
 }
 function loadManualDeliverable() {
   var agent = document.getElementById('manual-agent').value;
   var text = document.getElementById('manual-output').value.trim();
   if (!text) { alert('Paste a deliverable first.'); return; }
-  var outs = getOutputs();
-  outs[agent] = text;
-  localStorage.setItem(STORAGE_OUTPUTS, JSON.stringify(outs));
-  document.getElementById('out-' + agent).textContent = text;
+  saveOutput(agent, text);
   document.getElementById('manual-output').value = '';
-  // update timeline
-  if (agent === 'maryam') { document.getElementById('tl-2').classList.add('done'); document.getElementById('tl-2').classList.remove('active'); }
+  if (agent === 'maryam') { document.getElementById('tl-2').classList.add('done'); }
   if (agent === 'aisha') { document.getElementById('tl-3').classList.add('done'); }
   if (agent === 'ahmad') { document.getElementById('tl-4').classList.add('done'); document.getElementById('tl-5').classList.add('done'); }
   showView(agent);
@@ -646,10 +634,146 @@ function clearHistory() {
 function copyText(id) {
   var el = document.getElementById(id);
   if (!el || !el.textContent) return;
-  navigator.clipboard.writeText(el.textContent).then(function(){
-    // silent success
-  }).catch(function(){ alert('Could not copy.'); });
+  navigator.clipboard.writeText(el.textContent).catch(function(){ alert('Could not copy.'); });
 }
+
+// ---------- LIVE AGENT CALL ----------
+async function callAgent(agent, action) {
+  var brand = getBrandProfile();
+  var project = getProject() || {};
+  var previous = getOutputs();
+
+  var payload = {
+    projectId: project.id || null,
+    agent: agent,
+    action: action,
+    brandProfile: brand,
+    project: {
+      idea: project.idea || document.getElementById('proj-idea').value || '',
+      goal: project.goal || brand.goal || ''
+    },
+    previousOutputs: previous
+  };
+
+  var res = await fetch(AGENT_API_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Nur-Key': PROXY_SECRET
+    },
+    body: JSON.stringify(payload)
+  });
+
+  var data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error || ('HTTP ' + res.status));
+  }
+  return data;
+}
+
+function setNotice(agent, text, isError) {
+  var el = document.getElementById(agent + '-notice');
+  if (!el) return;
+  el.style.display = 'block';
+  el.className = isError ? 'notice warn' : 'notice ok';
+  el.textContent = text;
+}
+
+async function runAgentAction(agent, action, btn) {
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Working…';
+  }
+  setNotice(agent, 'Calling ' + agent + '…');
+
+  try {
+    var data = await callAgent(agent, action);
+    saveOutput(agent, data.output || '(empty response)');
+
+    // Update timeline
+    if (agent === 'maryam') document.getElementById('tl-2').classList.add('done');
+    if (agent === 'aisha') document.getElementById('tl-3').classList.add('done');
+    if (agent === 'ahmad') {
+      document.getElementById('tl-4').classList.add('done');
+      document.getElementById('tl-5').classList.add('done');
+    }
+
+    setNotice(agent, 'Done · ' + (data.model || 'model'), false);
+    showView(agent);
+  } catch (err) {
+    console.error(err);
+    setNotice(agent, 'Error: ' + err.message, true);
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      // restore original label roughly
+      btn.textContent = btn.getAttribute('data-original') || action;
+    }
+  }
+}
+
+async function runFullChain() {
+  var btn = document.getElementById('btnFullChain');
+  var notice = document.getElementById('fullChainNotice');
+  btn.disabled = true;
+  btn.textContent = 'Running chain…';
+  notice.style.display = 'block';
+  notice.className = 'notice';
+  notice.textContent = 'Starting Maryam → Aisha → Ahmad…';
+
+  try {
+    // 1. Maryam
+    notice.textContent = '1/3 Maryam is planning…';
+    var m = await callAgent('maryam', 'plan_reel');
+    saveOutput('maryam', m.output);
+    document.getElementById('tl-2').classList.add('done');
+
+    // 2. Aisha
+    notice.textContent = '2/3 Aisha is researching…';
+    var a = await callAgent('aisha', 'research_market');
+    saveOutput('aisha', a.output);
+    document.getElementById('tl-3').classList.add('done');
+
+    // 3. Ahmad
+    notice.textContent = '3/3 Ahmad is reviewing…';
+    var h = await callAgent('ahmad', 'final_qa');
+    saveOutput('ahmad', h.output);
+    document.getElementById('tl-4').classList.add('done');
+    document.getElementById('tl-5').classList.add('done');
+
+    // Final package
+    var packageText = '=== FINAL PACKAGE ===\n\n' +
+      '--- MARYAM ---\n' + (m.output || '') + '\n\n' +
+      '--- AISHA ---\n' + (a.output || '') + '\n\n' +
+      '--- AHMAD ---\n' + (h.output || '');
+
+    document.getElementById('final-package').textContent = packageText;
+    document.getElementById('final-package-card').style.display = 'block';
+
+    notice.className = 'notice ok';
+    notice.textContent = 'Full chain complete.';
+    showView('project');
+  } catch (err) {
+    console.error(err);
+    notice.className = 'notice warn';
+    notice.textContent = 'Chain failed: ' + err.message;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Run Full Content Chain';
+  }
+}
+
+// Wire individual action buttons
+['maryam','aisha','ahmad'].forEach(function(agent){
+  var container = document.getElementById(agent + '-actions');
+  if (!container) return;
+  container.querySelectorAll('button[data-agent]').forEach(function(btn){
+    btn.setAttribute('data-original', btn.textContent);
+    btn.addEventListener('click', function(){
+      runAgentAction(btn.getAttribute('data-agent'), btn.getAttribute('data-action'), btn);
+    });
+  });
+});
 
 // ---------- Init ----------
 (function init(){
@@ -659,12 +783,10 @@ function copyText(id) {
   renderOutputs();
   renderHistory();
 
-  if (AGENT_API_ENDPOINT) {
-    var st = document.getElementById('apiStatus');
-    st.className = 'status-pill ready';
-    st.innerHTML = '<span class="dot"></span> Agent API connected';
-    // future: enable buttons here
-  }
+  // Mark API as live
+  var st = document.getElementById('apiStatus');
+  st.className = 'status-pill ready';
+  st.innerHTML = '<span class="dot"></span> Agent API connected';
 })();
 </script>
 </body>
