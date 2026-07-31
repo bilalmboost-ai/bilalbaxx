@@ -343,8 +343,6 @@
     (() => {
       "use strict";
 
-      // Public endpoint only. No secrets in the browser.
-      // Worker allows requests from https://nuraibaxx.com via Origin/CORS.
       const API_URL = "https://nurai-agent-proxy.nurai.workers.dev";
       const REQUEST_TIMEOUT_MS = 45000;
 
@@ -443,6 +441,16 @@
         return typeof choice === "string" ? choice.trim() : "";
       }
 
+      function extractError(data, status) {
+        if (data && typeof data === "object") {
+          const msg = typeof data.error === "string" ? data.error : "";
+          const code = typeof data.code === "string" ? data.code : "";
+          if (msg && code) return `${msg} (${code})`;
+          if (msg) return msg;
+        }
+        return `The Nur AI server returned HTTP ${status}.`;
+      }
+
       function buildPreviousOutputs() {
         const lastReply = [...history]
           .reverse()
@@ -490,8 +498,7 @@
           }
 
           if (!response.ok) {
-            const serverMessage = extractReply(data);
-            throw new Error(serverMessage || `The Nur AI server returned HTTP ${response.status}.`);
+            throw new Error(extractError(data, response.status));
           }
 
           const reply = extractReply(data);
