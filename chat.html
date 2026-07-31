@@ -43,7 +43,6 @@
     overflow: hidden;
   }
 
-  /* ========== HEADER ========== */
   .header {
     flex-shrink: 0;
     display: flex;
@@ -101,7 +100,6 @@
     50% { opacity: 0.55; transform: scale(0.85); }
   }
 
-  /* ========== AGENT TABS ========== */
   .agent-bar {
     flex-shrink: 0;
     display: flex;
@@ -143,7 +141,6 @@
     font-weight: 700;
   }
 
-  /* ========== CHAT AREA ========== */
   .chat-wrap {
     flex: 1;
     overflow-y: auto;
@@ -164,12 +161,8 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .msg.user {
-    align-self: flex-end;
-  }
-  .msg.ai {
-    align-self: flex-start;
-  }
+  .msg.user { align-self: flex-end; }
+  .msg.ai { align-self: flex-start; }
   .msg-meta {
     font-size: 11.5px;
     font-weight: 600;
@@ -199,8 +192,12 @@
     border-bottom-left-radius: 5px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   }
+  .msg.error .bubble {
+    background: #3d1f1a;
+    color: #e8a090;
+    border: 1px solid rgba(232,160,144,0.35);
+  }
 
-  /* Typing indicator */
   .typing {
     align-self: flex-start;
     display: none;
@@ -235,7 +232,6 @@
     font-weight: 500;
   }
 
-  /* ========== INPUT AREA ========== */
   .input-area {
     flex-shrink: 0;
     padding: 12px 16px 18px;
@@ -298,7 +294,6 @@
     padding: 6px 0 2px;
   }
 
-  /* Error toast */
   .toast {
     position: fixed;
     bottom: 100px;
@@ -323,7 +318,6 @@
     transform: translateX(-50%) translateY(0);
   }
 
-  /* Mobile tweaks */
   @media (max-width: 480px) {
     .header { padding: 12px 14px; }
     .brand-name { font-size: 17px; }
@@ -335,7 +329,6 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="brand">
       <div class="brand-mark">ن</div>
@@ -347,7 +340,6 @@
     </div>
   </header>
 
-  <!-- AGENT SELECTOR -->
   <div class="agent-bar" id="agentBar">
     <button class="agent-tab active" data-agent="maryam">
       <span class="mono">م</span> Maryam
@@ -360,18 +352,13 @@
     </button>
   </div>
 
-  <!-- CHAT MESSAGES -->
-  <div class="chat-wrap" id="chatWrap">
-    <!-- Welcome message injected by JS -->
-  </div>
+  <div class="chat-wrap" id="chatWrap"></div>
 
-  <!-- TYPING INDICATOR -->
   <div class="typing" id="typing">
     <div class="typing-dots"><span></span><span></span><span></span></div>
     <span class="typing-label" id="typingLabel">Maryam is thinking…</span>
   </div>
 
-  <!-- INPUT -->
   <div class="input-area">
     <div class="input-row">
       <textarea id="userInput" rows="1" placeholder="Message Maryam…" autofocus></textarea>
@@ -387,41 +374,31 @@
   <div class="toast" id="toast"></div>
 
 <script>
-/* ============================================================
-   Nur AI Chat — Live Agent Interface
-   Connects to Cloudflare Worker proxy
-   ============================================================ */
-
 const AGENT_API = "https://nurai-agent-proxy.murai.workers.dev";
 const PROXY_SECRET = "nurai_proxy_7860";
 
-// Agent display names & welcome messages
 const AGENTS = {
   maryam: {
     name: "Maryam",
     mono: "م",
-    role: "Lead Orchestrator",
     welcome: "Assalamu Alaikum. I’m Maryam, your main Nur AI agent.\n\nI help with content strategy, hooks, shot lists, CapCut direction, and growth planning.\n\nHow can I support you today?"
   },
   aisha: {
     name: "Aisha",
     mono: "ع",
-    role: "Research & Outreach",
     welcome: "Assalamu Alaikum. I’m Aisha.\n\nI specialise in location research, competitor analysis, trend spotting, and brand outreach.\n\nWhat would you like me to research?"
   },
   ahmad: {
     name: "Ahmad",
     mono: "أ",
-    role: "Quality & Polish",
     welcome: "Assalamu Alaikum. I’m Ahmad.\n\nI handle nasheed matching, captions, timing, and the final quality gate.\n\nSend me a video idea or ask me to review something."
   }
 };
 
 let currentAgent = "maryam";
 let isWaiting = false;
-let conversationHistory = []; // simple multi-turn memory on the page
+let conversationHistory = [];
 
-// ---------- DOM ----------
 const chatWrap = document.getElementById("chatWrap");
 const userInput = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
@@ -429,7 +406,6 @@ const typingEl = document.getElementById("typing");
 const typingLabel = document.getElementById("typingLabel");
 const toastEl = document.getElementById("toast");
 
-// ---------- Agent tabs ----------
 document.querySelectorAll(".agent-tab").forEach(tab => {
   tab.addEventListener("click", () => {
     if (isWaiting) return;
@@ -437,17 +413,15 @@ document.querySelectorAll(".agent-tab").forEach(tab => {
     tab.classList.add("active");
     currentAgent = tab.dataset.agent;
     userInput.placeholder = `Message ${AGENTS[currentAgent].name}…`;
-    // Reset chat for new agent with fresh welcome
     conversationHistory = [];
     chatWrap.innerHTML = "";
     addMessage("ai", AGENTS[currentAgent].welcome, AGENTS[currentAgent].name);
   });
 });
 
-// ---------- Helpers ----------
-function addMessage(role, text, name) {
+function addMessage(role, text, name, isError) {
   const msg = document.createElement("div");
-  msg.className = `msg ${role}`;
+  msg.className = `msg ${role}` + (isError ? " error" : "");
 
   const meta = document.createElement("div");
   meta.className = "msg-meta";
@@ -476,16 +450,14 @@ function showTyping(show) {
 function showToast(msg) {
   toastEl.textContent = msg;
   toastEl.classList.add("show");
-  setTimeout(() => toastEl.classList.remove("show"), 3800);
+  setTimeout(() => toastEl.classList.remove("show"), 4500);
 }
 
-// Auto-resize textarea
 userInput.addEventListener("input", () => {
   userInput.style.height = "auto";
   userInput.style.height = Math.min(userInput.scrollHeight, 120) + "px";
 });
 
-// Enter to send (Shift+Enter for new line)
 userInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey) {
     e.preventDefault();
@@ -495,7 +467,6 @@ userInput.addEventListener("keydown", (e) => {
 
 sendBtn.addEventListener("click", sendMessage);
 
-// ---------- Core send logic ----------
 async function sendMessage() {
   const text = userInput.value.trim();
   if (!text || isWaiting) return;
@@ -510,7 +481,7 @@ async function sendMessage() {
   try {
     const payload = {
       agent: currentAgent,
-      action: text,                       // free-form message treated as the request
+      action: text,
       brandProfile: {},
       project: { idea: text },
       previousOutputs: buildPreviousOutputs()
@@ -525,10 +496,15 @@ async function sendMessage() {
       body: JSON.stringify(payload)
     });
 
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch (e) {
+      throw new Error("Server returned non-JSON (status " + res.status + ")");
+    }
 
     if (!res.ok) {
-      throw new Error(data.error || `Server error ${res.status}`);
+      throw new Error(data.error || ("HTTP " + res.status));
     }
 
     const reply = data.output || "I couldn’t generate a response. Please try again.";
@@ -536,8 +512,10 @@ async function sendMessage() {
 
   } catch (err) {
     console.error(err);
-    showToast(err.message || "Something went wrong. Please try again.");
-    addMessage("ai", "I’m having trouble reaching the server right now. Please try again in a moment.", AGENTS[currentAgent].name);
+    const realMsg = err.message || "Unknown error";
+    showToast(realMsg);
+    // Show the REAL error in the chat so we can fix it
+    addMessage("ai", "Error: " + realMsg, AGENTS[currentAgent].name, true);
   } finally {
     isWaiting = false;
     sendBtn.disabled = false;
@@ -546,17 +524,14 @@ async function sendMessage() {
   }
 }
 
-// Keep a short rolling history so agents have context
 function buildPreviousOutputs() {
   const outs = {};
-  // last AI message per agent
   conversationHistory.filter(m => m.role === "ai").slice(-3).forEach(m => {
     outs[m.agent] = m.text;
   });
   return outs;
 }
 
-// ---------- Init ----------
 addMessage("ai", AGENTS.maryam.welcome, "Maryam");
 userInput.focus();
 </script>
