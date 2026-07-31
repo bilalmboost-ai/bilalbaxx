@@ -343,10 +343,9 @@
     (() => {
       "use strict";
 
-      // Public endpoint only. Secrets belong in the Cloudflare Worker, never here.
+      // Public endpoint only. No secrets in the browser.
+      // Worker allows requests from https://nuraibaxx.com via Origin/CORS.
       const API_URL = "https://nurai-agent-proxy.nurai.workers.dev";
-      // Must match the PROXY_SECRET value set on the Worker
-      const NUR_KEY = "REPLACE_WITH_YOUR_PROXY_SECRET";
       const REQUEST_TIMEOUT_MS = 45000;
 
       const form = document.getElementById("chatForm");
@@ -354,8 +353,6 @@
       const sendButton = document.getElementById("sendButton");
       const messages = document.getElementById("messages");
 
-      // Store only successful turns. This history is sent with each request so
-      // Maryam can retain context even if the Worker itself is stateless.
       const history = [];
       let pending = false;
 
@@ -458,8 +455,6 @@
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-        // Keep the deployed Worker's task-oriented fields while also sending
-        // standard history fields for reliable multi-turn context.
         const conversation = [
           ...history,
           { role: "user", content: message }
@@ -471,8 +466,7 @@
             mode: "cors",
             headers: {
               "Accept": "application/json",
-              "Content-Type": "application/json",
-              "X-Nur-Key": NUR_KEY
+              "Content-Type": "application/json"
             },
             body: JSON.stringify({
               agent: "maryam",
@@ -492,7 +486,7 @@
           let data = raw;
 
           if (contentType.includes("application/json") || raw.trim().startsWith("{")) {
-            try { data = JSON.parse(raw); } catch { /* Keep the raw body for diagnostics. */ }
+            try { data = JSON.parse(raw); } catch { /* keep raw */ }
           }
 
           if (!response.ok) {
