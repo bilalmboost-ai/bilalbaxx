@@ -1,539 +1,568 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Nur AI — Chat</title>
-<meta name="description" content="Talk to Maryam, Aisha and Ahmad — Nur AI content & growth agents.">
-<meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230c281f'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23c9a961' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='%23e3cd8a' font-family='serif'%3E%D9%86%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a1f18;
-    --panel: #0f2a21;
-    --panel-2: #132f26;
-    --gold: #c9a961;
-    --gold-light: #e3cd8a;
-    --cream: #f7f3eb;
-    --cream-soft: #efe9dc;
-    --muted: rgba(247,243,235,0.65);
-    --muted-2: rgba(247,243,235,0.4);
-    --user-bubble: #1a3d32;
-    --ai-bubble: #f7f3eb;
-    --border: rgba(201,169,97,0.18);
-    --ok: #6fd9a5;
-    --err: #e8a090;
-    --radius: 18px;
-    --shadow: 0 8px 32px rgba(0,0,0,0.25);
-  }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#073f33">
+  <meta name="description" content="Chat with Maryam, the main Nur AI agent for marketing, content, and growth.">
+  <title>Nur AI — Chat with Maryam</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --emerald-950: #052e26;
+      --emerald-900: #073f33;
+      --emerald-800: #0b5846;
+      --emerald-100: #dceee8;
+      --gold: #c8a75b;
+      --gold-light: #ead8a8;
+      --ink: #17231f;
+      --muted: #68756f;
+      --paper: #fff;
+      --canvas: #f5f3ed;
+      --line: #e3e6e0;
+      --shadow: 0 22px 70px rgba(5, 46, 38, .14);
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
-  body {
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--cream);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+    * { box-sizing: border-box; }
 
-  .header {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 20px;
-    background: rgba(15,42,33,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    z-index: 20;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-  }
-  .brand-mark {
-    width: 34px;
-    height: 34px;
-    border: 1.5px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 17px;
-    color: var(--gold-light);
-  }
-  .brand-name {
-    font-size: 19px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-  .status {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--ok);
-    background: rgba(111,217,165,0.1);
-    border: 1px solid rgba(111,217,165,0.25);
-    padding: 6px 12px;
-    border-radius: 999px;
-  }
-  .status-dot {
-    width: 7px;
-    height: 7px;
-    background: var(--ok);
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.55; transform: scale(0.85); }
-  }
+    html, body { height: 100%; }
 
-  .agent-bar {
-    flex-shrink: 0;
-    display: flex;
-    gap: 8px;
-    padding: 12px 16px;
-    overflow-x: auto;
-    background: var(--panel);
-    border-bottom: 1px solid var(--border);
-    -webkit-overflow-scrolling: touch;
-  }
-  .agent-tab {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    font-size: 13.5px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: inherit;
-  }
-  .agent-tab:hover {
-    border-color: var(--gold);
-    color: var(--cream);
-  }
-  .agent-tab.active {
-    background: linear-gradient(135deg, #e3cd8a, #c9a961);
-    color: #0a1f18;
-    border-color: transparent;
-  }
-  .agent-tab .mono {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 15px;
-    font-weight: 700;
-  }
+    body {
+      margin: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 2%, rgba(200, 167, 91, .15), transparent 27rem),
+        radial-gradient(circle at 92% 100%, rgba(11, 88, 70, .12), transparent 32rem),
+        var(--canvas);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  .chat-wrap {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px 16px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    scroll-behavior: smooth;
-  }
-  .msg {
-    max-width: 86%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    animation: fadeUp 0.28s ease;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .msg.user { align-self: flex-end; }
-  .msg.ai { align-self: flex-start; }
-  .msg-meta {
-    font-size: 11.5px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--muted-2);
-    padding: 0 4px;
-  }
-  .msg.user .msg-meta { text-align: right; }
-  .bubble {
-    padding: 13px 16px;
-    border-radius: var(--radius);
-    font-size: 15px;
-    line-height: 1.55;
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-  .msg.user .bubble {
-    background: var(--user-bubble);
-    color: var(--cream);
-    border-bottom-right-radius: 5px;
-    border: 1px solid rgba(201,169,97,0.15);
-  }
-  .msg.ai .bubble {
-    background: var(--ai-bubble);
-    color: #1a2e26;
-    border-bottom-left-radius: 5px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  }
-  .msg.error .bubble {
-    background: #3d1f1a;
-    color: #e8a090;
-    border: 1px solid rgba(232,160,144,0.35);
-  }
+    button, textarea { font: inherit; }
 
-  .typing {
-    align-self: flex-start;
-    display: none;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    background: var(--ai-bubble);
-    border-radius: var(--radius);
-    border-bottom-left-radius: 5px;
-  }
-  .typing.show { display: flex; }
-  .typing-dots {
-    display: flex;
-    gap: 4px;
-  }
-  .typing-dots span {
-    width: 7px;
-    height: 7px;
-    background: #3d5c4e;
-    border-radius: 50%;
-    animation: bounce 1.2s infinite ease-in-out;
-  }
-  .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
-  .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
-  @keyframes bounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
-    30% { transform: translateY(-5px); opacity: 1; }
-  }
-  .typing-label {
-    font-size: 12.5px;
-    color: #4a6b5c;
-    font-weight: 500;
-  }
+    .shell {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      width: min(100% - 32px, 900px);
+      height: min(100dvh - 32px, 920px);
+      margin: 16px auto;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid rgba(255, 255, 255, .8);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
 
-  .input-area {
-    flex-shrink: 0;
-    padding: 12px 16px 18px;
-    background: var(--panel);
-    border-top: 1px solid var(--border);
-  }
-  .input-row {
-    display: flex;
-    gap: 10px;
-    align-items: flex-end;
-    background: var(--panel-2);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 8px 8px 8px 18px;
-    transition: border-color 0.2s;
-  }
-  .input-row:focus-within {
-    border-color: var(--gold);
-  }
-  #userInput {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--cream);
-    font-size: 15.5px;
-    font-family: inherit;
-    resize: none;
-    max-height: 120px;
-    line-height: 1.45;
-    padding: 8px 0;
-  }
-  #userInput::placeholder { color: var(--muted-2); }
-  .send-btn {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, #e3cd8a, #c9a961);
-    color: #0a1f18;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: opacity 0.15s, transform 0.15s;
-  }
-  .send-btn:hover { opacity: 0.9; }
-  .send-btn:active { transform: scale(0.94); }
-  .send-btn:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
-  .send-btn svg { width: 18px; height: 18px; }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 84px;
+      padding: 18px 24px;
+      background: linear-gradient(130deg, var(--emerald-950), var(--emerald-900));
+      color: white;
+      border-bottom: 1px solid rgba(234, 216, 168, .24);
+    }
 
-  .footer {
-    text-align: center;
-    font-size: 11.5px;
-    color: var(--muted-2);
-    padding: 6px 0 2px;
-  }
+    .brand, .status { display: flex; align-items: center; }
+    .brand { gap: 13px; }
 
-  .toast {
-    position: fixed;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: #3d1f1a;
-    color: var(--err);
-    border: 1px solid rgba(232,160,144,0.35);
-    padding: 11px 18px;
-    border-radius: 12px;
-    font-size: 13.5px;
-    font-weight: 500;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 50;
-    max-width: 90%;
-    text-align: center;
-  }
-  .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(234, 216, 168, .7);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .06);
+      color: var(--gold-light);
+      font-family: Georgia, serif;
+      font-size: 23px;
+      box-shadow: inset 0 0 24px rgba(200, 167, 91, .08);
+    }
 
-  @media (max-width: 480px) {
-    .header { padding: 12px 14px; }
-    .brand-name { font-size: 17px; }
-    .msg { max-width: 92%; }
-    .bubble { font-size: 14.5px; padding: 12px 14px; }
-    .agent-bar { padding: 10px 12px; }
-  }
-</style>
+    .brand h1 { margin: 0; font-size: 20px; letter-spacing: -.02em; }
+    .brand p { margin: 3px 0 0; color: rgba(255, 255, 255, .65); font-size: 12px; }
+
+    .status {
+      gap: 8px;
+      flex: 0 0 auto;
+      padding: 8px 11px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .07);
+      color: rgba(255, 255, 255, .83);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #65d6a6;
+      box-shadow: 0 0 0 4px rgba(101, 214, 166, .12);
+      animation: pulse 2s infinite;
+    }
+
+    .messages {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 30px 24px 22px;
+      scroll-behavior: smooth;
+    }
+
+    .message-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin: 0 0 18px;
+      animation: arrive .25s ease-out both;
+    }
+
+    .message-row.user { justify-content: flex-end; }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      flex: 0 0 auto;
+      border: 1px solid #d7ddd8;
+      border-radius: 10px;
+      background: white;
+      color: var(--emerald-900);
+      font-family: Georgia, serif;
+      font-weight: 700;
+      box-shadow: 0 5px 16px rgba(5, 46, 38, .08);
+    }
+
+    .bubble {
+      max-width: min(76%, 620px);
+      padding: 13px 16px;
+      border-radius: 18px 18px 18px 5px;
+      background: white;
+      border: 1px solid var(--line);
+      line-height: 1.55;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      box-shadow: 0 8px 28px rgba(5, 46, 38, .055);
+    }
+
+    .user .bubble {
+      border-color: transparent;
+      border-radius: 18px 18px 5px;
+      background: var(--emerald-900);
+      color: white;
+      box-shadow: 0 9px 24px rgba(7, 63, 51, .18);
+    }
+
+    .message-meta {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .error .bubble {
+      border-color: #f0c9c1;
+      background: #fff8f6;
+      color: #7a3025;
+    }
+
+    .typing {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 24px;
+    }
+
+    .typing span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald-800);
+      animation: bounce 1.1s infinite ease-in-out;
+    }
+
+    .typing span:nth-child(2) { animation-delay: .14s; }
+    .typing span:nth-child(3) { animation-delay: .28s; }
+
+    .composer-wrap {
+      padding: 14px 18px 18px;
+      border-top: 1px solid var(--line);
+      background: rgba(255, 255, 255, .9);
+    }
+
+    .composer {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 8px 8px 8px 16px;
+      border: 1px solid #d8ded9;
+      border-radius: 19px;
+      background: white;
+      box-shadow: 0 8px 26px rgba(5, 46, 38, .06);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    .composer:focus-within {
+      border-color: rgba(7, 63, 51, .52);
+      box-shadow: 0 0 0 4px rgba(7, 63, 51, .07);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 28px;
+      max-height: 128px;
+      resize: none;
+      overflow-y: auto;
+      border: 0;
+      outline: 0;
+      padding: 5px 0;
+      background: transparent;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    textarea::placeholder { color: #95a09b; }
+
+    .send {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 13px;
+      background: linear-gradient(145deg, var(--gold-light), var(--gold));
+      color: var(--emerald-950);
+      cursor: pointer;
+      box-shadow: 0 7px 18px rgba(200, 167, 91, .23);
+      transition: transform .15s, opacity .15s;
+    }
+
+    .send:hover { transform: translateY(-1px); }
+    .send:active { transform: translateY(1px); }
+    .send:disabled { cursor: not-allowed; opacity: .48; transform: none; }
+    .send svg { width: 19px; height: 19px; }
+
+    .hint {
+      margin: 9px 4px 0;
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      50% { box-shadow: 0 0 0 6px rgba(101, 214, 166, .04); }
+    }
+
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(7px); }
+    }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: .4; }
+      30% { transform: translateY(-5px); opacity: 1; }
+    }
+
+    @media (max-width: 640px) {
+      body { background: var(--paper); }
+      .shell {
+        width: 100%;
+        height: 100dvh;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .header { min-height: 74px; padding: 14px 16px; }
+      .mark { width: 40px; height: 40px; border-radius: 12px; }
+      .brand h1 { font-size: 18px; }
+      .brand p { display: none; }
+      .status { padding: 7px 9px; font-size: 11px; }
+      .messages { padding: 22px 14px 16px; }
+      .bubble { max-width: 86%; padding: 12px 14px; }
+      .composer-wrap { padding: 10px 10px max(10px, env(safe-area-inset-bottom)); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+    }
+  </style>
 </head>
 <body>
+  <main class="shell" aria-label="Nur AI chat">
+    <header class="header">
+      <div class="brand">
+        <div class="mark" aria-hidden="true">ن</div>
+        <div>
+          <h1>Nur AI</h1>
+          <p>Guidance for content that grows with purpose</p>
+        </div>
+      </div>
+      <div class="status" title="Nur AI service status">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Agents Online</span>
+      </div>
+    </header>
 
-  <header class="header">
-    <div class="brand">
-      <div class="brand-mark">ن</div>
-      <div class="brand-name">Nur AI</div>
-    </div>
-    <div class="status">
-      <span class="status-dot"></span>
-      Agents Online
-    </div>
-  </header>
+    <section class="messages" id="messages" aria-live="polite" aria-label="Conversation">
+      <article class="message-row assistant">
+        <div class="avatar" aria-hidden="true">M</div>
+        <div class="bubble">
+          <span class="message-meta">Maryam</span>
+          Assalamu Alaikum. I’m Maryam, your main Nur AI agent. How can I help you today with marketing, content, or growth?
+        </div>
+      </article>
+    </section>
 
-  <div class="agent-bar" id="agentBar">
-    <button class="agent-tab active" data-agent="maryam">
-      <span class="mono">م</span> Maryam
-    </button>
-    <button class="agent-tab" data-agent="aisha">
-      <span class="mono">ع</span> Aisha
-    </button>
-    <button class="agent-tab" data-agent="ahmad">
-      <span class="mono">أ</span> Ahmad
-    </button>
-  </div>
+    <footer class="composer-wrap">
+      <form class="composer" id="chatForm">
+        <textarea id="messageInput" rows="1" maxlength="8000" aria-label="Message Maryam" placeholder="Message Maryam…" autocomplete="off"></textarea>
+        <button class="send" id="sendButton" type="submit" aria-label="Send message">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m4 4 17 8-17 8 3-8-3-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M7 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </form>
+      <p class="hint">Enter to send · Shift + Enter for a new line</p>
+    </footer>
+  </main>
 
-  <div class="chat-wrap" id="chatWrap"></div>
+  <script>
+    (() => {
+      "use strict";
 
-  <div class="typing" id="typing">
-    <div class="typing-dots"><span></span><span></span><span></span></div>
-    <span class="typing-label" id="typingLabel">Maryam is thinking…</span>
-  </div>
+      // Public endpoint only. Secrets belong in the Cloudflare Worker, never here.
+      const API_URL = "https://nurai-agent-proxy.murai.workers.dev";
+      const REQUEST_TIMEOUT_MS = 45000;
 
-  <div class="input-area">
-    <div class="input-row">
-      <textarea id="userInput" rows="1" placeholder="Message Maryam…" autofocus></textarea>
-      <button class="send-btn" id="sendBtn" aria-label="Send">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
-        </svg>
-      </button>
-    </div>
-    <div class="footer">Powered by Nur AI</div>
-  </div>
+      const form = document.getElementById("chatForm");
+      const input = document.getElementById("messageInput");
+      const sendButton = document.getElementById("sendButton");
+      const messages = document.getElementById("messages");
 
-  <div class="toast" id="toast"></div>
+      // Store only successful turns. This history is sent with each request so
+      // Maryam can retain context even if the Worker itself is stateless.
+      const history = [];
+      let pending = false;
 
-<script>
-const AGENT_API = "https://nurai-agent-proxy.murai.workers.dev";
-const PROXY_SECRET = "nurai_proxy_7860";
+      function scrollToLatest() {
+        messages.scrollTop = messages.scrollHeight;
+      }
 
-const AGENTS = {
-  maryam: {
-    name: "Maryam",
-    mono: "م",
-    welcome: "Assalamu Alaikum. I’m Maryam, your main Nur AI agent.\n\nI help with content strategy, hooks, shot lists, CapCut direction, and growth planning.\n\nHow can I support you today?"
-  },
-  aisha: {
-    name: "Aisha",
-    mono: "ع",
-    welcome: "Assalamu Alaikum. I’m Aisha.\n\nI specialise in location research, competitor analysis, trend spotting, and brand outreach.\n\nWhat would you like me to research?"
-  },
-  ahmad: {
-    name: "Ahmad",
-    mono: "أ",
-    welcome: "Assalamu Alaikum. I’m Ahmad.\n\nI handle nasheed matching, captions, timing, and the final quality gate.\n\nSend me a video idea or ask me to review something."
-  }
-};
+      function resizeInput() {
+        input.style.height = "auto";
+        input.style.height = `${Math.min(input.scrollHeight, 128)}px`;
+      }
 
-let currentAgent = "maryam";
-let isWaiting = false;
-let conversationHistory = [];
+      function addMessage(role, text, options = {}) {
+        const row = document.createElement("article");
+        row.className = `message-row ${role}${options.error ? " error" : ""}`;
 
-const chatWrap = document.getElementById("chatWrap");
-const userInput = document.getElementById("userInput");
-const sendBtn = document.getElementById("sendBtn");
-const typingEl = document.getElementById("typing");
-const typingLabel = document.getElementById("typingLabel");
-const toastEl = document.getElementById("toast");
+        if (role === "assistant") {
+          const avatar = document.createElement("div");
+          avatar.className = "avatar";
+          avatar.setAttribute("aria-hidden", "true");
+          avatar.textContent = "M";
+          row.appendChild(avatar);
+        }
 
-document.querySelectorAll(".agent-tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-    if (isWaiting) return;
-    document.querySelectorAll(".agent-tab").forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-    currentAgent = tab.dataset.agent;
-    userInput.placeholder = `Message ${AGENTS[currentAgent].name}…`;
-    conversationHistory = [];
-    chatWrap.innerHTML = "";
-    addMessage("ai", AGENTS[currentAgent].welcome, AGENTS[currentAgent].name);
-  });
-});
+        const bubble = document.createElement("div");
+        bubble.className = "bubble";
 
-function addMessage(role, text, name, isError) {
-  const msg = document.createElement("div");
-  msg.className = `msg ${role}` + (isError ? " error" : "");
+        if (role === "assistant") {
+          const meta = document.createElement("span");
+          meta.className = "message-meta";
+          meta.textContent = options.error ? "Connection notice" : "Maryam";
+          bubble.appendChild(meta);
+        }
 
-  const meta = document.createElement("div");
-  meta.className = "msg-meta";
-  meta.textContent = role === "user" ? "You" : (name || AGENTS[currentAgent].name);
+        bubble.appendChild(document.createTextNode(text));
+        row.appendChild(bubble);
+        messages.appendChild(row);
+        scrollToLatest();
+        return row;
+      }
 
-  const bubble = document.createElement("div");
-  bubble.className = "bubble";
-  bubble.textContent = text;
+      function showTyping() {
+        const row = document.createElement("article");
+        row.className = "message-row assistant";
+        row.id = "typingIndicator";
+        row.setAttribute("aria-label", "Maryam is typing");
+        row.innerHTML = `
+          <div class="avatar" aria-hidden="true">M</div>
+          <div class="bubble">
+            <span class="message-meta">Maryam</span>
+            <span class="typing" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>`;
+        messages.appendChild(row);
+        scrollToLatest();
+      }
 
-  msg.appendChild(meta);
-  msg.appendChild(bubble);
-  chatWrap.appendChild(msg);
-  chatWrap.scrollTop = chatWrap.scrollHeight;
+      function hideTyping() {
+        document.getElementById("typingIndicator")?.remove();
+      }
 
-  conversationHistory.push({ role, text, agent: currentAgent });
-}
+      function extractReply(data) {
+        if (typeof data === "string" && data.trim()) return data.trim();
+        if (!data || typeof data !== "object") return "";
 
-function showTyping(show) {
-  typingEl.classList.toggle("show", show);
-  if (show) {
-    typingLabel.textContent = `${AGENTS[currentAgent].name} is thinking…`;
-    chatWrap.scrollTop = chatWrap.scrollHeight;
-  }
-}
+        const direct = [
+          data.reply,
+          data.response,
+          data.message,
+          data.output,
+          data.text,
+          data.content,
+          data.answer
+        ].find(value => typeof value === "string" && value.trim());
+        if (direct) return direct.trim();
 
-function showToast(msg) {
-  toastEl.textContent = msg;
-  toastEl.classList.add("show");
-  setTimeout(() => toastEl.classList.remove("show"), 4500);
-}
+        const nested = [
+          data.result?.reply,
+          data.result?.response,
+          data.result?.message,
+          data.result?.output,
+          data.data?.reply,
+          data.data?.response,
+          data.data?.message
+        ].find(value => typeof value === "string" && value.trim());
+        if (nested) return nested.trim();
 
-userInput.addEventListener("input", () => {
-  userInput.style.height = "auto";
-  userInput.style.height = Math.min(userInput.scrollHeight, 120) + "px";
-});
+        const choice = data.choices?.[0]?.message?.content ?? data.choices?.[0]?.text;
+        return typeof choice === "string" ? choice.trim() : "";
+      }
 
-userInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && !e.shiftKey) {
-    e.preventDefault();
-    sendMessage();
-  }
-});
+      function buildPreviousOutputs() {
+        const lastReply = [...history]
+          .reverse()
+          .find(turn => turn.role === "assistant" && turn.content);
 
-sendBtn.addEventListener("click", sendMessage);
+        return lastReply ? { maryam: lastReply.content } : {};
+      }
 
-async function sendMessage() {
-  const text = userInput.value.trim();
-  if (!text || isWaiting) return;
+      async function requestMaryam(message) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-  addMessage("user", text);
-  userInput.value = "";
-  userInput.style.height = "auto";
-  isWaiting = true;
-  sendBtn.disabled = true;
-  showTyping(true);
+        // Keep the deployed Worker's task-oriented fields while also sending
+        // standard history fields for reliable multi-turn context.
+        const conversation = [
+          ...history,
+          { role: "user", content: message }
+        ];
 
-  try {
-    const payload = {
-      agent: currentAgent,
-      action: text,
-      brandProfile: {},
-      project: { idea: text },
-      previousOutputs: buildPreviousOutputs()
-    };
+        try {
+          const response = await fetch(API_URL, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              agent: "maryam",
+              action: message,
+              message,
+              brandProfile: {},
+              project: { idea: message },
+              previousOutputs: buildPreviousOutputs(),
+              history,
+              messages: conversation
+            }),
+            signal: controller.signal
+          });
 
-    const res = await fetch(AGENT_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Nur-Key": PROXY_SECRET
-      },
-      body: JSON.stringify(payload)
-    });
+          const contentType = response.headers.get("content-type") || "";
+          const raw = await response.text();
+          let data = raw;
 
-    let data;
-    try {
-      data = await res.json();
-    } catch (e) {
-      throw new Error("Server returned non-JSON (status " + res.status + ")");
-    }
+          if (contentType.includes("application/json") || raw.trim().startsWith("{")) {
+            try { data = JSON.parse(raw); } catch { /* Keep the raw body for diagnostics. */ }
+          }
 
-    if (!res.ok) {
-      throw new Error(data.error || ("HTTP " + res.status));
-    }
+          if (!response.ok) {
+            const serverMessage = extractReply(data);
+            throw new Error(serverMessage || `The Nur AI server returned HTTP ${response.status}.`);
+          }
 
-    const reply = data.output || "I couldn’t generate a response. Please try again.";
-    addMessage("ai", reply, AGENTS[currentAgent].name);
+          const reply = extractReply(data);
+          if (!reply) throw new Error("The Nur AI server returned an empty or unsupported response.");
+          return reply;
+        } finally {
+          clearTimeout(timeout);
+        }
+      }
 
-  } catch (err) {
-    console.error(err);
-    const realMsg = err.message || "Unknown error";
-    showToast(realMsg);
-    // Show the REAL error in the chat so we can fix it
-    addMessage("ai", "Error: " + realMsg, AGENTS[currentAgent].name, true);
-  } finally {
-    isWaiting = false;
-    sendBtn.disabled = false;
-    showTyping(false);
-    userInput.focus();
-  }
-}
+      function friendlyError(error) {
+        if (error?.name === "AbortError") {
+          return "The request took too long. Please try again in a moment.";
+        }
+        if (error instanceof TypeError) {
+          return "I can’t reach the Nur AI server. The Worker may be offline or may need to allow this website in its CORS settings.";
+        }
+        return error?.message || "I’m having trouble reaching the server right now. Please try again in a moment.";
+      }
 
-function buildPreviousOutputs() {
-  const outs = {};
-  conversationHistory.filter(m => m.role === "ai").slice(-3).forEach(m => {
-    outs[m.agent] = m.text;
-  });
-  return outs;
-}
+      async function submitMessage() {
+        const message = input.value.trim();
+        if (!message || pending) return;
 
-addMessage("ai", AGENTS.maryam.welcome, "Maryam");
-userInput.focus();
-</script>
+        pending = true;
+        sendButton.disabled = true;
+        input.disabled = true;
+        input.value = "";
+        resizeInput();
+        addMessage("user", message);
+        showTyping();
+
+        try {
+          const reply = await requestMaryam(message);
+          hideTyping();
+          addMessage("assistant", reply);
+          history.push(
+            { role: "user", content: message },
+            { role: "assistant", content: reply }
+          );
+        } catch (error) {
+          hideTyping();
+          addMessage("assistant", friendlyError(error), { error: true });
+          console.error("Nur AI request failed:", error);
+        } finally {
+          pending = false;
+          sendButton.disabled = false;
+          input.disabled = false;
+          input.focus();
+        }
+      }
+
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        submitMessage();
+      });
+
+      input.addEventListener("input", resizeInput);
+      input.addEventListener("keydown", event => {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+          submitMessage();
+        }
+      });
+
+      resizeInput();
+      input.focus();
+    })();
+  </script>
 </body>
 </html>
